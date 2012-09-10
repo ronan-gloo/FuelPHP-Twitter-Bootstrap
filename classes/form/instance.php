@@ -289,7 +289,8 @@ class Form_Instance extends \Fuel\Core\Form_Instance {
 			switch ($name)
 			{
 				case 'source':
-				$attrs['data-source'] = htmlentities(json_encode((array)$attr));
+				$values = array_values((array)$attr);
+				$attrs['data-source'] = htmlentities(json_encode($values));
 				break;
 				
 				case 'multiple':

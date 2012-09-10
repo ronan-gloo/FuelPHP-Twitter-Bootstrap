@@ -311,6 +311,8 @@ class Html extends \Fuel\Core\Html {
 	 */
 	protected static function label_and_badge($text, $attrs, $ent)
 	{
+		static::$helper->add_template($attrs);
+		
 		if (! $attrs)
 		{
 			$attrs = array('status' => 'default');
