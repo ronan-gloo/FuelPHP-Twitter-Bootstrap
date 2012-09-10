@@ -245,6 +245,24 @@ class Html extends \Fuel\Core\Html {
 	}
 	
 	
+	/**
+	 * Generates an icon tag.
+	 * 
+	 * @access public
+	 * @static
+	 * @param mixed $icon
+	 * @param array $attrs (default: array())
+	 * @return void
+	 */
+	public static function icon($icon, array $attrs = array())
+	{
+		$class = array('icon icon-'.$icon);
+		static::$helper->merge_classes($attrs, $class);
+		
+		return html_tag('i', $attrs, '&nbsp;');
+	}
+	
+	
 	// --------------------------------------------------------------------
 	// PLUGINS
 	// --------------------------------------------------------------------
@@ -377,7 +395,7 @@ class Html extends \Fuel\Core\Html {
 			}
 		}
 		$main .= html_tag('ul', array('class' => $listcss), implode("\n", $list));
-		
+	
 		return $main;
 	}	
 }

@@ -321,7 +321,7 @@ class Form_Instance extends \Fuel\Core\Form_Instance {
 	}
 	public function textarea($field, $value = null, array $attributes = array())
 	{
-		$out = parent::textarea($field, $values, $attributes);
+		$out = parent::textarea($field, $value, $attributes);
 		return $this->prepend_controls($out);
 	}
 
