@@ -116,7 +116,7 @@ class Html_Modal {
 		$content .= html_tag('div', array('class' => 'modal-footer'), implode($this->actions));
 		
 		// form ?
-		if (property_exists($this, '_form_attrs'))
+		if (property_exists($this, 'form_attrs'))
 		{
 			$header 	.= Form::open($this->form_attrs);
 			$content 	.= Form::close();
