@@ -315,14 +315,17 @@ class Form_Instance extends \Fuel\Core\Form_Instance {
 	/**
 	 * Catch thos functions to append .controls div if needed
 	 */
-	public function select($field, $values = null, array $options = array(), array $attributes = array())
+	public function select($field, $values = null, array $options = array(), array $attrs = array())
 	{
-		$out = parent::select($field, $values, $options, $attributes);
+		static::$helper->add_template($attrs);
+		$out = parent::select($field, $values, $options, $attrs);
 		return $this->prepend_controls($out);
 	}
-	public function textarea($field, $value = null, array $attributes = array())
+	public function textarea($field, $value = null, array $attrs = array())
 	{
-		$out = parent::textarea($field, $value, $attributes);
+		static::$helper->add_template($attrs);
+
+		$out = parent::textarea($field, $value, $attrs);
 		return $this->prepend_controls($out);
 	}
 

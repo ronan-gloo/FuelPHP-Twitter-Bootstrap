@@ -123,6 +123,7 @@ class Html_Modal {
 		}
 		return $header.$content;
 	}
+	
 	/**
 	 * Build the Html then returns it.
 	 * 
