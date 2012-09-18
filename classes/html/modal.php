@@ -112,8 +112,11 @@ class Html_Modal {
 		$header .= html_tag($this->title_tag, array(), $this->_title);
 		$header	 = html_tag('div', array('class' => 'modal-header'), $header);
 		
-		$content 	= html_tag('div', array('class' => 'modal-body'), implode($this->body));
-		$content .= html_tag('div', array('class' => 'modal-footer'), implode($this->actions));
+		if ($this->body)
+			$content 	= html_tag('div', array('class' => 'modal-body'), implode($this->body));
+		
+		if ($this->actions)
+			$content .= html_tag('div', array('class' => 'modal-footer'), implode($this->actions));
 		
 		// form ?
 		if (property_exists($this, 'form_attrs'))

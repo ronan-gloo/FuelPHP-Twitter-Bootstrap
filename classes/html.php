@@ -250,18 +250,29 @@ class Html extends \Fuel\Core\Html {
 	 * 
 	 * @access public
 	 * @static
-	 * @param mixed $icon
+	 * @param mixed $icon: can be the icon name or a template
 	 * @param array $attrs (default: array())
 	 * @return void
 	 */
 	public static function icon($icon, array $attrs = array())
 	{
-		$class = array('icon icon-'.$icon);
-		static::$helper->merge_classes($attrs, $class);
+		if (is_array($icon))
+		{
+			$attrs = $icon;
+		}
+		else
+		{
+			$attrs['icon'] = $icon;
+		}
+		
+		static::$helper->add_template($attrs);
+		
+		$class = array('icon icon-'.$attrs['icon']);
+		
+		static::$helper->merge_classes($attrs, $class)->clean_attrs('icon', $attrs);
 		
 		return html_tag('i', $attrs, '&nbsp;');
 	}
-	
 	
 	// --------------------------------------------------------------------
 	// PLUGINS

@@ -59,6 +59,11 @@ return array(
 			'active'		=> array('*')
 		)
 	),
+	'icon' => array(
+		'attrs' => array(
+			'icon' => null
+		)
+	),
 	'table' => array(
 		'attrs' => array(
 			'bordered' 	=> array(true, false),
