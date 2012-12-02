@@ -254,7 +254,7 @@ class Html extends \Fuel\Core\Html {
 	 * @param array $attrs (default: array())
 	 * @return void
 	 */
-	public static function icon($icon, array $attrs = array())
+	public static function icon($icon, array $attrs = array(), $tab = false)
 	{
 		if (is_array($icon))
 		{
@@ -271,7 +271,7 @@ class Html extends \Fuel\Core\Html {
 		
 		static::$helper->merge_classes($attrs, $class)->clean_attrs('icon', $attrs);
 		
-		return html_tag('i', $attrs, '&nbsp;');
+		return html_tag('i', $attrs, $tab === true ? '&nbsp;' : '');
 	}
 	
 	// --------------------------------------------------------------------
