@@ -2,163 +2,246 @@
 
 namespace Bootstrap;
 
-class Html_Modal {
-	
-	protected static $helper;
-	
-	// instance storage
-	protected
-		$attrs			= array(),
-		$title			= null,
-		$title_tag 	= 'h3',
-		$body				= array(),
-		$actions		= array();
-		
-		
-	public static function forge(array $attrs = array())
-	{
-		is_null(self::$helper) and self::$helper = Bootstrap::forge('html');
-		
-		return new self($attrs);
-	}
-	
-	/**
-	 * Construct the 
-	 * 
-	 * @access public
-	 * @static
-	 * @param mixed $title
-	 * @param array $attrs (default: array())
-	 * @return void
-	 */
-	public function __construct(array $attrs = array())
-	{
-		$this->attrs = $attrs;
-	}
+use
+	\Closure,
+	\InvalidArgumentException,
+	\LogicException
+;
+
+
+/**
+ * Generate modals.
+ * 
+ * @extends BootstrapModule
+ */
+class Html_Modal extends BootstrapModule implements Unattachable {
 	
 	
 	/**
-	 * Set the modal title.
-	 * Html tag can be defined under $tag arg
+	 * Default string attr key
 	 * 
-	 * @access public
-	 * @param mixed $title (default: null)
-	 * @param mixed $tag (default: null)
-	 * @return void
-	 */
-	public function title($title = null, $tag = null)
-	{
-		$this->_title = $title;
-		
-		$tag and $this->title_tag = $tag;
-		
-		return $this;
-	}
-	
-	
-	/**
-	 * Set the modal body.
+	 * (default value: 'fade')
 	 * 
-	 * @access public
-	 * @param mixed $html (default: null)
-	 * @return void
-	 */
-	public function body($html = null)
-	{
-		$this->body[] = $html;
-		
-		return $this;
-	}
-	
-	
-	/**
-	 * Need to wrap Modal content / actions into a form ?
-	 * alias to Form::open()
-	 * 
-	 * @access public
-	 * @param array $attrs (default: array())
-	 * @return void
-	 */
-	public function form(array $attrs = array())
-	{
-		$this->form_attrs = $attrs;
-		
-		return $this;
-	}
-	
-	/**
-	 * Add an action (modal footer).
-	 * 
-	 * @access public
-	 * @param mixed $html
-	 * @return void
-	 */
-	public function action($html)
-	{
-		$this->actions[] = $html;
-		
-		return $this;
-	}
-	
-	/**
-	 * Build the modal content.
-	 * 
+	 * @var string
 	 * @access protected
+	 */
+	protected $attribute = 'fade';
+	
+	/**
+	 * (default value: array('header', 'body', 'footer'))
+	 * 
+	 * @var string
+	 * @access protected
+	 */
+	protected $passthru = array('header', 'body', 'footer');
+	
+	/**
+	 * (default value: array('data' => null, 'attrs' => null))
+	 * 
+	 * @var string
+	 * @access protected
+	 */
+	protected $header	= array('data' => null, 'attrs' => array());
+	
+	/**
+	 * (default value: array('data' => null, 'attrs' => null))
+	 * 
+	 * @var string
+	 * @access protected
+	 */
+	protected $body		= array('data' => null, 'attrs' => array());
+	
+	/**
+	 * (default value: array('data' => null, 'attrs' => null))
+	 * 
+	 * @var string
+	 * @access protected
+	 */
+	protected $footer = array('data' => null, 'attrs' => array());
+	
+	
+	/**
+	 * Initialize properties arrays.
+	 * 
+	 * @access public
 	 * @return void
 	 */
-	protected function build()
+	public function make()
 	{
-		$header	 = html_tag('a', array('class' => 'close', 'data-dismiss' => 'modal'), '&times;');
-		$header .= html_tag($this->title_tag, array(), $this->_title);
-		$header	 = html_tag('div', array('class' => 'modal-header'), $header);
-		
-		if ($this->body)
-			$content 	= html_tag('div', array('class' => 'modal-body'), implode($this->body));
-		
-		if ($this->actions)
-			$content .= html_tag('div', array('class' => 'modal-footer'), implode($this->actions));
-		
-		// form ?
-		if (property_exists($this, 'form_attrs'))
-		{
-			$header 	.= Form::open($this->form_attrs);
-			$content 	.= Form::close();
-		}
-		return $header.$content;
+		return $this;
 	}
 	
 	/**
-	 * Build the Html then returns it.
+	 * Set an element.
+	 * 
+	 * @access public
+	 * @param mixed $key
+	 * @param mixed $data: contents
+	 * @param mixed $attrs: html attributes
+	 * @return void
+	 */
+	public function set($key, $data = '', $attrs = array())
+	{
+		if (! in_array($key, $this->passthru))
+		{
+			throw new InvalidArgumentException('You can set: '.implode(' - ', $this->passthru));
+		}
+		// If closure returns void, we assume that dev uses data as reference.
+		if ($data instanceof Closure)
+		{
+			$layout = $this->$key;
+			$data		= ($output = $data($layout['data'])) ? $output : $layout['data'];
+		}
+		$this->$key = compact('data', 'attrs');
+		
+		return $this;
+	}
+	
+	/**
+	 * Set action dismiss button.
+	 * Calls html::button object with function args
+	 * 
+	 * @access public
+	 * @return void
+	 */
+	public function dismiss($href = '#', $text = '', $attrs = array(), $secure = false)
+	{
+		$attrs['data-dismiss'] = 'modal';
+		
+		$button = Html_Button::forge($attrs);
+		
+		$this->footer['data'] .= $button->make($href, $text, $secure);
+		
+		return $this;
+	}
+	
+	/**
+	 * submit function.
+	 * 
+	 * @access public
+	 * @param string $href (default: '#')
+	 * @param string $text (default: '')
+	 * @param array $attrs (default: array())
+	 * @param bool $secure (default: false)
+	 * @return void
+	 */
+	public function submit($href = '#', $text = '', $attrs = array(), $secure = false)
+	{
+		$button = Html_Button::forge($attrs);
+		
+		$this->footer['data'] .= $button->make($href, $text, $secure);
+		
+		return $this;
+	}
+	
+	/**
+	 * Render the modal box.
 	 * 
 	 * @access public
 	 * @return void
 	 */
 	public function render()
 	{
-		self::$helper->add_template($this->attrs);
+		$html = '';
 		
-		$class = array('modal');
+		foreach ($this->passthru as $elem) $html .= $this->{'render_'.$elem}();
 		
-		// Hidden by default
-		if (! array_key_exists('hide', $this->attrs))
+		$this->css('modal');
+		
+		foreach($this->attrs as $key => $val)
 		{
-			$this->attrs['hide'] = true;
-		}
-		// Set attributes
-		foreach ($this->attrs as $name => $attr)
-		{
-			switch ($name)
+			switch($key)
 			{
-				case 'hide':
 				case 'fade':
-				$attr === true and $class[] = $name;
+				case 'hide':
+				$val === true and $this->css($key);
 				break;
 			}
 		}
-		self::$helper->merge_classes($this->attrs, $class)->clean_attrs('modal', $this->attrs);
+
+		$this->html('div', $html);
 		
-		// Output the modal
-		return html_tag('div', $this->attrs, $this->build());
+		return parent::render();
 	}
+	
+	/**
+	 * Set the modal header.
+	 * 
+	 * @access public
+	 * @param mixed $html (default: null)
+	 * @return void
+	 */
+	protected function render_header()
+	{
+		$header = '';
+		
+		if (! is_null($this->header['data']))
+		{			
+			if (! empty($this->attrs['close']))
+			{
+				$header .= html_tag('a', array('class' => 'close', 'data-dismiss' => 'modal'), $this->config('close'));
+			}
+			
+			$header .= $this->header['data'];
+	
+			$this->_merge($this->header['attrs'], array('modal-header'));
+			$header = html_tag('div', $this->header['attrs'], $header);
+		}
+		return $header;
+	}
+	
+	
+	/**
+	 * Set the modal content.
+	 * 
+	 * @access protected
+	 * @return void
+	 */
+	protected function render_body()
+	{
+		$body = '';
+		
+		if (! is_null($this->body['data']))
+		{
+			$this->_merge($this->body['attrs'], array('modal-body'));
+			
+			$body = html_tag('div', $this->body['attrs'], $this->body['data']);
+		}
+		
+		return $body;
+	}
+	
+	
+	/**
+	 * render_footer function.
+	 * 
+	 * @access protected
+	 * @return void
+	 */
+	protected function render_footer()
+	{
+		$footer = '';
+		
+		if (! is_null($this->footer['data']))
+		{
+			$this->_merge($this->footer['attrs'], array('modal-footer'));
+			
+			$footer = html_tag('div', $this->footer['attrs'], $this->footer['data']);
+		}
+		
+		return $footer;	
+	}
+	
+	/**
+	 * Unattachable implementation
+	 * @access public
+	 * @param array $attrs (default: array())
+	 * @return void
+	 */
+	public function detach($attached)
+	{
+		throw new LogicException(__CLASS__.": You can't attach a $attached with modal !");
+	}	
+
 	
 }

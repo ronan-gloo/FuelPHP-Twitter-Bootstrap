@@ -6,27 +6,18 @@ namespace Bootstrap;
 /**
  * Build Bootstrap breacrumb component.
  */
-class Html_Breadcrumb {
+class Html_Breadcrumb extends BootstrapModule {
+	
 	
 	/**
-	 * Bootstrap helper
+	 * Default attr key if string is provided
 	 * 
-	 * (default value: null)
+	 * (default value: 'divider')
 	 * 
-	 * @var mixed
-	 * @access protected
-	 * @static
-	 */
-	protected static $helper;
-	
-	/**
-	 * Breadcrumb html attributes
-	 * 
-	 * @var mixed
+	 * @var string
 	 * @access protected
 	 */
-	protected $attrs;
-	
+	protected $attribute = 'divider';
 	
 	/**
 	 * Breadcrumb items
@@ -34,47 +25,21 @@ class Html_Breadcrumb {
 	 * @var mixed
 	 * @access protected
 	 */
-	protected $items;
+	protected $items = array();
+	
 	
 	/**
-	 * Instanciate class and load helper on first run.
+	 * generates the divider.
 	 * 
 	 * @access public
-	 * @static
-	 * @param array $attrs (default: array())
 	 * @return void
 	 */
-	public static function forge(array $attrs = array(), array $items = array())
+	public function make()
 	{
-		is_null(self::$helper) and self::$helper = Bootstrap::forge('html');
+		$sep = array_key_exists('divider', $this->attrs) ? $this->attrs['divider'] : $this->config('divider');
+		$this->divider = html_tag('li', array(), html_tag('span', array('class' => 'divider'), $sep));
 
-		return new self($attrs, $items);
-	}
-	
-	/**
-	 * Store breadcrumb attributes and add items if provided.
-	 * 
-	 * @access public
-	 * @param mixed $attrs
-	 * @param mixed $items
-	 * @return void
-	 */
-	public function __construct($attrs, $items)
-	{
-		$this->attrs = $attrs;
-		
-		if ($items) foreach ($items as $item) $this->items = $items;
-	}
-	
-	/**
-	 * Auto render breadcurmb by calling render() method.
-	 * 
-	 * @access public
-	 * @return void
-	 */
-	public function __toString()
-	{
-		return $this->render();
+		return $this;
 	}
 	
 	/**
@@ -86,13 +51,16 @@ class Html_Breadcrumb {
 	 * @param array $attrs (default: array())
 	 * @return void
 	 */
-	public function add($anchor, $title = '', array $attrs = array())
+	public function item($anchor, $title = '', $attrs = array(), $secure = false)
 	{
-		$this->items[] = $title ? array($anchor, $title, $attrs) : $anchor;
+		$item = Html_Item::forge($attrs)->make($anchor, $title, $secure);
 		
-		return $this;
+		! $title and $item->active();
+		
+		array_push($this->items, $item, $this->divider);
+		
+		return $item;
 	}
-	
 	
 	/**
 	 * Render Breadcrumb Html.
@@ -102,35 +70,13 @@ class Html_Breadcrumb {
 	 */
 	public function render()
 	{
-		$class 	 = array('breadcrumb');
-		$content = array();
-		$actived = array('class' => 'active');
-		$lastitem= end($this->items);
+		$this->css('breadcrumb');
 		
-		// default string attr is a custom items separator
-		is_string($this->attrs) and $this->attrs = array('divider' => $this->attrs);
+		$items = $this->items and array_pop($items); // remove last divider
 		
-		if (array_key_exists('divider', $this->attrs))
-		{
-			$sep = $this->attrs['divider']; unset($this->attrs['divider']);
-		}
-		else
-		{
-			$sep = '/';
-		}
-		$sep = html_tag('span', array('class' => 'divider'), $sep);
+		$this->html('ul', implode(PHP_EOL, $items));
 		
-		foreach ($this->items as $key => $item)
-		{
-			$css	= ($item === $lastitem) ? $actived : array();
-			$css and $sep = null;
-			$item = is_array($item) ? static::$helper->item_array($item, false) : $item;
-			$content[] = html_tag('li', $css, $item.$sep);
-		}
-		
-		static::$helper->add_template($this->attrs)->merge_classes($this->attrs, $class);
-		
-		return html_tag('ul', $this->attrs, implode("\n", $content));
+		return parent::render();
 	}
 	
 }

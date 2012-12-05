@@ -14,15 +14,52 @@
 Autoloader::add_core_namespace('Bootstrap');
 
 Autoloader::add_classes(array(
-	'Bootstrap\\Bootstrap'			=> __DIR__.'/classes/bootstrap.php',
-	'Bootstrap\\Form_Instance'	=> __DIR__.'/classes/form/instance.php',
+	
+	// Package Classes
+	'Bootstrap\\BootstrapModule'			=> __DIR__.'/classes/module.php',
+	'Bootstrap\\BootstrapModuleBtn'		=> __DIR__.'/classes/module/button.php',
+	'Bootstrap\\BootstrapModuleIcon'	=> __DIR__.'/classes/module/icon.php',
+	
+	// Paxckage Interfaces
+	'Bootstrap\\Activable' 		=> __DIR__.'/classes/interfaces.php',
+	'Bootstrap\\Deactivable'	=> __DIR__.'/classes/interfaces.php',
+	'Bootstrap\\Nestable'			=> __DIR__.'/classes/interfaces.php',
+	'Bootstrap\\Linkable'			=> __DIR__.'/classes/interfaces.php',
+	
+	//'Bootstrap\\Bootstrap'			=> __DIR__.'/classes/bootstrap.php',
+	
+	// Form Modules
 	'Bootstrap\\Form'						=> __DIR__.'/classes/form.php',
+	'Bootstrap\\Form_Element'		=> __DIR__.'/classes/form/element.php',
+	'Bootstrap\\Form_Input'			=> __DIR__.'/classes/form/input.php',
+	
+	// Html Modules
 	'Bootstrap\\Html'						=> __DIR__.'/classes/html.php',
+	'Bootstrap\\Html_Alert'			=> __DIR__.'/classes/html/alert.php',
+	'Bootstrap\\Html_Badge'			=> __DIR__.'/classes/html/badge.php',
 	'Bootstrap\\Html_Breadcrumb'=> __DIR__.'/classes/html/breadcrumb.php',
-	'Bootstrap\\Html_Tab'				=> __DIR__.'/classes/html/tab.php',
-	'Bootstrap\\Html_Table'			=> __DIR__.'/classes/html/table.php',
-	'Bootstrap\\Html_Modal'			=> __DIR__.'/classes/html/modal.php',
+	'Bootstrap\\Html_Button'		=> __DIR__.'/classes/html/button.php',
 	'Bootstrap\\Html_Carousel'	=> __DIR__.'/classes/html/carousel.php',
+	'Bootstrap\\Html_Dropdown'	=> __DIR__.'/classes/html/dropdown.php',
+	'Bootstrap\\Html_Dropdown_Button'	=> __DIR__.'/classes/html/dropdown/button.php',
+	'Bootstrap\\Html_Dropdown_Item'	=> __DIR__.'/classes/html/dropdown/item.php',
+	'Bootstrap\\Html_Icon'			=> __DIR__.'/classes/html/icon.php',
+	'Bootstrap\\Html_Img'				=> __DIR__.'/classes/html/img.php',
+	'Bootstrap\\Html_Item'			=> __DIR__.'/classes/html/item.php',
+	'Bootstrap\\Html_Label'			=> __DIR__.'/classes/html/label.php',
+	'Bootstrap\\Html_Modal'			=> __DIR__.'/classes/html/modal.php',
+	'Bootstrap\\Html_Nav'				=> __DIR__.'/classes/html/nav.php',
+	'Bootstrap\\Html_Nav_Tab'		=> __DIR__.'/classes/html/nav/tab.php',
+	'Bootstrap\\Html_Tab_Item'	=> __DIR__.'/classes/html/tab/item.php',
+	'Bootstrap\\Html_Nav_List'	=> __DIR__.'/classes/html/nav/list.php',
+	'Bootstrap\\Html_Nav_Item'	=> __DIR__.'/classes/html/nav/item.php',
+	'Bootstrap\\Html_Popover'		=> __DIR__.'/classes/html/popover.php',
+	'Bootstrap\\Html_Progress'	=> __DIR__.'/classes/html/progress.php',
+	'Bootstrap\\Html_Progress_Bar'	=> __DIR__.'/classes/html/progress/bar.php',
+	'Bootstrap\\Html_Table'			=> __DIR__.'/classes/html/table.php',
+	'Bootstrap\\Html_Tooltip'		=> __DIR__.'/classes/html/tooltip.php',
+	
+	// Pagination
 	'Bootstrap\\Pagination'			=> __DIR__.'/classes/pagination.php',
 ));
 

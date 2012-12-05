@@ -5,17 +5,17 @@ namespace Bootstrap;
 class Html_Tab {
 	
 	protected static
-		$helper			= null, // Bootstrap helper
-		$inst_num 	= 0, // current instance id
-		$inst_id		= 'tabs'; // default id if not provided in attrs
+		$helper			= null,				// Bootstrap helper
+		$inst_num 	= 0,					// current instance id
+		$inst_id		= 'tabs';			// default id if not provided in attrs
 	
 	protected
-		$attrs				= array(), // main attributes
-		$index 				= 0, // index to increment for each tab after set()
-		$active_index = 0, // set the index to activate
-		$id						= null, // id of the instance
-		$tabs					= array(), // store for tabs
-		$contents			= array(); // store for tabs content
+		$attrs				= array(),	// main attributes
+		$index 				= 0,				// index to increment for each tab after set()
+		$active_index = 0,				// set the index to activate
+		$id						= null,			// id of the instance
+		$tabs					= array(),	// store for tabs
+		$contents			= array();	// store for tabs content
 		
 	
 	/**
@@ -29,7 +29,7 @@ class Html_Tab {
 		is_null(self::$helper) and self::$helper = Bootstrap::forge('html');
 		
 		// increment instance num, if we need to render more tan than 1 tabs element
-		self::$inst_num++; 
+		self::$inst_num++;
 
 		return new self($attrs);
 	}
