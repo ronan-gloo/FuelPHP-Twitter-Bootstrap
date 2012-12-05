@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Twitter Bootstrap FuelPHP Package</title>
+			<link type="text/css" rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" />
+	<link type="text/css" rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap.js"></script>
+		<style>
+			html, body, .btn-group > .btn, .btn-group > .dropdown-menu {
+				font-size: 12px;
+			}
+			#sidebar {
+				position: fixed;
+				top:0;
+				left:0;
+				bottom: 0;
+				width: 200px;
+				overflow-y: scroll;
+				margin: 0;
+				z-index: 2;
+			}
+			#content {
+				margin-left: 260px;
+				margin-right: 20px;
+			}
+			pre {
+				font-size: .8em;
+			}
+			#content > div {
+				margin: 2em 0;
+			}
+		</style>
+		<script type="text/javascript">
+		$(function(){
+			$('[rel="tooltip"]').tooltip();
+			$('[rel="popover"]').popover().click(function(){
+				return false;
+			});
+		})
+		</script>
+
+	</head>
+	<body>
+				<div id="sidebar" class="well">
+					<nav>
+						<ul class="nav nav-list"><li class="nav-header">Attachables</li>
+<li class=""><a href="../../extra/tooltip/index.html">Tooltip, Popover & Modal</a></li>
+<li class="nav-header">Html related modules</li>
+<li class=""><a href="../alert/index.html">Alerts</a></li>
+<li class=""><a href="../breadcrumb/index.html">Breadcrumb</a></li>
+<li class=""><a href="../button/index.html">Buttons</a></li>
+<li class=""><a href="../button_dropdown/index.html">Buttons dropdown</a></li>
+<li class=""><a href="../dropdown/index.html">Dropdowns</a></li>
+<li class=""><a href="../icon/index.html">Icons & Images</a></li>
+<li class=""><a href="../badge/index.html">Labels & Badges</a></li>
+<li class="active"><a href="index.html">Modal</a></li>
+<li class=""><a href="../navs/index.html">Nav Tabs & Nav Pills</a></li>
+<li class=""><a href="../list/index.html">Nav Lists</a></li>
+<li class=""><a href="../progress/index.html">Progress</a></li></ul>					</nav>
+				</div>
+				
+				<div id="content">
+					<style type="text/css">
+.static .modal {
+	position: relative;
+	left:0;
+	right:0;
+	margin: 0;
+}
+</style>
+
+<h3>
+	Modals
+	<small>See <a href="http://twitter.github.com/bootstrap/javascript.html#modals">documentation</a></small>
+</h3>
+
+<div>
+	<strong>Create a basic modal by setting each parts of it: <code>header</code>, <code>body</code>, <code>footer</code>. A third parameter will represents html attributes:</strong>
+<pre>
+$modal = Html::modal()
+	->set('header', 'Modal title')
+	->set('body', 'This is a modal body')
+	->set('footer', 'This is a footer', array('id' => 'footer'))
+</pre>
+	<div class="static">
+	<div class="modal"><div class="modal-header">Modal title</div><div class="modal-body">This is a modal body</div><div id="footer" class="modal-footer">This is a footer</div></div>	</div>
+	<p>
+</div>
+
+<div>
+	<strong>Html::modal() accepts several attribues: <code>true, false</code> activates or not fading effect. You can specify an array configuration: <code>hide</code>, <code>fade</code>, <code>close</code>:</strong>
+	<pre>Html::modal(array('close' => true, 'fade' => 'true'))</pre>
+</div>
+
+<div>
+	<strong>Each content part can be set throught a closure:</strong>
+<pre>
+$modal->set('header', function(){ // standard
+	return html_tag('h3', array(), 'Hello World');
+})
+$modal->set('body', function(&$body){ // or by reference
+	$body .= html_tag('p', array(), 'Put a bird on it master cleanse...')
+})
+</pre>
+	<div class="static">
+		<div class="modal"><div class="modal-header"><a class="close" data-dismiss="modal">&times;</a><h3>Hello World</h3></div><div class="modal-body"><p>Et duis  qui, truffaut twee fugiat  typewriter skateboard stumptown.  Fingerstache shoreditch helvetica, messenger bag excepteur  aesthetic ennui cliche cray sriracha blog single-origin coffee letterpress keytar cillum.</p></div><div id="footer" class="modal-footer">This is a footer</div></div>	</div>
+</div>
+
+<div>
+	<strong>Finally, uses <code>submit()</code> and <code>dismiss()</code> methods shortcuts to add buttons into the footer. each methods accepts similar args than Button module:</strong>
+<pre>
+$modal->dismiss('#', 'Cancel');
+$modal->submit('#', 'Save changes', array('icon' => 'cog', 'status' => 'primary'));
+</pre>
+</div>
+	<div class="static">
+		<div class="modal modal modal"><div class="modal-header modal-header"><h3>Hello World</h3></div><div class="modal-body modal-body"><p>Et duis  qui, truffaut twee fugiat  typewriter skateboard stumptown.  Fingerstache shoreditch helvetica, messenger bag excepteur  aesthetic ennui cliche cray sriracha blog single-origin coffee letterpress keytar cillum.</p></div><div class="modal-footer"><a data-dismiss="modal" class="btn" href="#">Cancel</a><a class="btn btn-primary" href="#"><i class="icon-white icon icon-cog"></i> Save changes</a></div></div>	</div>
+				</div>
+	</body>
+</html>
+
+<!-- Localized -->

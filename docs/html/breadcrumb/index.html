@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Twitter Bootstrap FuelPHP Package</title>
+			<link type="text/css" rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" />
+	<link type="text/css" rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap.js"></script>
+		<style>
+			html, body, .btn-group > .btn, .btn-group > .dropdown-menu {
+				font-size: 12px;
+			}
+			#sidebar {
+				position: fixed;
+				top:0;
+				left:0;
+				bottom: 0;
+				width: 200px;
+				overflow-y: scroll;
+				margin: 0;
+				z-index: 2;
+			}
+			#content {
+				margin-left: 260px;
+				margin-right: 20px;
+			}
+			pre {
+				font-size: .8em;
+			}
+			#content > div {
+				margin: 2em 0;
+			}
+		</style>
+		<script type="text/javascript">
+		$(function(){
+			$('[rel="tooltip"]').tooltip();
+			$('[rel="popover"]').popover().click(function(){
+				return false;
+			});
+		})
+		</script>
+
+	</head>
+	<body>
+				<div id="sidebar" class="well">
+					<nav>
+						<ul class="nav nav-list"><li class="nav-header">Attachables</li>
+<li class=""><a href="../../extra/tooltip/index.html">Tooltip, Popover & Modal</a></li>
+<li class="nav-header">Html related modules</li>
+<li class=""><a href="../alert/index.html">Alerts</a></li>
+<li class="active"><a href="index.html">Breadcrumb</a></li>
+<li class=""><a href="../button/index.html">Buttons</a></li>
+<li class=""><a href="../button_dropdown/index.html">Buttons dropdown</a></li>
+<li class=""><a href="../dropdown/index.html">Dropdowns</a></li>
+<li class=""><a href="../icon/index.html">Icons & Images</a></li>
+<li class=""><a href="../badge/index.html">Labels & Badges</a></li>
+<li class=""><a href="../modal/index.html">Modal</a></li>
+<li class=""><a href="../navs/index.html">Nav Tabs & Nav Pills</a></li>
+<li class=""><a href="../list/index.html">Nav Lists</a></li>
+<li class=""><a href="../progress/index.html">Progress</a></li></ul>					</nav>
+				</div>
+				
+				<div id="content">
+					<h3>Breadcrumb <small>See <a href="http://twitter.github.com/bootstrap/components.html#breadcrumbs">documentation</a></small></h3>
+
+<div>
+	<strong>Basic example of breadcrumb. Do not provide a link on last item in order to setup as active:</strong>
+<pre>
+$bc = Html::breadcrumb();
+$bc->item('#', 'home');
+$bc->item('#', 'all');
+$bc->item('breadcrumb');
+echo $bc;
+</pre>
+	<ul class="breadcrumb"><li class=""><a href="#">home</a></li>
+<li><span class="divider">/</span></li>
+<li class=""><a href="#">all</a></li>
+<li><span class="divider">/</span></li>
+<li class="active"><span>breadcrumb</span></li></ul></div>
+
+<div>
+	<strong>You can manually setup a different <code>divider</code> for your items. Html is allowed here:</strong>
+	<pre> $bc = Html::breadcrumb('>')</pre>
+	<ul class="breadcrumb"><li class=""><a href="#">home</a></li>
+<li><span class="divider">></span></li>
+<li class=""><a href="#">all</a></li>
+<li><span class="divider">></span></li>
+<li class="active"><span>breadcrumb</span></li></ul></div>
+
+<div>
+	<p>Each item is an object, wich accepts 4 parameters: <code>url</code> , <code>title</code> , <code>attributes</code>  (string or array) and <code>secure link</code> </p>
+	<strong>Third parameter string generates an icon markup, array accepts <code>icon</code> and <code>active</code> keys: </strong>
+<pre>
+$bc->item('#', 'home', 'home', true)
+$bc->item('#', 'all', array('icon' => 'inbox'))
+</pre>
+	<ul class="breadcrumb"><li class=""><a href="#"><i class="icon icon-home"></i> home</a></li>
+<li><span class="divider">/</span></li>
+<li class=""><a href="#"><i class="icon icon-inbox"></i> all</a></li>
+<li><span class="divider">/</span></li>
+<li class="active"><span>breadcrumb</span></li></ul></div>
+
+<div>
+	<strong>Breadcrumb item() method is not chainable, to allow you to attach things on each item: </strong>
+<pre>
+$bc->item('#', 'home', 'home')->tooltip('back to home')
+$bc->item('#', 'all', 'inbox')->popover('title', 'content', array('placement' => 'top'));
+</pre>
+	<ul class="breadcrumb"><li rel="tooltip" title="back to home" class=""><a href="#"><i class="icon icon-home"></i> home</a></li>
+<li><span class="divider">/</span></li>
+<li data-placement="top" data-title="title" data-content="content" rel="popover" class=""><a href="#"><i class="icon icon-inbox"></i> all</a></li>
+<li><span class="divider">/</span></li>
+<li class="active"><span>breadcrumb</span></li></ul></div>
+
+				</div>
+	</body>
+</html>
+
+<!-- Localized -->

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Twitter Bootstrap FuelPHP Package</title>
+			<link type="text/css" rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" />
+	<link type="text/css" rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap.js"></script>
+		<style>
+			html, body, .btn-group > .btn, .btn-group > .dropdown-menu {
+				font-size: 12px;
+			}
+			#sidebar {
+				position: fixed;
+				top:0;
+				left:0;
+				bottom: 0;
+				width: 200px;
+				overflow-y: scroll;
+				margin: 0;
+				z-index: 2;
+			}
+			#content {
+				margin-left: 260px;
+				margin-right: 20px;
+			}
+			pre {
+				font-size: .8em;
+			}
+			#content > div {
+				margin: 2em 0;
+			}
+		</style>
+		<script type="text/javascript">
+		$(function(){
+			$('[rel="tooltip"]').tooltip();
+			$('[rel="popover"]').popover().click(function(){
+				return false;
+			});
+		})
+		</script>
+
+	</head>
+	<body>
+				<div id="sidebar" class="well">
+					<nav>
+						<ul class="nav nav-list"><li class="nav-header">Attachables</li>
+<li class=""><a href="../../extra/tooltip/index.html">Tooltip, Popover & Modal</a></li>
+<li class="nav-header">Html related modules</li>
+<li class=""><a href="../alert/index.html">Alerts</a></li>
+<li class=""><a href="../breadcrumb/index.html">Breadcrumb</a></li>
+<li class=""><a href="../button/index.html">Buttons</a></li>
+<li class=""><a href="../button_dropdown/index.html">Buttons dropdown</a></li>
+<li class=""><a href="../dropdown/index.html">Dropdowns</a></li>
+<li class=""><a href="../icon/index.html">Icons & Images</a></li>
+<li class="active"><a href="index.html">Labels & Badges</a></li>
+<li class=""><a href="../modal/index.html">Modal</a></li>
+<li class=""><a href="../navs/index.html">Nav Tabs & Nav Pills</a></li>
+<li class=""><a href="../list/index.html">Nav Lists</a></li>
+<li class=""><a href="../progress/index.html">Progress</a></li></ul>					</nav>
+				</div>
+				
+				<div id="content">
+					<h3>
+	Labels and Badges
+	<small>See <a href="http://twitter.github.com/bootstrap/components.html#labels-badges">documentation</a></small>
+</h3>
+
+<div>
+	<strong>Creating a Default Label or Badge</strong>
+<pre>
+	Html::label("I'm a label")
+	Html::badge(500)
+</pre>
+	<span class="label label-default">I'm a label</span>	<span class="badge badge-default">500</span></div>
+
+<div>
+	<strong>The <code>status</code> can be speficied as string, or by a key if you need to add classic html attributes:</strong>
+<pre>
+	Html::badge(500, 'important')
+	//or 
+	Html::badge(500, array('status' => 'important'))
+</pre>
+	<div>
+		<span class="badge badge-success">1</span>		<span class="badge badge-warning">2</span>		<span class="badge badge-important">4</span>		<span class="badge badge-info">6</span>		<span class="badge badge-inverse">8</span>		-----
+		<span class="label label-success">success</span>		<span class="label label-warning">warning</span>		<span class="label label-important">important</span>		<span class="label label-info">info</span>		<span class="label label-inverse">inverse</span>	</div>
+</div>
+
+<div>
+	<strong>As any other module, you can attach a <code>tooltip</code> or a <code>popover</code></strong>
+<pre>
+Html::label('Hover me', 'info')->tooltip('Now leave then click my friend')
+Html::badge(16.7, 'inverse')->popover('Now leave', 'Then hover my friend')
+</pre>
+	<span rel="tooltip" title="Now leave then click my friend" class="label label-info">Hover me</span>	<span data-title="Now leave" data-content="Then hover my friend" rel="popover" class="badge badge-inverse">16.7</span></div>				</div>
+	</body>
+</html>
+
+<!-- Localized -->

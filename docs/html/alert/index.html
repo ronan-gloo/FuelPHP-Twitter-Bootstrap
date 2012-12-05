@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Twitter Bootstrap FuelPHP Package</title>
+			<link type="text/css" rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" />
+	<link type="text/css" rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap.js"></script>
+		<style>
+			html, body, .btn-group > .btn, .btn-group > .dropdown-menu {
+				font-size: 12px;
+			}
+			#sidebar {
+				position: fixed;
+				top:0;
+				left:0;
+				bottom: 0;
+				width: 200px;
+				overflow-y: scroll;
+				margin: 0;
+				z-index: 2;
+			}
+			#content {
+				margin-left: 260px;
+				margin-right: 20px;
+			}
+			pre {
+				font-size: .8em;
+			}
+			#content > div {
+				margin: 2em 0;
+			}
+		</style>
+		<script type="text/javascript">
+		$(function(){
+			$('[rel="tooltip"]').tooltip();
+			$('[rel="popover"]').popover().click(function(){
+				return false;
+			});
+		})
+		</script>
+
+	</head>
+	<body>
+				<div id="sidebar" class="well">
+					<nav>
+						<ul class="nav nav-list"><li class="nav-header">Attachables</li>
+<li class=""><a href="../../extra/tooltip/index.html">Tooltip, Popover & Modal</a></li>
+<li class="nav-header">Html related modules</li>
+<li class="active"><a href="index.html">Alerts</a></li>
+<li class=""><a href="../breadcrumb/index.html">Breadcrumb</a></li>
+<li class=""><a href="../button/index.html">Buttons</a></li>
+<li class=""><a href="../button_dropdown/index.html">Buttons dropdown</a></li>
+<li class=""><a href="../dropdown/index.html">Dropdowns</a></li>
+<li class=""><a href="../icon/index.html">Icons & Images</a></li>
+<li class=""><a href="../badge/index.html">Labels & Badges</a></li>
+<li class=""><a href="../modal/index.html">Modal</a></li>
+<li class=""><a href="../navs/index.html">Nav Tabs & Nav Pills</a></li>
+<li class=""><a href="../list/index.html">Nav Lists</a></li>
+<li class=""><a href="../progress/index.html">Progress</a></li></ul>					</nav>
+				</div>
+				
+				<div id="content">
+					<h3>Alerts</h3>
+<p>
+<cite>See <a href="http://twitter.github.com/bootstrap/javascript.html#alerts">the alert documentation</a></cite>	
+</p>
+
+<div>
+	<strong>Basic Alert with title and content:</strong>
+	<pre>Html::alert('Warning:', 'Something goes wrong')</pre>
+	<div class="alert"><strong>Warning:</strong>
+Something goes wrong</div></div>
+
+<div>
+	<strong>Third parameter specify the alert status:</strong>
+	<pre>Html::alert('Hey!', 'Something append', 'info')</pre>
+	<div class="alert alert-info"><strong>Hey!</strong>
+Something append</div></div>
+
+<div>
+	<strong>You can also choose between 'inline' or 'block' type, and add dismiss functionality:</strong>
+	<pre>Html::alert('Good', 'Congratulations', array('type' => 'block', 'status' => 'success', 'close' => true))</pre>
+	<div class="alert alert-success"><a class="close" data-dismiss="alert">&times;</a>
+<h4 class="alert-heading">Good</h4>
+Congratulations</div></div>
+
+<div>
+	<strong>Set close to 'fade' to fadeout alert before remove it:</strong>
+	<pre>Html::alert('Error', 'Serious issue', array('status' => 'error', 'close' => 'fade'))</pre>
+	<div class="alert alert-error fade in"><a class="close" data-dismiss="alert">&times;</a>
+<strong>Error</strong>
+Serious issue</div></div>				</div>
+	</body>
+</html>
+
+<!-- Localized -->

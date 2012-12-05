@@ -26,13 +26,6 @@ Autoloader::add_classes(array(
 	'Bootstrap\\Nestable'			=> __DIR__.'/classes/interfaces.php',
 	'Bootstrap\\Linkable'			=> __DIR__.'/classes/interfaces.php',
 	
-	//'Bootstrap\\Bootstrap'			=> __DIR__.'/classes/bootstrap.php',
-	
-	// Form Modules
-	'Bootstrap\\Form'						=> __DIR__.'/classes/form.php',
-	'Bootstrap\\Form_Element'		=> __DIR__.'/classes/form/element.php',
-	'Bootstrap\\Form_Input'			=> __DIR__.'/classes/form/input.php',
-	
 	// Html Modules
 	'Bootstrap\\Html'						=> __DIR__.'/classes/html.php',
 	'Bootstrap\\Html_Alert'			=> __DIR__.'/classes/html/alert.php',
@@ -58,9 +51,6 @@ Autoloader::add_classes(array(
 	'Bootstrap\\Html_Progress_Bar'	=> __DIR__.'/classes/html/progress/bar.php',
 	'Bootstrap\\Html_Table'			=> __DIR__.'/classes/html/table.php',
 	'Bootstrap\\Html_Tooltip'		=> __DIR__.'/classes/html/tooltip.php',
-	
-	// Pagination
-	'Bootstrap\\Pagination'			=> __DIR__.'/classes/pagination.php',
 ));
 
 

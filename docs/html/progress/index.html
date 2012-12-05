@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Twitter Bootstrap FuelPHP Package</title>
+			<link type="text/css" rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" />
+	<link type="text/css" rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap.js"></script>
+		<style>
+			html, body, .btn-group > .btn, .btn-group > .dropdown-menu {
+				font-size: 12px;
+			}
+			#sidebar {
+				position: fixed;
+				top:0;
+				left:0;
+				bottom: 0;
+				width: 200px;
+				overflow-y: scroll;
+				margin: 0;
+				z-index: 2;
+			}
+			#content {
+				margin-left: 260px;
+				margin-right: 20px;
+			}
+			pre {
+				font-size: .8em;
+			}
+			#content > div {
+				margin: 2em 0;
+			}
+		</style>
+		<script type="text/javascript">
+		$(function(){
+			$('[rel="tooltip"]').tooltip();
+			$('[rel="popover"]').popover().click(function(){
+				return false;
+			});
+		})
+		</script>
+
+	</head>
+	<body>
+				<div id="sidebar" class="well">
+					<nav>
+						<ul class="nav nav-list"><li class="nav-header">Attachables</li>
+<li class=""><a href="../../extra/tooltip/index.html">Tooltip, Popover & Modal</a></li>
+<li class="nav-header">Html related modules</li>
+<li class=""><a href="../alert/index.html">Alerts</a></li>
+<li class=""><a href="../breadcrumb/index.html">Breadcrumb</a></li>
+<li class=""><a href="../button/index.html">Buttons</a></li>
+<li class=""><a href="../button_dropdown/index.html">Buttons dropdown</a></li>
+<li class=""><a href="../dropdown/index.html">Dropdowns</a></li>
+<li class=""><a href="../icon/index.html">Icons & Images</a></li>
+<li class=""><a href="../badge/index.html">Labels & Badges</a></li>
+<li class=""><a href="../modal/index.html">Modal</a></li>
+<li class=""><a href="../navs/index.html">Nav Tabs & Nav Pills</a></li>
+<li class=""><a href="../list/index.html">Nav Lists</a></li>
+<li class="active"><a href="index.html">Progress</a></li></ul>					</nav>
+				</div>
+				
+				<div id="content">
+					<h3>
+	Progress bars
+	<small>See <a href="http://twitter.github.com/bootstrap/components.html#progress">documentation</a></small>
+</h3>
+
+<div>
+	<strong>Default progress bar, where the value is the <code>%</code> of the progression:</strong>
+	<pre>Html::progress(64)</pre>
+	<div class="progress"><div style="width:64%" class="bar"></div></div></div>
+
+<div>
+	<strong>The <code>status</code> can be speficied as string, or by a key if you need to add classic html attributes:</strong>
+<pre>
+Html::progress(36, 'success')
+// or
+Html::progress(36, array('status' => 'success'))
+</pre>
+	<div class="progress progress-success"><div style="width:25%" class="bar bar-success">success</div></div>	<div class="progress progress-info"><div style="width:50%" class="bar bar-info">info</div></div>	<div class="progress progress-warning"><div style="width:75%" class="bar bar-warning">warning</div></div>	<div class="progress progress-danger"><div style="width:100%" class="bar bar-danger">danger</div></div></div>
+
+<div>
+	<strong>The third parameter let's you the ability to add some <code>text</code> whithin the bar:</strong>
+	<pre>Html::progress(46, 'info', '56 sec remaining')</pre>
+	<div class="progress progress-info"><div style="width:46%" class="bar bar-info">56 sec remaining</div></div></div>
+
+<div>
+	<strong>The <code>striped</code> attribute generates a striped effect:</strong>
+	<pre>Html::progress(36, array('striped' => true))</pre>
+	<div class="progress progress-striped"><div striped="1" style="width:55%" class="bar"></div></div></div>
+
+<div>
+	<strong>The <code>active</code>, in conjonction with <code>striped</code>, animates the stripes</strong>
+	<pre>Html::progress(36, array('striped' => true, 'active' => true))</pre>
+	<div class="progress progress-striped active"><div striped="1" active="1" style="width:55%" class="bar"></div></div></div>
+
+<hr />
+
+<h4>Stacked progress bar</h4>
+<div>
+	<strong>Add multiple bars into the same progress instance</strong>
+<pre>
+pro = Html::progress();
+$pro->bar(15);
+$pro->bar(15, 'info')->tooltip('Second Bar');
+$pro->bar(15, 'warning', 'End');
+</pre>
+	<div class="progress"><div style="width:15%" class="bar"></div>
+<div rel="tooltip" title="Second Bar" style="width:15%" class="bar bar-info"></div>
+<div style="width:15%" class="bar bar-warning">End</div></div></div>
+
+<div>
+	<strong>Setup attributes for all bars, and add text whithin each:</strong>
+<pre>
+$pro = Html::progress(array('active' => true, 'striped' => true));
+$pro->bar(30, 'success', 'This');
+$pro->bar(30, 'warning', 'is');
+$pro->bar(30, 'danger', 'Reggae');
+</pre>
+	<div class="progress active progress-striped"><div style="width:30%" class="bar bar-success">This</div>
+<div style="width:30%" class="bar bar-warning">is</div>
+<div style="width:30%" class="bar bar-danger">Reggae</div></div></div>
+
+
+				</div>
+	</body>
+</html>
+
+<!-- Localized -->

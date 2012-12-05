@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Twitter Bootstrap FuelPHP Package</title>
+			<link type="text/css" rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" />
+	<link type="text/css" rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap.js"></script>
+		<style>
+			html, body, .btn-group > .btn, .btn-group > .dropdown-menu {
+				font-size: 12px;
+			}
+			#sidebar {
+				position: fixed;
+				top:0;
+				left:0;
+				bottom: 0;
+				width: 200px;
+				overflow-y: scroll;
+				margin: 0;
+				z-index: 2;
+			}
+			#content {
+				margin-left: 260px;
+				margin-right: 20px;
+			}
+			pre {
+				font-size: .8em;
+			}
+			#content > div {
+				margin: 2em 0;
+			}
+		</style>
+		<script type="text/javascript">
+		$(function(){
+			$('[rel="tooltip"]').tooltip();
+			$('[rel="popover"]').popover().click(function(){
+				return false;
+			});
+		})
+		</script>
+
+	</head>
+	<body>
+				<div id="sidebar" class="well">
+					<nav>
+						<ul class="nav nav-list"><li class="nav-header">Attachables</li>
+<li class=""><a href="../../extra/tooltip/index.html">Tooltip, Popover & Modal</a></li>
+<li class="nav-header">Html related modules</li>
+<li class=""><a href="../alert/index.html">Alerts</a></li>
+<li class=""><a href="../breadcrumb/index.html">Breadcrumb</a></li>
+<li class=""><a href="../button/index.html">Buttons</a></li>
+<li class=""><a href="../button_dropdown/index.html">Buttons dropdown</a></li>
+<li class="active"><a href="index.html">Dropdowns</a></li>
+<li class=""><a href="../icon/index.html">Icons & Images</a></li>
+<li class=""><a href="../badge/index.html">Labels & Badges</a></li>
+<li class=""><a href="../modal/index.html">Modal</a></li>
+<li class=""><a href="../navs/index.html">Nav Tabs & Nav Pills</a></li>
+<li class=""><a href="../list/index.html">Nav Lists</a></li>
+<li class=""><a href="../progress/index.html">Progress</a></li></ul>					</nav>
+				</div>
+				
+				<div id="content">
+					<style type="text/css">
+	.clearfix .first {
+		position: static;
+		display: block;
+		margin: 0;
+	}
+</style>
+
+<h3>
+	Dropdowns
+	<small>See <a href="http://twitter.github.com/bootstrap/components.html#dropdowns">documentation</a></small>
+</h3>
+
+<div>
+	<strong>Creates a basic dropdown with simple items objects:</strong>
+<pre>
+$dp = Html::dropdown();
+$dp->item('#', 'home'); 
+$dp->item('#', 'User');
+$dp->item('#', 'Logout');
+</pre>
+	<div class="clearfix">
+		<ul class="first dropdown-menu"><li class=""><a href="#">home</a></li>
+<li class=""><a href="#">User</a></li>
+<li class=""><a href="#">Logout</a></li></ul>	</div>
+</div>
+
+<div>
+	<strong>Call <code>divider()</code> and / or <code>header()</code> methods to separates items into groups:</strong>
+<pre>
+$dp->divider()
+$dp->header('account')
+</pre>
+	<div class="clearfix">
+		<ul class="first dropdown-menu"><li class=""><a href="#">home</a></li>
+<li class=""><a href="#">User</a></li>
+<li class="divider"></li>
+<li class="nav-header">account</li>
+<li class=""><a href="#">Logout</a></li></ul>	</div>
+</div>
+
+<div>
+	<strong>You also can build nested dropdown with ease throught the <code>nest()</code> item's method:</strong>
+<pre>
+$dp = Html::dropdown();
+$dp->item('#', 'action'); 
+$dp->item('#', 'action');
+
+$dp2 = Html::dropdown();
+$dp2->item('#', 'home'); 
+$dp2->item('#', 'nested')->nest($dp);
+</pre>
+	<div class="clearfix">
+		<ul class="first dropdown-menu"><li class=""><a href="#">home</a></li>
+<li class="dropdown-submenu "><a href="#">nested</a><ul class="dropdown-menu"><li class=""><a href="#">action</a></li>
+<li class=""><a href="#">action</a></li></ul></li></ul>	</div>
+</div>
+
+<hr />
+<div>
+	<h3>Integrate dropdown</h3>
+	<strong>Here, we create a dropdown contained in a <code>li</code> tag (default is <code>div</code>). Usefull for navs:</strong>
+<pre>
+$dp = Html::dropdown('click to open me', array('container' => 'li'));
+</pre>
+		<div id="navbar-example" class="navbar navbar-static">
+		<div class="navbar-inner">
+			<div class="container" style="width: auto;">
+				<ul class="nav pull-left">
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu dropdown<span class="caret"></span></a><ul class="dropdown-menu"><li class=""><a href="#">home</a></li>
+<li class=""><a href="#">User</a></li>
+<li class=""><a href="#">Logout</a></li></ul></li>				</ul>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div>
+	<strong>Dropdowns can also easily be integrated into tabs navigation. Don't set any text when building the dropdown: item will care:</strong>
+<pre>
+$dp = Html::dropdown());
+$dp->item('#', 'home', 'home'); 
+$dp->item('#', 'User', 'user');
+
+$tab = Html::navtab();
+$tab->item('#', 'Classic tab')->active();
+$tab->item('#', 'Dropdown tab')->dropdown($dp);
+</pre>
+	<ul class="nav nav-tabs"><li class="active"><a href="#">Classic tab</a></li>
+<li class="dropdown "><a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown tab <b class="caret"></b></a><ul class="dropdown-menu"><li class=""><a href="#"><i class="icon icon-home"></i> home</a></li>
+<li class=""><a href="#"><i class="icon icon-user"></i> User</a></li></ul></li></ul></div>				</div>
+	</body>
+</html>
+
+<!-- Localized -->
