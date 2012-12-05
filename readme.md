@@ -1,19 +1,5 @@
-## Full doc inside the repository.
+## Work in progress
+Checkout the master branch for the old package, which includes form support.
 
-### Supported components
-* Alerts
-* Badges
-* Breadcrumb
-* Buttons
-* Dropdowns
-* Carousel
-* Form
-* Inline labels
-* Pagination
-* Progress bars
-* Modals
-* Nav lists
-* Split button dropdowns
-* Tables
-* Tabs and Pills
-* Typeahead
+## Checkout the dev doc at
+http://ronan-gloo.github.com/FuelPHP-Twitter-Bootstrap/
