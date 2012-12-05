@@ -19,7 +19,7 @@ class Html_Nav_Item extends Html_Item implements Nestable {
 	{
 		if (! $instance instanceof Html_Nav_List) $instance = Html_Nav_List::forge($instance);
 		
-		$this->append_html = $instance;
+		$this->append_html($instance);
 		
 		return $instance;
 	}

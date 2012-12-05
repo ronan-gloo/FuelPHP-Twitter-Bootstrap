@@ -24,14 +24,14 @@ class Html_Icon extends BootstrapModuleIcon {
 				
 		$this->set_template();
 		
-		$this->css = array('icon');
+		$this->css('icon');
 		
 		if (array_key_exists('status', $this->attrs))
 		{
-			$this->css[] = 'icon-'.$this->attrs['status'];
+			$this->css('icon-'.$this->attrs['status']);
 		}
 
-		$this->css[] = 'icon-'.$this->attrs['icon'];
+		$this->css('icon-'.$this->attrs['icon']);
 		
 		return $this;
 	}

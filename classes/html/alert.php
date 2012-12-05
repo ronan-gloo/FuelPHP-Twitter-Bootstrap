@@ -17,9 +17,6 @@ class Html_Alert extends BootstrapModule {
 	{
 		$attrs =& $this->attrs;
 		
-		// by default, string indicates the status key
-		is_string($attrs) and $attrs = array('status' => $attrs);
-		
 		! array_key_exists('type', $attrs) and $attrs['type'] = 'inline';
 		
 		$this->css('alert');

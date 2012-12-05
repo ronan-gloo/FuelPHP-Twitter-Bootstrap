@@ -287,7 +287,9 @@ abstract class BootstrapModule {
 			$attrs['class'] .= ' ';
 		}
 		
-		$attrs['class'] .= implode(' ', $css);
+		if ($css) $attrs['class'] .= implode(' ', $css);
+		
+		if (! $attrs['class']) unset($attrs['class']);
 		
 		return $this;
 	}
