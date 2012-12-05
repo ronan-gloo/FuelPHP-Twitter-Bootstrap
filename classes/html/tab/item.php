@@ -4,7 +4,6 @@ namespace Bootstrap;
 
 use \InvalidArgumentException;
 
-
 /**
  * @extends Html_Item
  */
