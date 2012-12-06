@@ -27,7 +27,7 @@ class Html_Button extends BootstrapModuleBtn implements Linkable {
 	public function render()
 	{
 		extract($this->data);
-	
+		
 		$this
 			->set_template()
 			->set_button()

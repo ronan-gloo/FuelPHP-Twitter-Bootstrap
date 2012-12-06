@@ -32,6 +32,7 @@ Autoloader::add_classes(array(
 	'Bootstrap\\Html_Badge'			=> __DIR__.'/classes/html/badge.php',
 	'Bootstrap\\Html_Breadcrumb'=> __DIR__.'/classes/html/breadcrumb.php',
 	'Bootstrap\\Html_Button'		=> __DIR__.'/classes/html/button.php',
+	'Bootstrap\\Html_Button_Group' => __DIR__.'/classes/html/button/group.php',
 	'Bootstrap\\Html_Carousel'	=> __DIR__.'/classes/html/carousel.php',
 	'Bootstrap\\Html_Dropdown'	=> __DIR__.'/classes/html/dropdown.php',
 	'Bootstrap\\Html_Dropdown_Button'	=> __DIR__.'/classes/html/dropdown/button.php',

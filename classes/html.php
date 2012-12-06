@@ -28,6 +28,16 @@ class Html extends \Fuel\Core\Html {
 		return Html_Button::forge($attrs)->make($href, $text, $secure);
 	}
 
+	public static function button_group($array = array(), $attrs = array())
+	{
+		$tmp = is_array($array) ? reset($array) : null;
+		
+		if (is_array($tmp) or $tmp instanceof Html_Button)
+			return Html_Button_Group::forge($attrs)->make($array);
+		else
+			return Html_Button_Group::forge($array)->make();
+	}
+
 	public static function alert($title = null, $text = null, $attrs = array())
 	{
 		return Html_Alert::forge($attrs)->make($title, $text, $attrs);

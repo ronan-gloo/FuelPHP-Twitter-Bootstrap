@@ -29,13 +29,17 @@ abstract class BootstrapModuleBtn extends BootstrapModuleIcon implements Activab
 
 				case 'state':
 				$this->css($attr);
-				($attr === 'disabled') and $this->attrs['disabled'] = 'disabled';
+				$attr === 'disabled' and $this->attrs['disabled'] = 'disabled';
+				break;
+
+				case 'block':
+				$attr === true and $this->css('btn-block');
 				break;
 				
 				case 'loading':
 				$this->attrs['data-loading-text'] = $attr;
 				break;
-
+				
 				case 'toggle':
 				$this->attrs['data-toggle'] = 'button';
 				break;
