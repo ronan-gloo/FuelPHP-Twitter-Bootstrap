@@ -35,8 +35,8 @@
 		<script type="text/javascript">
 		$(function(){
 			$('[rel="tooltip"]').tooltip();
-			$('[rel="popover"]').popover().click(function(){
-				return false;
+			$('[rel="popover"]').popover().click(function(e){
+				e.preventDefault();
 			});
 		})
 		</script>
@@ -46,19 +46,20 @@
 				<div id="sidebar" class="well">
 					<nav>
 						<ul class="nav nav-list"><li class="nav-header">Attachables</li>
-<li class=""><a href="../../extra/tooltip/index.html">Tooltip, Popover & Modal</a></li>
+<li><a href="../../extra/tooltip/index.html">Tooltip, Popover & Modal</a></li>
 <li class="nav-header">Html related modules</li>
-<li class=""><a href="../alert/index.html">Alerts</a></li>
-<li class=""><a href="../breadcrumb/index.html">Breadcrumb</a></li>
-<li class=""><a href="../button/index.html">Buttons</a></li>
-<li class=""><a href="../button_dropdown/index.html">Buttons dropdown</a></li>
-<li class=""><a href="../dropdown/index.html">Dropdowns</a></li>
+<li><a href="../alert/index.html">Alerts</a></li>
+<li><a href="../breadcrumb/index.html">Breadcrumb</a></li>
+<li><a href="../button/index.html">Buttons</a></li>
+<li><a href="../button_group/index.html">Button groups</a></li>
+<li><a href="../button_dropdown/index.html">Buttons dropdown</a></li>
+<li><a href="../dropdown/index.html">Dropdowns</a></li>
 <li class="active"><a href="index.html">Icons & Images</a></li>
-<li class=""><a href="../badge/index.html">Labels & Badges</a></li>
-<li class=""><a href="../modal/index.html">Modal</a></li>
-<li class=""><a href="../navs/index.html">Nav Tabs & Nav Pills</a></li>
-<li class=""><a href="../list/index.html">Nav Lists</a></li>
-<li class=""><a href="../progress/index.html">Progress</a></li></ul>					</nav>
+<li><a href="../badge/index.html">Labels & Badges</a></li>
+<li><a href="../modal/index.html">Modal</a></li>
+<li><a href="../navs/index.html">Nav Tabs & Nav Pills</a></li>
+<li><a href="../list/index.html">Nav Lists</a></li>
+<li><a href="../progress/index.html">Progress</a></li></ul>					</nav>
 				</div>
 				
 				<div id="content">

@@ -35,8 +35,8 @@
 		<script type="text/javascript">
 		$(function(){
 			$('[rel="tooltip"]').tooltip();
-			$('[rel="popover"]').popover().click(function(){
-				return false;
+			$('[rel="popover"]').popover().click(function(e){
+				e.preventDefault();
 			});
 		})
 		</script>
@@ -48,17 +48,18 @@
 						<ul class="nav nav-list"><li class="nav-header">Attachables</li>
 <li class="active"><a href="index.html">Tooltip, Popover & Modal</a></li>
 <li class="nav-header">Html related modules</li>
-<li class=""><a href="../../html/alert/index.html">Alerts</a></li>
-<li class=""><a href="../../html/breadcrumb/index.html">Breadcrumb</a></li>
-<li class=""><a href="../../html/button/index.html">Buttons</a></li>
-<li class=""><a href="../../html/button_dropdown/index.html">Buttons dropdown</a></li>
-<li class=""><a href="../../html/dropdown/index.html">Dropdowns</a></li>
-<li class=""><a href="../../html/icon/index.html">Icons & Images</a></li>
-<li class=""><a href="../../html/badge/index.html">Labels & Badges</a></li>
-<li class=""><a href="../../html/modal/index.html">Modal</a></li>
-<li class=""><a href="../../html/navs/index.html">Nav Tabs & Nav Pills</a></li>
-<li class=""><a href="../../html/list/index.html">Nav Lists</a></li>
-<li class=""><a href="../../html/progress/index.html">Progress</a></li></ul>					</nav>
+<li><a href="../../html/alert/index.html">Alerts</a></li>
+<li><a href="../../html/breadcrumb/index.html">Breadcrumb</a></li>
+<li><a href="../../html/button/index.html">Buttons</a></li>
+<li><a href="../../html/button_group/index.html">Button groups</a></li>
+<li><a href="../../html/button_dropdown/index.html">Buttons dropdown</a></li>
+<li><a href="../../html/dropdown/index.html">Dropdowns</a></li>
+<li><a href="../../html/icon/index.html">Icons & Images</a></li>
+<li><a href="../../html/badge/index.html">Labels & Badges</a></li>
+<li><a href="../../html/modal/index.html">Modal</a></li>
+<li><a href="../../html/navs/index.html">Nav Tabs & Nav Pills</a></li>
+<li><a href="../../html/list/index.html">Nav Lists</a></li>
+<li><a href="../../html/progress/index.html">Progress</a></li></ul>					</nav>
 				</div>
 				
 				<div id="content">

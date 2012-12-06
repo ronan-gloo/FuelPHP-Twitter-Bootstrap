@@ -35,8 +35,8 @@
 		<script type="text/javascript">
 		$(function(){
 			$('[rel="tooltip"]').tooltip();
-			$('[rel="popover"]').popover().click(function(){
-				return false;
+			$('[rel="popover"]').popover().click(function(e){
+				e.preventDefault();
 			});
 		})
 		</script>
@@ -46,19 +46,20 @@
 				<div id="sidebar" class="well">
 					<nav>
 						<ul class="nav nav-list"><li class="nav-header">Attachables</li>
-<li class=""><a href="../../extra/tooltip/index.html">Tooltip, Popover & Modal</a></li>
+<li><a href="../../extra/tooltip/index.html">Tooltip, Popover & Modal</a></li>
 <li class="nav-header">Html related modules</li>
-<li class=""><a href="../alert/index.html">Alerts</a></li>
-<li class=""><a href="../breadcrumb/index.html">Breadcrumb</a></li>
-<li class=""><a href="../button/index.html">Buttons</a></li>
-<li class=""><a href="../button_dropdown/index.html">Buttons dropdown</a></li>
+<li><a href="../alert/index.html">Alerts</a></li>
+<li><a href="../breadcrumb/index.html">Breadcrumb</a></li>
+<li><a href="../button/index.html">Buttons</a></li>
+<li><a href="../button_group/index.html">Button groups</a></li>
+<li><a href="../button_dropdown/index.html">Buttons dropdown</a></li>
 <li class="active"><a href="index.html">Dropdowns</a></li>
-<li class=""><a href="../icon/index.html">Icons & Images</a></li>
-<li class=""><a href="../badge/index.html">Labels & Badges</a></li>
-<li class=""><a href="../modal/index.html">Modal</a></li>
-<li class=""><a href="../navs/index.html">Nav Tabs & Nav Pills</a></li>
-<li class=""><a href="../list/index.html">Nav Lists</a></li>
-<li class=""><a href="../progress/index.html">Progress</a></li></ul>					</nav>
+<li><a href="../icon/index.html">Icons & Images</a></li>
+<li><a href="../badge/index.html">Labels & Badges</a></li>
+<li><a href="../modal/index.html">Modal</a></li>
+<li><a href="../navs/index.html">Nav Tabs & Nav Pills</a></li>
+<li><a href="../list/index.html">Nav Lists</a></li>
+<li><a href="../progress/index.html">Progress</a></li></ul>					</nav>
 				</div>
 				
 				<div id="content">
@@ -84,9 +85,9 @@ $dp->item('#', 'User');
 $dp->item('#', 'Logout');
 </pre>
 	<div class="clearfix">
-		<ul class="first dropdown-menu"><li class=""><a href="#">home</a></li>
-<li class=""><a href="#">User</a></li>
-<li class=""><a href="#">Logout</a></li></ul>	</div>
+		<ul class="first dropdown-menu"><li><a href="#">home</a></li>
+<li><a href="#">User</a></li>
+<li><a href="#">Logout</a></li></ul>	</div>
 </div>
 
 <div>
@@ -96,11 +97,11 @@ $dp->divider()
 $dp->header('account')
 </pre>
 	<div class="clearfix">
-		<ul class="first dropdown-menu"><li class=""><a href="#">home</a></li>
-<li class=""><a href="#">User</a></li>
+		<ul class="first dropdown-menu"><li><a href="#">home</a></li>
+<li><a href="#">User</a></li>
 <li class="divider"></li>
 <li class="nav-header">account</li>
-<li class=""><a href="#">Logout</a></li></ul>	</div>
+<li><a href="#">Logout</a></li></ul>	</div>
 </div>
 
 <div>
@@ -115,9 +116,9 @@ $dp2->item('#', 'home');
 $dp2->item('#', 'nested')->nest($dp);
 </pre>
 	<div class="clearfix">
-		<ul class="first dropdown-menu"><li class=""><a href="#">home</a></li>
-<li class="dropdown-submenu "><a href="#">nested</a><ul class="dropdown-menu"><li class=""><a href="#">action</a></li>
-<li class=""><a href="#">action</a></li></ul></li></ul>	</div>
+		<ul class="first dropdown-menu"><li><a href="#">home</a></li>
+<li class="dropdown-submenu "><a href="#">nested</a><ul class="dropdown-menu"><li><a href="#">action</a></li>
+<li><a href="#">action</a></li></ul></li></ul>	</div>
 </div>
 
 <hr />
@@ -131,9 +132,9 @@ $dp = Html::dropdown('click to open me', array('container' => 'li'));
 		<div class="navbar-inner">
 			<div class="container" style="width: auto;">
 				<ul class="nav pull-left">
-					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu dropdown<span class="caret"></span></a><ul class="dropdown-menu"><li class=""><a href="#">home</a></li>
-<li class=""><a href="#">User</a></li>
-<li class=""><a href="#">Logout</a></li></ul></li>				</ul>
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu dropdown<span class="caret"></span></a><ul class="dropdown-menu"><li><a href="#">home</a></li>
+<li><a href="#">User</a></li>
+<li><a href="#">Logout</a></li></ul></li>				</ul>
 			</div>
 		</div>
 	</div>
@@ -152,8 +153,8 @@ $tab->item('#', 'Classic tab')->active();
 $tab->item('#', 'Dropdown tab')->dropdown($dp);
 </pre>
 	<ul class="nav nav-tabs"><li class="active"><a href="#">Classic tab</a></li>
-<li class="dropdown "><a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown tab <b class="caret"></b></a><ul class="dropdown-menu"><li class=""><a href="#"><i class="icon icon-home"></i> home</a></li>
-<li class=""><a href="#"><i class="icon icon-user"></i> User</a></li></ul></li></ul></div>				</div>
+<li class="dropdown "><a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown tab <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="#"><i class="icon icon-home"></i> home</a></li>
+<li><a href="#"><i class="icon icon-user"></i> User</a></li></ul></li></ul></div>				</div>
 	</body>
 </html>
 
