@@ -2,7 +2,7 @@
 
 namespace Bootstrap;
 
-class Html_Dropdown_Button extends Html_Dropdown {
+class Html_Button_dropdown extends Html_Dropdown {
 	
 	protected $attribute = 'status';
 	

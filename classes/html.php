@@ -37,6 +37,11 @@ class Html extends \Fuel\Core\Html {
 		else
 			return Html_Button_Group::forge($array)->make();
 	}
+	
+	public static function button_dropdown($anchor = '', $text = '', $attrs = array(), $secure = false)
+	{
+		return Html_Button_Dropdown::forge($attrs)->make($anchor, $text, $secure);
+	}
 
 	public static function alert($title = null, $text = null, $attrs = array())
 	{
@@ -56,11 +61,6 @@ class Html extends \Fuel\Core\Html {
 	public static function navtab($attrs = array())
 	{
 		return Html_Nav_Tab::forge($attrs);
-	}
-
-	public static function dropdown_button($anchor = '', $text = '', $attrs = array(), $secure = false)
-	{
-		return Html_Dropdown_Button::forge($attrs)->make($anchor, $text, $secure);
 	}
 	
 	public static function dropdown($text = '', $attrs = array())
