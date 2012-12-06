@@ -77,7 +77,7 @@
 
 <div>
 	<p>Creating a dropdown button act as <a href="../button/index.html">creating buttons</a>. </p>
-	<pre>$btn = Html::dropdown_button('#', 'My dropdown', 'primary');</pre>
+	<pre>$btn = Html::button_dropdown('#', 'My dropdown', 'primary');</pre>
 	<div class="btn-group"><a class="dropdown-toggle btn btn-primary" data-toggle="dropdown" href="#">Dropdown <span class="caret"></span></a><ul class="dropdown-menu"><li><a href="#"><i class="icon icon-home"></i> Home</a></li>
 <li><a href="#"><i class="icon icon-user"></i> User</a></li>
 <li class="divider"></li>
@@ -91,7 +91,7 @@ Check the <a href="../dropdown/index.html">Dropdown's documentation</a> to learn
 
 <div>
 	<strong>The <code>split</code> key allow you to create splited buttons:</strong>
-	<pre>$btn = Html::dropdown_button('#', 'My dropdown', array('split' => true))</pre>
+	<pre>$btn = Html::button_dropdown('#', 'My dropdown', array('split' => true))</pre>
 	<div class="btn-group"><a class="btn" href="#">Splited dropdown</a> <a class="dropdown-toggle btn" data-toggle="dropdown" href="#"><span class="caret"></span></a><ul class="dropdown-menu"><li><a href="#"><i class="icon icon-home"></i> Home</a></li>
 <li><a href="#"><i class="icon icon-user"></i> User</a></li>
 <li class="divider"></li>
@@ -99,13 +99,13 @@ Check the <a href="../dropdown/index.html">Dropdown's documentation</a> to learn
 
 <div>
 	<strong>The <code>type</code> key alow you to define dropup or classic dropdown ('up' and 'down'):</strong>
-	<pre>$btn = Html::dropdown_button('#', 'My Dropup', array('type' => 'up'))</pre>
+	<pre>$btn = Html::button_dropdown('#', 'My Dropup', array('type' => 'up'))</pre>
 	<div class="btn-group dropup"><a class="dropdown-toggle btn" data-toggle="dropdown" href="#">Dropup <span class="caret"></span></a><ul class="dropdown-menu"><li><a href="#"><i class="icon icon-home"></i> Home</a></li>
 <li><a href="#"><i class="icon icon-user"></i> User</a></li></ul></div><div class="btn-group dropup"><a class="btn" href="#">Splited dropup</a> <a class="dropdown-toggle btn" data-toggle="dropdown" href="#"><span class="caret"></span></a><ul class="dropdown-menu"><li><a href="#"><i class="icon icon-home"></i> Home</a></li>
 <li><a href="#"><i class="icon icon-user"></i> User</a></li></ul></div></div>
 <div>
 	<strong>The <code>align</code> key will forge dropdown menu aligment:</strong>
-	<pre>$btn = Html::dropdown_button('#', 'My Dropup', array('type' => 'up'))</pre>
+	<pre>$btn = Html::button_dropdown('#', 'My Dropup', array('type' => 'up'))</pre>
 	<div class="btn-group"><a class="btn" href="#">Dropdown left</a> <a class="dropdown-toggle btn" data-toggle="dropdown" href="#"><span class="caret"></span></a><ul class="dropdown-menu pull-left"><li><a href="#"><i class="icon icon-home"></i> Home</a></li>
 <li><a href="#"><i class="icon icon-user"></i> User</a></li></ul></div><div class="btn-group"><a class="btn" href="#">Dropdown right</a> <a class="dropdown-toggle btn" data-toggle="dropdown" href="#"><span class="caret"></span></a><ul class="dropdown-menu pull-right"><li><a href="#"><i class="icon icon-home"></i> Home</a></li>
 <li><a href="#"><i class="icon icon-user"></i> User</a></li></ul></div></div>
@@ -127,7 +127,7 @@ $nest->item('#', 'messages', 'inbox');
 $nest->item('#', 'logout', 'off');
 
 // dropdown
-$btn = Html::dropdown_button('#', "Don't Do This !", array(
+$btn = Html::button_dropdown('#', "Don't Do This !", array(
 	'split' => true,
 	'status'=> 'warning',
 	'icon'	=> 'warning-sign'
