@@ -20,11 +20,16 @@ Autoloader::add_classes(array(
 	'Bootstrap\\BootstrapModuleBtn'		=> __DIR__.'/classes/module/button.php',
 	'Bootstrap\\BootstrapModuleIcon'	=> __DIR__.'/classes/module/icon.php',
 	
-	// Paxckage Interfaces
+	// Package Interfaces
 	'Bootstrap\\Activable' 		=> __DIR__.'/classes/interfaces.php',
 	'Bootstrap\\Deactivable'	=> __DIR__.'/classes/interfaces.php',
 	'Bootstrap\\Nestable'			=> __DIR__.'/classes/interfaces.php',
 	'Bootstrap\\Linkable'			=> __DIR__.'/classes/interfaces.php',
+	
+	// Form Modules
+	//'Bootstrap\\Form'						=> __DIR__.'/classes/form.php',
+	'Bootstrap\\Form_BootstrapInstance'	=> __DIR__.'/classes/form/instance.php',
+	'Bootstrap\\Form_Input'	=> __DIR__.'/classes/form/input.php',
 	
 	// Html Modules
 	'Bootstrap\\Html'						=> __DIR__.'/classes/html.php',
