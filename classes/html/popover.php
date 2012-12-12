@@ -12,8 +12,6 @@ use \InvalidArgumentException, \LogicException;
  */
 class Html_Popover extends BootstrapModule implements Unattachable {
 	
-	protected $attribute = 'trigger';
-	
 	/**
 	 * Render as static or not
 	 * 

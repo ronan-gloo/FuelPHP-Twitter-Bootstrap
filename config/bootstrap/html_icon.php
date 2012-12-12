@@ -6,6 +6,7 @@ return array(
 	'attributes' => array(
 		'icon' 		=> null,
 		'status'	=> array('white')
-	)
+	),
+	'attribute' => 'status'
 	
 );

@@ -4,8 +4,6 @@ namespace Bootstrap;
 
 class Html_Button extends BootstrapModuleBtn implements Linkable {
 	
-	protected $attribute = 'status';
-	
 	protected $data = array('href' => '', 'text' => '', 'secure' => false);
 	
 	/**

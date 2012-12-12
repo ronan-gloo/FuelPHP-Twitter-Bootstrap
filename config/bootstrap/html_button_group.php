@@ -6,7 +6,9 @@ return array(
 		'toggle'		=> array('checkbox', 'radio'),
 		'vertical'	=> array(true, false),
 		'status'		=> array('primary', 'inverse', 'default', 'warning', 'danger', 'info', 'success'),
-		'size'		=> array('small', 'mini', 'large'),
-	)
+		'size'			=> array('small', 'mini', 'large'),
+	),
+	
+	'attribute' => 'toggle',
 	
 );

@@ -4,8 +4,6 @@ namespace Bootstrap;
 
 class Html_Button_Group extends BootstrapModule {
 	
-	protected $attribute = 'toggle';
-	
 	protected $items = array();
 	
 	/**

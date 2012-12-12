@@ -16,9 +16,10 @@ Autoloader::add_core_namespace('Bootstrap');
 Autoloader::add_classes(array(
 	
 	// Package Classes
-	'Bootstrap\\BootstrapModule'			=> __DIR__.'/classes/module.php',
-	'Bootstrap\\BootstrapModuleBtn'		=> __DIR__.'/classes/module/button.php',
-	'Bootstrap\\BootstrapModuleIcon'	=> __DIR__.'/classes/module/icon.php',
+	'Bootstrap\\BootstrapModule'					=> __DIR__.'/classes/module.php',
+	'Bootstrap\\BootstrapModuleBtn'				=> __DIR__.'/classes/module/button.php',
+	'Bootstrap\\BootstrapModuleIcon'			=> __DIR__.'/classes/module/icon.php',
+	'Bootstrap\\BootstrapModuleSurround'	=> __DIR__.'/classes/module/surround.php',
 	
 	// Package Interfaces
 	'Bootstrap\\Activable' 		=> __DIR__.'/classes/interfaces.php',
@@ -27,9 +28,10 @@ Autoloader::add_classes(array(
 	'Bootstrap\\Linkable'			=> __DIR__.'/classes/interfaces.php',
 	
 	// Form Modules
-	//'Bootstrap\\Form'						=> __DIR__.'/classes/form.php',
-	'Bootstrap\\Form_BootstrapInstance'	=> __DIR__.'/classes/form/instance.php',
-	'Bootstrap\\Form_Input'	=> __DIR__.'/classes/form/input.php',
+	'Bootstrap\\Form'						=> __DIR__.'/classes/form.php',
+	'Bootstrap\\Form_Instance'	=> __DIR__.'/classes/form/instance.php',
+	'Bootstrap\\Form_Input'			=> __DIR__.'/classes/form/input.php',
+	'Bootstrap\\Form_Locked'		=> __DIR__.'/classes/form/locked.php',
 	
 	// Html Modules
 	'Bootstrap\\Html'						=> __DIR__.'/classes/html.php',

@@ -4,8 +4,6 @@ namespace Bootstrap;
 
 class Html_Button_dropdown extends Html_Dropdown {
 	
-	protected $attribute = 'status';
-	
 	protected $btn_attrs = array();
 	
 	/**

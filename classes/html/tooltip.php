@@ -9,8 +9,6 @@ namespace Bootstrap;
  */
 class Html_Tooltip extends BootstrapModule implements Unattachable {
 	
-	protected $attribute = 'placement';
-	
 	/**
 	 * Render as static or not
 	 * 

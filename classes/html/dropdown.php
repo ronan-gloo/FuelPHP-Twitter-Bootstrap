@@ -9,8 +9,6 @@ class Html_Dropdown extends BootstrapModule {
 	
 	protected $items = array();
 	
-	protected $attribute = 'type';
-	
 	protected $data = array('wrap' => array('tag' => 'div', 'attrs' => array()), 'text' => '');
 	
 	/**

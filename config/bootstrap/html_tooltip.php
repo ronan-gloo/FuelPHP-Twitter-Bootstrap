@@ -11,4 +11,6 @@ return array(
 		'title'			=> null,
 		'delay'			=> null
 	),
+	
+	'attribute' => 'placement',
 );

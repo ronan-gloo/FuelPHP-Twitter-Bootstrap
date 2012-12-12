@@ -10,5 +10,17 @@ return array(
 		'block'		=> array(true, false),
 		'loading'	=> null,
 		'toggle'	=> array(true, false)
+	),
+	
+	'attribute' => 'status',
+	
+	'templates' => array(
+		'example' => array(
+			'status' => 'primary',
+			'icon'	 => 'thumbs-up',
+			'size'	 => 'large',
+			'title'	 => 'Some Title',
+			'class'	 => 'button-submit'
+		)
 	)
 );

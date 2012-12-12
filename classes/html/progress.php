@@ -8,8 +8,6 @@ namespace Bootstrap;
  */
 class Html_Progress extends BootstrapModule implements Activable {
 	
-	protected $attribute = 'status';
-	
 	/**
 	 * Store for generated bars
 	 * 

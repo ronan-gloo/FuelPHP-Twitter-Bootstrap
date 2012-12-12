@@ -6,6 +6,8 @@ return array(
 		'divider' => null
 	),
 	
+	'attribute' => 'divider',
+	
 	// Default divider
 	'divider' => '/',
 	

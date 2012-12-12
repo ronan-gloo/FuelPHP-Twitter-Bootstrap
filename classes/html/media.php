@@ -4,10 +4,7 @@ namespace Bootstrap;
 
 class Html_Media extends BootstrapModule {
 	
-	protected $attribute = 'placement';
-	
 	protected $data = array('media', 'title', 'body');
-	
 	
 	public function make()
 	{

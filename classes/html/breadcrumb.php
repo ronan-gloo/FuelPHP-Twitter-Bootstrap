@@ -8,17 +8,6 @@ namespace Bootstrap;
  */
 class Html_Breadcrumb extends BootstrapModule {
 	
-	
-	/**
-	 * Default attr key if string is provided
-	 * 
-	 * (default value: 'divider')
-	 * 
-	 * @var string
-	 * @access protected
-	 */
-	protected $attribute = 'divider';
-	
 	/**
 	 * Breadcrumb items
 	 * 

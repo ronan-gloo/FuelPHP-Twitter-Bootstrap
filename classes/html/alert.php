@@ -3,9 +3,7 @@
 namespace Bootstrap;
 
 class Html_Alert extends BootstrapModule {
-	
-	protected $attribute = 'status';
-	
+
 	/**
 	 * @access public
 	 * @param mixed $title (default: null)

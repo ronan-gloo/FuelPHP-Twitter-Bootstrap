@@ -12,4 +12,6 @@ return array(
 		'content'		=> null,
 		'delay'			=> null
 	),
+	
+	'attribute' => 'trigger',
 );

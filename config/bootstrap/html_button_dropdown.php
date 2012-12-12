@@ -10,5 +10,6 @@ return array(
 		'split'		=> array(true, false),
 		'type'		=> array('down', 'up'),
 		'align' 	=> array('left', 'right'),
-	)
+	),
+	'attribute' => 'status'
 );

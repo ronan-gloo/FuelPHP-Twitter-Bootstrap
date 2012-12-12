@@ -8,24 +8,12 @@ use
 	\LogicException
 ;
 
-
 /**
  * Generate modals.
  * 
  * @extends BootstrapModule
  */
 class Html_Modal extends BootstrapModule implements Unattachable {
-	
-	
-	/**
-	 * Default string attr key
-	 * 
-	 * (default value: 'fade')
-	 * 
-	 * @var string
-	 * @access protected
-	 */
-	protected $attribute = 'fade';
 	
 	/**
 	 * (default value: array('header', 'body', 'footer'))

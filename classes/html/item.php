@@ -13,8 +13,6 @@ class Html_Item extends BootstrapModuleIcon implements Activable, Deactivable, L
 	
 	protected $name	= 'html_item';
 	
-	protected $attribute = 'icon';
-	
 	protected $data = array('href' => '', 'text' => '', 'secure' => false);
 	
 	protected $anchor_attrs = array();

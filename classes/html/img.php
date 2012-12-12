@@ -4,8 +4,6 @@ namespace Bootstrap;
 
 class Html_Img extends BootstrapModule {
 	
-	protected $attribute = 'type';
-	
 	protected $src = '';
 	
 	/**

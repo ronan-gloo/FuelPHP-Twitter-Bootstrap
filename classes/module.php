@@ -15,6 +15,16 @@ use
 abstract class BootstrapModule {
 	
 	/**
+	 * Default string attribute converted to key of html attributes elements
+	 * 
+	 * (default value: '')
+	 * 
+	 * @var string
+	 * @access protected
+	 */
+	protected $attribute = '';
+	
+	/**
 	 * Path to the config file / items
 	 * 
 	 * (default value: null)
@@ -118,12 +128,16 @@ abstract class BootstrapModule {
 		$this->name = $this->name ?: strtolower(Inflector::denamespace(get_called_class()));
 		$this->configpath = 'bootstrap/'.$this->name;
 		
-		// value is an array, that means we have stacked bars
+		$config = $this->config();
+		
+		if (isset($config['attribute']))
+		{
+			$this->attribute = $config['attribute'];
+		}
+
 		! is_array($attrs) and $attrs = array($this->attribute => $attrs);
 
 		$this->attrs = $attrs;
-		
-		$this->config();
 	}
 
 	/**
@@ -144,7 +158,7 @@ abstract class BootstrapModule {
 			
 			$config = Config::get($path);
 		}
-		
+				
 		return $config;
 	}
 	
@@ -178,7 +192,7 @@ abstract class BootstrapModule {
 		{
 			if ($tpl = $this->config('templates.'.$this->attrs['from']))
 			{
-				$attrs = $this->attrs + $tpl;
+				$this->attrs = $this->attrs + $tpl;
 			}
 			elseif (! $tpl and $this->strict === true)
 			{

@@ -4,15 +4,12 @@ namespace Bootstrap;
 
 class Form extends \Fuel\Core\Form {
 	
-	static $forminstance;
-	
-	/**
-	 * When autoloaded this will method will be fired, load once and once only
-	 *
-	 * @return  void
-	 */
-	public static function _init()
+	public static function search($name, $value = null, array $attrs = array())
 	{
-		parent::_init();
+		return static::$instance->search($name, $value, $attrs);
+	}
+	public static function locked($text = null, $attrs = array())
+	{
+		return static::$instance->locked($text, $attrs);
 	}
 }

@@ -10,8 +10,6 @@ class Html_Nav_Tab extends Html_Nav {
 	
 	protected $use_item = 'Html_Tab_Item';
 	
-	protected $attribute = 'type';
-	
 	/**
 	 * Check for tabs or pills navtype.
 	 * 

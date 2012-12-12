@@ -9,8 +9,6 @@ namespace Bootstrap;
  */
 class Html_Progress_Bar extends BootstrapModule {
 	
-	protected $attribute = 'status';
-	
 	protected $data = array('value' => '', 'content' => '');
 	
 	/**

@@ -4,8 +4,6 @@ namespace Bootstrap;
 
 class Html_Label extends BootstrapModule {
 	
-	protected $attribute = 'status';
-	
 	protected $entity = 'label';
 	
 	/**

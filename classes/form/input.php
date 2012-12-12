@@ -2,19 +2,16 @@
 
 namespace Bootstrap;
 
-class Form_Input extends BootstrapModule implements Deactivable {
+class Form_Input extends BootstrapModuleSurround implements Deactivable {
 	
-	protected $data			= array('field' => '', 'value' => '');
-	protected $append		= array();
-	protected $prepend	= array();
-	protected $cattrs		= array();
+	protected $data	= array('field' => '', 'value' => '');
 	
 	/**
 	 * @access public
 	 * @param Closure $callback
 	 * @return void
 	 */
-	public function make(&$instance, $field, $value = '')
+	public function make($instance, $field, $value = '')
 	{
 		$this->instance = $instance;
 		
@@ -23,29 +20,7 @@ class Form_Input extends BootstrapModule implements Deactivable {
 		
 		return $this;
 	}
-	
-	/**
-	 * @access public
-	 * @return void
-	 */
-	public function prepend()
-	{
-		$this->prepend = array_merge($this->prepend, func_get_args());
 		
-		return $this;
-	}
-	
-	/**
-	 * @access public
-	 * @return void
-	 */
-	public function append()
-	{
-		$this->append = array_merge($this->append, func_get_args());
-		
-		return $this;
-	}
-	
 	/**
 	 * disabled function.
 	 * 
@@ -77,8 +52,7 @@ class Form_Input extends BootstrapModule implements Deactivable {
 	 */
 	public function render()
 	{
-		$prepend  = $this->prepend_append('prepend');
-		$append		= $this->prepend_append('append');
+		list($prepend, $append) = $this->surround();
 		
 		// parse input attributes
 		foreach ($this->attrs as $key => $attr)
@@ -97,45 +71,12 @@ class Form_Input extends BootstrapModule implements Deactivable {
 		
 		$this->merge()->clean();
 		
-		$input = $this->instance->input($this->data['field'], $this->data['value'], $this->attrs);
+		$input = $this->instance->core_input($this->data['field'], $this->data['value'], $this->attrs);
 		
-		$this->html = ($prepend or $append) ? html_tag('div', $this->cattrs, $prepend.$input.$append) : $this->html = $input;
-
+		$this->html = ($prepend or $append) ? html_tag('div', $this->cattrs, $prepend.$input.$append) : $input;
+		
 		return parent::render();
-	}
-	
-	
-	/**
-	 * @access protected
-	 * @return void
-	 */
-	protected function prepend_append($type)
-	{		
-		// merge prepend / append attributes with prp / app methods
-		$array = isset($this->attrs[$type]) ? array_merge((array)$this->attrs[$type], $this->$type): $this->$type;
-		
-		if (! $array) return '';
-		
-		$this->_merge($this->cattrs, array('input-'.$type));
-		
-		foreach ($array as &$data)
-		{
-			if ($data instanceof BootstrapModule)
-			{
-				continue;
-			}
-			
-			if (strpos($data, 'icon-') === 0)
-			{
-				$icon	= substr($data, 5);
-				$data	= Html_Icon::forge(array())->make($icon);
-			}
-			
-			$data = html_tag('span', array('class' => 'add-on'), $data);
-		}
-		return implode(PHP_EOL, $array);
-	}
-	
+	}	
 	
 	/**
 	 * Add default popover trigger attribute to focus.
