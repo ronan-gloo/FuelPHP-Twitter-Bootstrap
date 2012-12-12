@@ -50,8 +50,8 @@ class Form_Instance extends \Fuel\Core\Form_Instance {
 	public function search($field, $value = null, array $attributes = array())
 	{
 		$input = Form_Input::forge($attributes)->make($this, $field, $value);
-		$input->attrs['type'] = 'search';
-		$input->css[] = 'search-query';
+		$input->attrs['type'] 	= 'search';
+		$input->attrs['search'] = true;
 		
 		return $input;
 	}
