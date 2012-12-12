@@ -45,21 +45,27 @@
 	<body>
 				<div id="sidebar" class="well">
 					<nav>
-						<ul class="nav nav-list"><li class="nav-header">Attachables</li>
-<li><a href="../../extra/tooltip/index.html">Tooltip, Popover & Modal</a></li>
+						<ul class="nav nav-list"><li class="nav-header">General</li>
+<li><a href="../index.html">Infos and dowload</a></li>
+<li><a href="../attribute.html">Attributes</a></li>
+<li><a href="../template.html">Templates</a></li>
+<li class="nav-header">Attachables</li>
+<li><a href="../extra/tooltip.html">Tooltip, Popover & Modal</a></li>
+<li class="nav-header">Form related modules</li>
+<li><a href="../form/input.html">Inputs</a></li>
 <li class="nav-header">Html related modules</li>
-<li><a href="../alert/index.html">Alerts</a></li>
-<li><a href="../breadcrumb/index.html">Breadcrumb</a></li>
-<li class="active"><a href="index.html">Buttons</a></li>
-<li><a href="../button_group/index.html">Button groups</a></li>
-<li><a href="../button_dropdown/index.html">Buttons dropdown</a></li>
-<li><a href="../dropdown/index.html">Dropdowns</a></li>
-<li><a href="../icon/index.html">Icons & Images</a></li>
-<li><a href="../badge/index.html">Labels & Badges</a></li>
-<li><a href="../modal/index.html">Modal</a></li>
-<li><a href="../navs/index.html">Nav Tabs & Nav Pills</a></li>
-<li><a href="../list/index.html">Nav Lists</a></li>
-<li><a href="../progress/index.html">Progress</a></li></ul>					</nav>
+<li><a href="alert.html">Alerts</a></li>
+<li><a href="breadcrumb.html">Breadcrumb</a></li>
+<li class="active"><a href="button.html">Buttons</a></li>
+<li><a href="button_group.html">Button groups</a></li>
+<li><a href="button_dropdown.html">Buttons dropdown</a></li>
+<li><a href="dropdown.html">Dropdowns</a></li>
+<li><a href="icon.html">Icons & Images</a></li>
+<li><a href="badge.html">Labels & Badges</a></li>
+<li><a href="modal.html">Modal</a></li>
+<li><a href="navs.html">Nav Tabs & Nav Pills</a></li>
+<li><a href="list.html">Nav Lists</a></li>
+<li><a href="progress.html">Progress</a></li></ul>					</nav>
 				</div>
 				
 				<div id="content">
@@ -81,17 +87,15 @@
 <div>
 	<strong>Let's create a simple one:</strong>
 	<pre>Html::button('#anchor', 'My simple button')</pre>
-	<a class="btn" href="#anchor">My simple button</a></div>
+	<a class="btn" href="button.html#anchor">My simple button</a></div>
 
 <div>
 	<p>Maybe one of the most important module, Button is simply a Fuelphp anchor's, with attributes under steroids.</p>
-	<strong>The <code>status</code> attribute is the defaults one. That means can define the status with a string:</strong>
+	<strong>The <code>status</code>:</strong>
 <pre>
-Html::button('#', 'primary', 'primary')
-// is the same as
 Html::button('#', 'primary', array('status' => 'primary'))
 </pre>
-	<a class="btn btn-primary" href="#">primary</a>	<a class="btn btn-inverse" href="#">inverse</a>	<a class="btn btn-info" href="#">info</a>	<a class="btn btn-success" href="#">success</a>	<a class="btn btn-warning" href="#">warning</a>	<a class="btn btn-danger" href="#">danger</a></div>
+	<a class="btn btn-primary" href="button.html#">primary</a>	<a class="btn btn-inverse" href="button.html#">inverse</a>	<a class="btn btn-info" href="button.html#">info</a>	<a class="btn btn-success" href="button.html#">success</a>	<a class="btn btn-warning" href="button.html#">warning</a>	<a class="btn btn-danger" href="button.html#">danger</a></div>
 
 <div>
 	<strong>The <code>icon</code> in conjonction with <code>icon-pos</code> let's you respectivly add a icon, and put it on the <code>left</code> or <code>right</code>:</strong>
@@ -99,12 +103,12 @@ Html::button('#', 'primary', array('status' => 'primary'))
 Html::button('#', 'Account', array('icon' => 'user'))
 Html::button('#', 'Account', array('icon' => 'user', 'icon-pos' => 'right'))
 </pre>
-	<a class="btn" href="#"><i class="icon icon-user"></i> Left</a>	<a class="btn" href="#">Right <i class="icon icon-user"></i></a></div>
+	<a class="btn" href="button.html#"><i class="icon icon-user"></i> Left</a>	<a class="btn" href="button.html#">Right <i class="icon icon-user"></i></a></div>
 
 <div>
 	<strong>The <code>size</code> attribute define the how big it will be: <code>mini</code>, <code>small</code>, <code>large</code>:</strong>
 	<pre>Html::button('#anchor', 'Mini button', array('size' => 'mini'))</pre>
-	<a class="btn btn-mini" href="#anchor">Mini</a>	<a class="btn btn-small" href="#anchor">Small</a>	<a class="btn btn-large" href="#anchor">Large</a></div>
+	<a class="btn btn-mini" href="button.html#anchor">Mini</a>	<a class="btn btn-small" href="button.html#anchor">Small</a>	<a class="btn btn-large" href="button.html#anchor">Large</a></div>
 
 <div>
 	<strong>The <code>state</code> attribute define the button state, <code>active</code> or <code>disabled</code>:</strong>
@@ -117,7 +121,7 @@ Html::button('#', 'Disabled button', array('state' => 'disabled'))
 // or
 Html::button('#', 'Disabled button')->disabled()
 </pre>
-	<a class="btn active" href="#anchor">Active button</a>	<a disabled="disabled" class="btn disabled" href="#anchor">Disabled button</a></div>
+	<a class="btn active" href="button.html#anchor">Active button</a>	<a disabled="disabled" class="btn disabled" href="button.html#anchor">Disabled button</a></div>
 
 <div>
 	<strong>The <code>block</code> attribute:</strong>
@@ -125,18 +129,18 @@ Html::button('#', 'Disabled button')->disabled()
 Html::button('#', 'Active button', array('block' => true))
 </pre>
 	<div class="well">
-		<a class="btn btn-block" href="#anchor">Block Button</a>	</div>
+		<a class="btn btn-block" href="button.html#anchor">Block Button</a>	</div>
 </div>
 
 
 <div>
 	<strong>Attach a <code>loading</code> text to use with <a href="http://twitter.github.com/bootstrap/javascript.html#buttons">Javascript button states</a>:</strong>
 <pre>
-	Html::button('#anchor', 'Click me')->loading('Waiting for something')
-	// or 
-	Html::button('#anchor', 'Click me', array('loading' => 'Waiting for something'))
+Html::button('#anchor', 'Click me')->loading('Waiting for something')
+// or 
+Html::button('#anchor', 'Click me', array('loading' => 'Waiting for something'))
 </pre>
-	<a data-loading-text="Waiting for something" class="btn" href="#anchor">Click me</a></div>
+	<a data-loading-text="Waiting for something" class="btn" href="button.html#anchor">Click me</a></div>
 
 <div>
 	<strong>Attach a <code>toggle</code> state to use with <a href="http://twitter.github.com/bootstrap/javascript.html#buttons">Javascript button states</a>:</strong>
@@ -145,7 +149,7 @@ Html::button('#anchor', 'Click me')->toggle() // true or false, true if no param
 // or 
 Html::button('#anchor', 'Click me', array('toggle' => true))
 </pre>
-	<a data-toggle="button" class="btn" href="#anchor">Click me</a></div>
+	<a data-toggle="button" class="btn" href="button.html#anchor">Click me</a></div>
 
 <hr />
 
@@ -159,11 +163,9 @@ Html::button('#', 'ClickMe', array(
 	'toggle'=> true)
 )->popover('Hey !', 'I have something to say', array('placement' => 'top'))
 </pre>
-	<a data-placement="top" data-title="Hey !" data-content="I have something to say" rel="popover" data-toggle="button" class="btn btn-danger btn-large" href="#"><i class="icon-white icon icon-fire"></i> ClickMe</a></div>
+	<a data-placement="top" data-title="Hey !" data-content="I have something to say" rel="popover" data-toggle="button" class="btn btn-danger btn-large" href="button.html#"><i class="icon-white icon icon-fire"></i> ClickMe</a></div>
 
 
 				</div>
 	</body>
 </html>
-
-<!-- Localized -->

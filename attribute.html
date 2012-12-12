@@ -69,11 +69,40 @@
 				</div>
 				
 				<div id="content">
-					<div class="well">
-	<h1>Twitter Bootstrap FuelPHP Package</h1>
-	<p class="lead">Simple and flexible package to interact with Bootstrap from Twitter</p>
-	<div>
-		<a target="_blank" class="btn btn-primary btn-large" href="http://github.com/ronan-gloo/FuelPHP-Twitter-Bootstrap">Download package</a>	</div>
-</div>				</div>
+					<h3>Modules attributes</h3>
+<p>
+	A part of this package is to allow non html related attributes, which indicate how bootstrap elements should be rendered.<br />
+	For example, the <code>Html_Button</code> is like a <code>Html::anchor</code> with extra attributes, like <code>status</code>, <code>size</code>.
+</p>
+<p>
+	Those attributes are registered in module's config files, with expected values, under the <code>attributes</code> key. All of those registered attributes are cleaned before rendering the html, and css classes are merged with bootstrap generated ones.
+</p>
+<hr />
+<div>
+	<h4>String attributes</h4>
+	<p>
+		Attributes are provided throught an array like <code>['id' => 'myelement', 'status' => 'primary', ..etc]</code>, but the package, throught config files, allow you to specify a default attribute, which be used as key if the <code>$attribute</code> parameter is a string.
+	</p>
+	<strong>Simple example with a button, third param is a classic array:</strong>
+	<pre>Html::button('#', 'My button', array('status' => 'inverse'))</pre>
+	<a class="btn btn-inverse" href="attribute.html#">My button</a></div>
+
+<div>
+	<strong>If you take a look at the default html_button config file, the <code>attribute</code> key is set to <code>status</code>, which means third param string will be interpreted as status:</strong>
+	<pre>Html::button('#', 'My button', 'inverse')</pre>
+	<p><a class="btn btn-inverse" href="attribute.html#">My button</a></p>
+	<p>Youn can set any attribute you want, including classic HTML attribute.</p>
+</div>
+<div>
+	<h4>Only valid attributes are accepted</h4>
+	<p>If you provide a "bootstrap" attribute, make sure the string is a registered value in you config file:
+	</p>
+	<pre>Html::button('#', 'My button', array('status' => 'unknown'))</pre>
+	<p><strong>Throw an <code>InvalidArgumentException</code></strong></p>
+	<p>Those values are based on Twitter Bootstrap defaults, fell free to add your own, but take a look in modules to learn how markups are generated from them.</p>
+</div>
+
+
+				</div>
 	</body>
 </html>

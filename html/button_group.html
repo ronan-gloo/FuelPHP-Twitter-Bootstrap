@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Twitter Bootstrap FuelPHP Package</title>
+			<link type="text/css" rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" />
+	<link type="text/css" rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap.js"></script>
+		<style>
+			html, body, .btn-group > .btn, .btn-group > .dropdown-menu {
+				font-size: 12px;
+			}
+			#sidebar {
+				position: fixed;
+				top:0;
+				left:0;
+				bottom: 0;
+				width: 200px;
+				overflow-y: scroll;
+				margin: 0;
+				z-index: 2;
+			}
+			#content {
+				margin-left: 260px;
+				margin-right: 20px;
+			}
+			pre {
+				font-size: .8em;
+			}
+			#content > div {
+				margin: 2em 0;
+			}
+		</style>
+		<script type="text/javascript">
+		$(function(){
+			$('[rel="tooltip"]').tooltip();
+			$('[rel="popover"]').popover().click(function(e){
+				e.preventDefault();
+			});
+		})
+		</script>
+
+	</head>
+	<body>
+				<div id="sidebar" class="well">
+					<nav>
+						<ul class="nav nav-list"><li class="nav-header">General</li>
+<li><a href="../index.html">Infos and dowload</a></li>
+<li><a href="../attribute.html">Attributes</a></li>
+<li><a href="../template.html">Templates</a></li>
+<li class="nav-header">Attachables</li>
+<li><a href="../extra/tooltip.html">Tooltip, Popover & Modal</a></li>
+<li class="nav-header">Form related modules</li>
+<li><a href="../form/input.html">Inputs</a></li>
+<li class="nav-header">Html related modules</li>
+<li><a href="alert.html">Alerts</a></li>
+<li><a href="breadcrumb.html">Breadcrumb</a></li>
+<li><a href="button.html">Buttons</a></li>
+<li class="active"><a href="button_group.html">Button groups</a></li>
+<li><a href="button_dropdown.html">Buttons dropdown</a></li>
+<li><a href="dropdown.html">Dropdowns</a></li>
+<li><a href="icon.html">Icons & Images</a></li>
+<li><a href="badge.html">Labels & Badges</a></li>
+<li><a href="modal.html">Modal</a></li>
+<li><a href="navs.html">Nav Tabs & Nav Pills</a></li>
+<li><a href="list.html">Nav Lists</a></li>
+<li><a href="progress.html">Progress</a></li></ul>					</nav>
+				</div>
+				
+				<div id="content">
+					<script type="text/javascript">
+	$(function(){
+		$('.btn-group a').click(function(e){
+			e.preventDefault();
+		})
+	})
+</script>
+<h3>
+	Button Groups
+	<small>See <a href="http://twitter.github.com/bootstrap/components.html#buttonGroups">documentation</a></small>
+</h3>
+
+<div>
+	<strong>Create a simple button group by add <code>array</code> of <code>arrays or Html_Buttons</code>. Each item represents a button instance:</strong>
+<pre>
+Html::button_group(array(
+	array('#', 'button1')
+	array('#', 'button2')
+	array('#', 'button3')
+));
+</pre>
+	<div class="btn-group"><a class="btn" href="button_group.html#">button</a>
+<a class="btn" href="button_group.html#">button</a>
+<a class="btn" href="button_group.html#">button</a></div></div>
+
+<div>
+	<strong>the <code>toogle</code> key allow you to define a <code>radio</code> or <code>checkbox</code> button group:</strong>
+<pre>
+Html::button_group(..., array('toggle' => 'radio'))
+Html::button_group(..., array('toogle' => 'checkbox'))
+</pre>
+	<div data-toggle="buttons-radio" class="btn-group"><a class="btn" href="button_group.html#">radio</a>
+<a class="btn" href="button_group.html#">radio</a>
+<a class="btn" href="button_group.html#">radio</a></div>	<div data-toggle="buttons-checkbox" class="btn-group"><a class="btn" href="button_group.html#">checkbox</a>
+<a class="btn" href="button_group.html#">checkbox</a>
+<a class="btn" href="button_group.html#">checkbox</a></div></div>
+
+<div>
+	<strong>the <code>vertical</code> key commands vertical alignment of the group:</strong>
+<pre>
+Html::button_group(..., array('vertical' => true))
+</pre>
+	<div class="btn-group btn-group-vertical"><a class="btn" href="button_group.html#"><i class="icon icon-align-left"></i> </a>
+<a class="btn" href="button_group.html#"><i class="icon icon-align-center"></i> </a>
+<a class="btn" href="button_group.html#"><i class="icon icon-align-right"></i> </a></div></div>
+
+<div>
+	<strong>the <code>size</code> key assign size on every child:</strong>
+<pre>
+Html::button_group(..., array('size' => 'mini'))
+</pre>
+	<div class="btn-group"><a class="btn btn-mini" href="button_group.html#">mini</a>
+<a class="btn btn-mini" href="button_group.html#">mini</a>
+<a class="btn btn-mini" href="button_group.html#">mini</a></div></div>
+
+<div>
+	<strong>This also works with <code>status</code>, but button status can overrides group status:</strong>
+<pre>
+Html::button_group(array(
+	array('#', 'group'),
+	array('#', 'group'),
+	array('#', 'button', 'inverse'),
+),array('status' => 'primary'));
+</pre>
+	<div class="btn-group"><a class="btn btn-primary" href="button_group.html#">group</a>
+<a class="btn btn-primary" href="button_group.html#">group</a>
+<a class="btn btn-inverse" href="button_group.html#">button</a></div></div>
+
+<div>
+	<strong>Feel free to use instance method <code>btn()</code> to set group buttons and attach things:</strong>
+<pre>
+$group = Html::button_group(array('status' => 'info'));
+$group->btn('#', 'button')->tooltip('heeey');
+$group->btn('#', 'button')->popover('Ho', 'hover');
+$group->btn('#', 'button')->disabled();
+</pre>
+<div class="btn-group"><a rel="tooltip" title="heeey" class="btn btn-info" href="button_group.html#">button</a>
+<a data-title="Ho" data-content="hover" rel="popover" class="btn btn-info" href="button_group.html#">button</a>
+<a disabled="disabled" class="btn disabled btn-info" href="button_group.html#">button</a></div>	
+</div>
+
+<div>
+	<strong>Massive buttons assignement can be done with <code>btns()</code> method:</strong>
+<pre>
+Html::button_group('radio')->btns(array('#', 'One'), array('#', 'Two')...);
+</pre>
+<div data-toggle="buttons-radio" class="btn-group"><a class="btn" href="button_group.html#">One</a>
+<a class="btn" href="button_group.html#">Two</a>
+<a class="btn" href="button_group.html#">Three</a>
+<a class="btn" href="button_group.html#">Four</a></div></div>
+				</div>
+	</body>
+</html>

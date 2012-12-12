@@ -45,21 +45,27 @@
 	<body>
 				<div id="sidebar" class="well">
 					<nav>
-						<ul class="nav nav-list"><li class="nav-header">Attachables</li>
-<li><a href="../../extra/tooltip/index.html">Tooltip, Popover & Modal</a></li>
+						<ul class="nav nav-list"><li class="nav-header">General</li>
+<li><a href="../index.html">Infos and dowload</a></li>
+<li><a href="../attribute.html">Attributes</a></li>
+<li><a href="../template.html">Templates</a></li>
+<li class="nav-header">Attachables</li>
+<li><a href="../extra/tooltip.html">Tooltip, Popover & Modal</a></li>
+<li class="nav-header">Form related modules</li>
+<li><a href="../form/input.html">Inputs</a></li>
 <li class="nav-header">Html related modules</li>
-<li><a href="../alert/index.html">Alerts</a></li>
-<li><a href="../breadcrumb/index.html">Breadcrumb</a></li>
-<li><a href="../button/index.html">Buttons</a></li>
-<li><a href="../button_group/index.html">Button groups</a></li>
-<li><a href="../button_dropdown/index.html">Buttons dropdown</a></li>
-<li><a href="../dropdown/index.html">Dropdowns</a></li>
-<li><a href="../icon/index.html">Icons & Images</a></li>
-<li><a href="../badge/index.html">Labels & Badges</a></li>
-<li><a href="../modal/index.html">Modal</a></li>
-<li><a href="../navs/index.html">Nav Tabs & Nav Pills</a></li>
-<li><a href="../list/index.html">Nav Lists</a></li>
-<li class="active"><a href="index.html">Progress</a></li></ul>					</nav>
+<li><a href="alert.html">Alerts</a></li>
+<li><a href="breadcrumb.html">Breadcrumb</a></li>
+<li><a href="button.html">Buttons</a></li>
+<li><a href="button_group.html">Button groups</a></li>
+<li><a href="button_dropdown.html">Buttons dropdown</a></li>
+<li><a href="dropdown.html">Dropdowns</a></li>
+<li><a href="icon.html">Icons & Images</a></li>
+<li><a href="badge.html">Labels & Badges</a></li>
+<li><a href="modal.html">Modal</a></li>
+<li><a href="navs.html">Nav Tabs & Nav Pills</a></li>
+<li><a href="list.html">Nav Lists</a></li>
+<li class="active"><a href="progress.html">Progress</a></li></ul>					</nav>
 				</div>
 				
 				<div id="content">
@@ -74,17 +80,15 @@
 	<div class="progress"><div style="width:64%" class="bar"></div></div></div>
 
 <div>
-	<strong>The <code>status</code> can be speficied as string, or by a key if you need to add classic html attributes:</strong>
+	<strong>The <code>status</code>:</strong>
 <pre>
-Html::progress(36, 'success')
-// or
 Html::progress(36, array('status' => 'success'))
 </pre>
 	<div class="progress progress-success"><div style="width:25%" class="bar bar-success">success</div></div>	<div class="progress progress-info"><div style="width:50%" class="bar bar-info">info</div></div>	<div class="progress progress-warning"><div style="width:75%" class="bar bar-warning">warning</div></div>	<div class="progress progress-danger"><div style="width:100%" class="bar bar-danger">danger</div></div></div>
 
 <div>
 	<strong>The third parameter let's you the ability to add some <code>text</code> whithin the bar:</strong>
-	<pre>Html::progress(46, 'info', '56 sec remaining')</pre>
+	<pre>Html::progress(46, array('status' => 'info'), '56 sec remaining')</pre>
 	<div class="progress progress-info"><div style="width:46%" class="bar bar-info">56 sec remaining</div></div></div>
 
 <div>
@@ -105,8 +109,8 @@ Html::progress(36, array('status' => 'success'))
 <pre>
 pro = Html::progress();
 $pro->bar(15);
-$pro->bar(15, 'info')->tooltip('Second Bar');
-$pro->bar(15, 'warning', 'End');
+$pro->bar(15, array('status' => 'info'))->tooltip('Second Bar');
+$pro->bar(15, array('status' => 'warning'), 'End');
 </pre>
 	<div class="progress"><div style="width:15%" class="bar"></div>
 <div rel="tooltip" title="Second Bar" style="width:15%" class="bar bar-info"></div>
@@ -116,9 +120,9 @@ $pro->bar(15, 'warning', 'End');
 	<strong>Setup attributes for all bars, and add text whithin each:</strong>
 <pre>
 $pro = Html::progress(array('active' => true, 'striped' => true));
-$pro->bar(30, 'success', 'This');
-$pro->bar(30, 'warning', 'is');
-$pro->bar(30, 'danger', 'Reggae');
+$pro->bar(30, array('status' => 'success'), 'This');
+$pro->bar(30, array('status' => 'warning'), 'is');
+$pro->bar(30, array('status' => 'danger'), 'Reggae');
 </pre>
 	<div class="progress active progress-striped"><div style="width:30%" class="bar bar-success">This</div>
 <div style="width:30%" class="bar bar-warning">is</div>
@@ -128,5 +132,3 @@ $pro->bar(30, 'danger', 'Reggae');
 				</div>
 	</body>
 </html>
-
-<!-- Localized -->

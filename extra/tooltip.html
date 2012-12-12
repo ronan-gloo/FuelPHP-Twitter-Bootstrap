@@ -45,21 +45,27 @@
 	<body>
 				<div id="sidebar" class="well">
 					<nav>
-						<ul class="nav nav-list"><li class="nav-header">Attachables</li>
-<li class="active"><a href="index.html">Tooltip, Popover & Modal</a></li>
+						<ul class="nav nav-list"><li class="nav-header">General</li>
+<li><a href="../index.html">Infos and dowload</a></li>
+<li><a href="../attribute.html">Attributes</a></li>
+<li><a href="../template.html">Templates</a></li>
+<li class="nav-header">Attachables</li>
+<li class="active"><a href="tooltip.html">Tooltip, Popover & Modal</a></li>
+<li class="nav-header">Form related modules</li>
+<li><a href="../form/input.html">Inputs</a></li>
 <li class="nav-header">Html related modules</li>
-<li><a href="../../html/alert/index.html">Alerts</a></li>
-<li><a href="../../html/breadcrumb/index.html">Breadcrumb</a></li>
-<li><a href="../../html/button/index.html">Buttons</a></li>
-<li><a href="../../html/button_group/index.html">Button groups</a></li>
-<li><a href="../../html/button_dropdown/index.html">Buttons dropdown</a></li>
-<li><a href="../../html/dropdown/index.html">Dropdowns</a></li>
-<li><a href="../../html/icon/index.html">Icons & Images</a></li>
-<li><a href="../../html/badge/index.html">Labels & Badges</a></li>
-<li><a href="../../html/modal/index.html">Modal</a></li>
-<li><a href="../../html/navs/index.html">Nav Tabs & Nav Pills</a></li>
-<li><a href="../../html/list/index.html">Nav Lists</a></li>
-<li><a href="../../html/progress/index.html">Progress</a></li></ul>					</nav>
+<li><a href="../html/alert.html">Alerts</a></li>
+<li><a href="../html/breadcrumb.html">Breadcrumb</a></li>
+<li><a href="../html/button.html">Buttons</a></li>
+<li><a href="../html/button_group.html">Button groups</a></li>
+<li><a href="../html/button_dropdown.html">Buttons dropdown</a></li>
+<li><a href="../html/dropdown.html">Dropdowns</a></li>
+<li><a href="../html/icon.html">Icons & Images</a></li>
+<li><a href="../html/badge.html">Labels & Badges</a></li>
+<li><a href="../html/modal.html">Modal</a></li>
+<li><a href="../html/navs.html">Nav Tabs & Nav Pills</a></li>
+<li><a href="../html/list.html">Nav Lists</a></li>
+<li><a href="../html/progress.html">Progress</a></li></ul>					</nav>
 				</div>
 				
 				<div id="content">
@@ -74,12 +80,12 @@ Tooltip module is not a standalone one: That means you can't render any html con
 <div>
 	<strong>Attach a tooltip to a button:</strong>
 	<pre>Html::button('#', 'Hover me')->tooltip('I am a tooltip')</pre>
-	<a rel="tooltip" title="I am a tooltip" class="btn" href="#">Hover me</a></div>
+	<a rel="tooltip" title="I am a tooltip" class="btn" href="tooltip.html#">Hover me</a></div>
 
 <div>
 	<strong>Specify the placement of the tooltip:</strong>
 	<pre>Html::button('#', 'Hover me')->tooltip('I am a tooltip', 'right')</pre>
-	<a data-placement="right" rel="tooltip" title="I am a tooltip" class="btn" href="#">Hover me</a></div>
+	<a data-placement="right" rel="tooltip" title="I am a tooltip" class="btn" href="tooltip.html#">Hover me</a></div>
 
 <div>
 	Second tooltip's arguement accepts <a href="http://twitter.github.com/bootstrap/javascript.html#tooltips">data attributes based options</a> throught as array:
@@ -89,7 +95,7 @@ Tooltip module is not a standalone one: That means you can't render any html con
 <hr />
 <h3>
 	Popover
-	<small>See <a href="../../html/popover/index.html">the popover reference</a></small>	
+	<small>See <a href="http://scripts.e-glou.com/index.php/bootstrap/html/popover">the popover reference</a></small>	
 </h3>
 <p>
 	Despite tooltips, popover is a standalone module, but you can simply attach it to a existing module.<br />
@@ -98,7 +104,7 @@ Tooltip module is not a standalone one: That means you can't render any html con
 <div>
 	<strong>To attach the popover, set title and contents:</strong>
 	<pre>Html::button('#', 'Click me')->popover('title', 'content')</pre>
-	<a data-title="title" data-content="content" rel="popover" class="btn" href="#">Click me</a></div>
+	<a data-title="title" data-content="content" rel="popover" class="btn" href="tooltip.html#">Click me</a></div>
 
 <div>
 	<strong>Specify the placement, or setup <a href="http://twitter.github.com/bootstrap/javascript.html#popovers">data attributes based options</a>:</strong>
@@ -106,13 +112,13 @@ Tooltip module is not a standalone one: That means you can't render any html con
 Html::button('#', 'Click me')->popover('title', 'content',  array('placement' => 'top'))
 Html::label('Hover me')->popover('title', 'content', 'hover')
 </pre>
-	<a data-placement="top" data-title="title" data-content="content" rel="popover" class="btn" href="#">Click me</a>	<span data-trigger="hover" data-title="title" data-content="content" rel="popover" class="label label-default">Hover me</span></div>
+	<a data-placement="top" data-title="title" data-content="content" rel="popover" class="btn" href="tooltip.html#">Click me</a>	<span data-trigger="hover" data-title="title" data-content="content" rel="popover" class="label label-default">Hover me</span></div>
 
 <hr />
 <div>
 	<h3>
 		Modal
-		<small>See <a href="../../html/modal/index.html">the modal reference</a></small>
+		<small>See <a href="../html/modal.html">the modal reference</a></small>
 	</h3>
 	<div class="alert"><strong></strong>
 Only elements that support <code>href</code> attributes can attach modals elements</div>	<p>Modal is also a standalone module.
@@ -126,9 +132,7 @@ modal->set(...)
 -----
 Html::button('#modal', 'Open modal')->modal($modal)
 </pre>
-	<a data-toggle="modal" class="btn" href="#modal">Open modal</a><div id="modal" class="modal fade"><div class="modal-header"><h3>modal</h3></div><div class="modal-body">I'm an attached modal</div><div class="modal-footer"><a data-dismiss="modal" class="btn" href="#">close</a></div></div></div>
+	<a data-toggle="modal" class="btn" href="tooltip.html#modal">Open modal</a><div id="modal" class="modal fade"><div class="modal-header"><h3>modal</h3></div><div class="modal-body">I'm an attached modal</div><div class="modal-footer"><a data-dismiss="modal" class="btn" href="tooltip.html#">close</a></div></div></div>
 				</div>
 	</body>
 </html>
-
-<!-- Localized -->

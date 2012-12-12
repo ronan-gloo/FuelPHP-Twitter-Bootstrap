@@ -45,21 +45,27 @@
 	<body>
 				<div id="sidebar" class="well">
 					<nav>
-						<ul class="nav nav-list"><li class="nav-header">Attachables</li>
-<li><a href="../../extra/tooltip/index.html">Tooltip, Popover & Modal</a></li>
+						<ul class="nav nav-list"><li class="nav-header">General</li>
+<li><a href="../index.html">Infos and dowload</a></li>
+<li><a href="../attribute.html">Attributes</a></li>
+<li><a href="../template.html">Templates</a></li>
+<li class="nav-header">Attachables</li>
+<li><a href="../extra/tooltip.html">Tooltip, Popover & Modal</a></li>
+<li class="nav-header">Form related modules</li>
+<li><a href="../form/input.html">Inputs</a></li>
 <li class="nav-header">Html related modules</li>
-<li><a href="../alert/index.html">Alerts</a></li>
-<li><a href="../breadcrumb/index.html">Breadcrumb</a></li>
-<li><a href="../button/index.html">Buttons</a></li>
-<li><a href="../button_group/index.html">Button groups</a></li>
-<li><a href="../button_dropdown/index.html">Buttons dropdown</a></li>
-<li><a href="../dropdown/index.html">Dropdowns</a></li>
-<li><a href="../icon/index.html">Icons & Images</a></li>
-<li><a href="../badge/index.html">Labels & Badges</a></li>
-<li><a href="../modal/index.html">Modal</a></li>
-<li class="active"><a href="index.html">Nav Tabs & Nav Pills</a></li>
-<li><a href="../list/index.html">Nav Lists</a></li>
-<li><a href="../progress/index.html">Progress</a></li></ul>					</nav>
+<li><a href="alert.html">Alerts</a></li>
+<li><a href="breadcrumb.html">Breadcrumb</a></li>
+<li><a href="button.html">Buttons</a></li>
+<li><a href="button_group.html">Button groups</a></li>
+<li><a href="button_dropdown.html">Buttons dropdown</a></li>
+<li><a href="dropdown.html">Dropdowns</a></li>
+<li><a href="icon.html">Icons & Images</a></li>
+<li><a href="badge.html">Labels & Badges</a></li>
+<li><a href="modal.html">Modal</a></li>
+<li class="active"><a href="navs.html">Nav Tabs & Nav Pills</a></li>
+<li><a href="list.html">Nav Lists</a></li>
+<li><a href="progress.html">Progress</a></li></ul>					</nav>
 				</div>
 				
 				<div id="content">
@@ -78,9 +84,9 @@ $tab->item('#', 'Second tab')
 $tab->item('#', 'Last tab')
 echo $tab
 </pre>
-	<ul class="nav nav-tabs"><li><a href="#">First tab</a></li>
-<li><a href="#">Second tab</a></li>
-<li><a href="#">Last tab</a></li></ul></div>
+	<ul class="nav nav-tabs"><li><a href="navs.html#">First tab</a></li>
+<li><a href="navs.html#">Second tab</a></li>
+<li><a href="navs.html#">Last tab</a></li></ul></div>
 
 <div>
 	<strong>Set tab state as <code>active</code>, or <code>disabled</code>:</strong>
@@ -91,36 +97,34 @@ $tab->item('#', 'First tab', array('active' => true))
 $tab->item('#', 'Last tab')->disabled() // true or false // or
 $tab->item('#', 'Last tab', array('disabled' => true))
 </pre>
-	<ul class="nav nav-tabs"><li class="active"><a href="#">First tab</a></li>
-<li><a href="#">Second tab</a></li>
-<li class="disabled"><a href="#">third tab</a></li></ul></div>
+	<ul class="nav nav-tabs"><li class="active"><a href="navs.html#">First tab</a></li>
+<li><a href="navs.html#">Second tab</a></li>
+<li class="disabled"><a href="navs.html#">third tab</a></li></ul></div>
 
 <div>
 	<strong>Define tabs <code>type</code> as <code>pills</code> or <code>tabs</code>(default):</strong>
 	<pre>$tab = Html::navtab(array('type' => 'pills'))</pre>
-	<ul class="nav nav-pills"><li class="active"><a href="#">First tab</a></li>
-<li><a href="#">Second tab</a></li>
-<li><a href="#">third tab</a></li></ul></div>
+	<ul class="nav nav-pills"><li class="active"><a href="navs.html#">First tab</a></li>
+<li><a href="navs.html#">Second tab</a></li>
+<li><a href="navs.html#">third tab</a></li></ul></div>
 
 <div>
 	<strong>Define <code>stacked</code> tabs to <code>true</code>:</strong>
 	<pre>$tab = Html::navtab(array('stacked' => true))</pre>
-	<ul class="nav-stacked nav nav-tabs"><li><a href="#">First tab</a></li>
-<li><a href="#">Second tab</a></li>
-<li><a href="#">third tab</a></li></ul></div>
+	<ul class="nav-stacked nav nav-tabs"><li><a href="navs.html#">First tab</a></li>
+<li><a href="navs.html#">Second tab</a></li>
+<li><a href="navs.html#">third tab</a></li></ul></div>
 
 <div>
-	<strong>Setup <code>icon</code> for items, by a string, or by a key if you need to add classic html attributes:</strong>
+	<strong>Setup <code>icon</code> attributes:</strong>
 <pre>
-$tab->item('#', 'First tab', 'user')
+$tab->item('#', 'First tab',  array('icon' => 'user'))
 $tab->item('#', 'Second tab', array('icon' => 'cog'))
-$tab->item('#', 'third tab', 'inbox')->active()
+$tab->item('#', 'third tab',  array('icon' => 'inbox'))->active()
 </pre>
-	<ul class="nav nav-tabs"><li><a href="#"><i class="icon icon-user"></i> First tab</a></li>
-<li><a href="#"><i class="icon icon-cog"></i> Second tab</a></li>
-<li class="active"><a href="#"><i class="icon icon-inbox"></i> third tab</a></li></ul></div>
+	<ul class="nav nav-tabs"><li><a href="navs.html#"><i class="icon icon-user"></i> First tab</a></li>
+<li><a href="navs.html#"><i class="icon icon-cog"></i> Second tab</a></li>
+<li class="active"><a href="navs.html#"><i class="icon icon-inbox"></i> third tab</a></li></ul></div>
 				</div>
 	</body>
 </html>
-
-<!-- Localized -->

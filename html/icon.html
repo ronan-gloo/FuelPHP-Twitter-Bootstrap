@@ -45,21 +45,27 @@
 	<body>
 				<div id="sidebar" class="well">
 					<nav>
-						<ul class="nav nav-list"><li class="nav-header">Attachables</li>
-<li><a href="../../extra/tooltip/index.html">Tooltip, Popover & Modal</a></li>
+						<ul class="nav nav-list"><li class="nav-header">General</li>
+<li><a href="../index.html">Infos and dowload</a></li>
+<li><a href="../attribute.html">Attributes</a></li>
+<li><a href="../template.html">Templates</a></li>
+<li class="nav-header">Attachables</li>
+<li><a href="../extra/tooltip.html">Tooltip, Popover & Modal</a></li>
+<li class="nav-header">Form related modules</li>
+<li><a href="../form/input.html">Inputs</a></li>
 <li class="nav-header">Html related modules</li>
-<li><a href="../alert/index.html">Alerts</a></li>
-<li><a href="../breadcrumb/index.html">Breadcrumb</a></li>
-<li><a href="../button/index.html">Buttons</a></li>
-<li><a href="../button_group/index.html">Button groups</a></li>
-<li><a href="../button_dropdown/index.html">Buttons dropdown</a></li>
-<li><a href="../dropdown/index.html">Dropdowns</a></li>
-<li class="active"><a href="index.html">Icons & Images</a></li>
-<li><a href="../badge/index.html">Labels & Badges</a></li>
-<li><a href="../modal/index.html">Modal</a></li>
-<li><a href="../navs/index.html">Nav Tabs & Nav Pills</a></li>
-<li><a href="../list/index.html">Nav Lists</a></li>
-<li><a href="../progress/index.html">Progress</a></li></ul>					</nav>
+<li><a href="alert.html">Alerts</a></li>
+<li><a href="breadcrumb.html">Breadcrumb</a></li>
+<li><a href="button.html">Buttons</a></li>
+<li><a href="button_group.html">Button groups</a></li>
+<li><a href="button_dropdown.html">Buttons dropdown</a></li>
+<li><a href="dropdown.html">Dropdowns</a></li>
+<li class="active"><a href="icon.html">Icons & Images</a></li>
+<li><a href="badge.html">Labels & Badges</a></li>
+<li><a href="modal.html">Modal</a></li>
+<li><a href="navs.html">Nav Tabs & Nav Pills</a></li>
+<li><a href="list.html">Nav Lists</a></li>
+<li><a href="progress.html">Progress</a></li></ul>					</nav>
 				</div>
 				
 				<div id="content">
@@ -93,14 +99,12 @@ Note that <a href="http://fortawesome.github.com/Font-Awesome/">Font Awesome ico
 <div>
 	<strong>Second parameter can be a string, or an array if you need to provide other html attributes:</strong>
 <pre>
-Html::image('...', 'polaroid')
-Html::image('...', 'rounded')
+Html::image('...', array('type' => 'polaroid'))
+Html::image('...', array('type' => 'rounded'))
 Html::image('...', array('type' => 'circle', 'alt' => 'Circle Picture'))
 </pre>
-	<img class="img-polaroid" src="http://placehold.it/140x140" alt="140x140" />	<img class="img-rounded" src="http://placehold.it/140x140" alt="140x140" />	<img alt="Circle Picture" class="img-circle" src="http://placehold.it/140x140" /></div>
+	<img ="polaroid" src="http://placehold.it/140x140" alt="140x140" />	<img ="rounded" src="http://placehold.it/140x140" alt="140x140" />	<img alt="Circle Picture" class="img-circle" src="http://placehold.it/140x140" /></div>
 
 				</div>
 	</body>
 </html>
-
-<!-- Localized -->

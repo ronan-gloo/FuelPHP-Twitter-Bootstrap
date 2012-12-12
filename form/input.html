@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Twitter Bootstrap FuelPHP Package</title>
+			<link type="text/css" rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" />
+	<link type="text/css" rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap.js"></script>
+		<style>
+			html, body, .btn-group > .btn, .btn-group > .dropdown-menu {
+				font-size: 12px;
+			}
+			#sidebar {
+				position: fixed;
+				top:0;
+				left:0;
+				bottom: 0;
+				width: 200px;
+				overflow-y: scroll;
+				margin: 0;
+				z-index: 2;
+			}
+			#content {
+				margin-left: 260px;
+				margin-right: 20px;
+			}
+			pre {
+				font-size: .8em;
+			}
+			#content > div {
+				margin: 2em 0;
+			}
+		</style>
+		<script type="text/javascript">
+		$(function(){
+			$('[rel="tooltip"]').tooltip();
+			$('[rel="popover"]').popover().click(function(e){
+				e.preventDefault();
+			});
+		})
+		</script>
+
+	</head>
+	<body>
+				<div id="sidebar" class="well">
+					<nav>
+						<ul class="nav nav-list"><li class="nav-header">General</li>
+<li><a href="../index.html">Infos and dowload</a></li>
+<li><a href="../attribute.html">Attributes</a></li>
+<li><a href="../template.html">Templates</a></li>
+<li class="nav-header">Attachables</li>
+<li><a href="../extra/tooltip.html">Tooltip, Popover & Modal</a></li>
+<li class="nav-header">Form related modules</li>
+<li class="active"><a href="input.html">Inputs</a></li>
+<li class="nav-header">Html related modules</li>
+<li><a href="../html/alert.html">Alerts</a></li>
+<li><a href="../html/breadcrumb.html">Breadcrumb</a></li>
+<li><a href="../html/button.html">Buttons</a></li>
+<li><a href="../html/button_group.html">Button groups</a></li>
+<li><a href="../html/button_dropdown.html">Buttons dropdown</a></li>
+<li><a href="../html/dropdown.html">Dropdowns</a></li>
+<li><a href="../html/icon.html">Icons & Images</a></li>
+<li><a href="../html/badge.html">Labels & Badges</a></li>
+<li><a href="../html/modal.html">Modal</a></li>
+<li><a href="../html/navs.html">Nav Tabs & Nav Pills</a></li>
+<li><a href="../html/list.html">Nav Lists</a></li>
+<li><a href="../html/progress.html">Progress</a></li></ul>					</nav>
+				</div>
+				
+				<div id="content">
+					<h3>Inputs</h3>
+
+<div>
+	<p>Bootstrap Inputs come with few additionals parameters and associated methods.</p>
+	<strong>The <code>size</code> allow you to specify the input size:</strong>
+	<pre>Form::input('name', 'value', array('size' => 'large'))</pre>
+	<div>
+		<input class="input-mini" name="name" value="mini" type="text" id="form_name" /><br />
+		<input class="input-small" name="name" value="small" type="text" id="form_name" /><br />
+		<input class="input-medium" name="name" value="medium" type="text" id="form_name" /><br />
+		<input class="input-large" name="name" value="large" type="text" id="form_name" /><br />
+		<input class="input-xlarge" name="name" value="xlarge" type="text" id="form_name" /><br />
+		<input class="input-xxlarge" name="name" value="xxlarge" type="text" id="form_name" />	</div>
+</div>
+
+<div>
+	<strong>The <code>search</code> add a search input styling:</strong>
+	<pre>Form::input('name', '', array('search' => true))</pre>
+	<input class="search-query" name="name" value="" type="text" id="form_name" /></div>
+
+<div>
+	<strong>You also can call <code>disabled()</code> method:</strong>
+	<pre>Form::input('name', '')->disabled()</pre>
+	<input disabled="disabled" name="name" value="" type="text" id="form_name" /></div>
+
+<div>
+	<h4>Append and Prepend</h4>
+	<p><code>prepend()</code> or <code>append()</code> methods (or keys) provide surrounding input support.</p>
+	<strong>Prepend a basic string to the input:</strong>
+<pre>
+Form::input('name', '', '@') // only for prepend
+Form::input('name', '', array('prepend' => '@'))
+Form::input('name', '')->prepend('@')
+</pre>
+	<div class="input-prepend"><span class="add-on">@</span><input name="name" value="" type="text" id="form_name" /></div></div>
+
+<div>
+	<strong>Use <code>icon-</code> keyword to append / prepend an icon:</strong>
+	<pre>Form::input('name', '', array('prepend' => 'icon-user'))</pre>
+	<div class="input-prepend"><span class="add-on"><i class="icon icon-user"></i></span><input name="name" value="" type="text" id="form_name" /></div></div>
+
+<div>
+	<strong>Append or prepend <code>multiple</code> items:</strong>
+	<pre>Form::input('name', 'value')->append('icon-envelope', '@') </pre>
+	<div class="input-append"><input name="name" value="" type="text" id="form_name" /><span class="add-on"><i class="icon icon-envelope"></i></span>
+<span class="add-on">@</span></div></div>
+
+<div>
+	<strong>Append or prepend <code>buttons</code>:</strong>
+	<pre>Form::input('name', '')->append(Html::button('#', 'go'))</pre>
+	<div class="input-append"><input name="name" value="" type="text" id="form_name" /><a class="btn" href="input.html#">go</a></div></div>
+
+<div>
+	<strong>Append or prepend <code>button dropdowns</code>:</strong>
+<pre>
+$dp = Html::button_dropdown('#', 'test', array('split' => true));
+$dp->item('#', 'one');
+$dp->item('#', 'two');
+Form::input('name', '')->append($dp);
+</pre>
+<div class="input-append"><input name="name" value="" type="text" id="form_name" /><div class="btn-group"><a class="btn" href="input.html#">test</a> <a class="dropdown-toggle btn" data-toggle="dropdown" href="input.html#"><span class="caret"></span></a><ul class="dropdown-menu"><li><a href="input.html#">one</a></li>
+<li><a href="input.html#">two</a></li></ul></div></div></div>
+
+<div>
+	<h4>Attach tooltip or popover</h4>
+	<strong>inputs supports both <code>tooltip()</code> and <code>popover()</code> attached elements. Popover triggering is on <code>focus</code> by default:</strong>
+	<pre>Form::input('name', '')->popover('Username', 'Fill the username you'll wan't to login');</pre>
+	<input placeholder="Username" data-title="Username" data-content="Fill the username you'll wan't to login" rel="popover" data-trigger="focus" name="name" value="" type="text" id="form_name" /><br />
+	<input placeholder="Password" data-title="Password" data-content="At least 8 alpha-mnum characters" rel="popover" data-trigger="focus" name="name" value="" type="text" id="form_name" /></div>
+
+<hr />
+<h4>Extra Input types</h4>
+
+<div>
+	<strong>Add the <code>search-query</code> css class and <code>search</code> type attribute to the input:</strong>
+	<pre>Form::search('name', '', array('placeholder' => 'Search...'))</pre>
+	<input placeholder="Search..." type="search" class="search-query" name="name" value="" id="form_name" /></div>
+
+<div>
+	<strong>Add the <code>uneditable-input</code> css class to a <code>span</code> element:</strong>
+	<pre>Form::locked('name', 'icon-user')</pre>
+	<div class="input-prepend"><span class="add-on"><i class="icon icon-user"></i></span><span class="uneditable-input">name</span></div>	</div>
+</div>				</div>
+	</body>
+</html>

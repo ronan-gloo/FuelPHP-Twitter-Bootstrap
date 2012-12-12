@@ -69,11 +69,46 @@
 				</div>
 				
 				<div id="content">
-					<div class="well">
-	<h1>Twitter Bootstrap FuelPHP Package</h1>
-	<p class="lead">Simple and flexible package to interact with Bootstrap from Twitter</p>
-	<div>
-		<a target="_blank" class="btn btn-primary btn-large" href="http://github.com/ronan-gloo/FuelPHP-Twitter-Bootstrap">Download package</a>	</div>
-</div>				</div>
+					<h3>Module templates</h3>
+<p>Because you may want to standardize some of your components, you can set templates in config file.
+Under <code>templates</code> key, create a new one with your attributes, then call it with the key <code>from</code>:</p>
+<code>attrs['from'] => 'template key'</code>
+<hr />
+<h3>Paths to config files</h3>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Classes</th>
+			<th>Config</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<td>Html::<code>{module}</code></td>
+			<td>bootstrap/html_<code>{module}</code>.php</td>
+		</tr>
+		<tr>
+			<td>Form::<code>{module}</code></td>
+			<td>bootstrap/form_<code>{module}</code>.php</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>Simple Example with a button:</h3>
+<pre>
+// in config 'bootstrap/html_button.php':
+'templates' => array(
+	'example' => array(
+		'status' => 'primary',
+		'icon'	 => 'thumbs-up',
+		'size'	 => 'large',
+		'title'	 => 'Some Title',
+		'class'	 => 'button-submit'
+	)
+Html::button('', 'Submit', array('from' => 'example'))
+</pre>
+<a title="Some Title" class="button-submit btn btn-primary btn-large" href="template.html#"><i class="icon-white icon icon-thumbs-up"></i> Submit</a>
+				</div>
 	</body>
 </html>

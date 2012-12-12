@@ -45,21 +45,27 @@
 	<body>
 				<div id="sidebar" class="well">
 					<nav>
-						<ul class="nav nav-list"><li class="nav-header">Attachables</li>
-<li><a href="../../extra/tooltip/index.html">Tooltip, Popover & Modal</a></li>
+						<ul class="nav nav-list"><li class="nav-header">General</li>
+<li><a href="../index.html">Infos and dowload</a></li>
+<li><a href="../attribute.html">Attributes</a></li>
+<li><a href="../template.html">Templates</a></li>
+<li class="nav-header">Attachables</li>
+<li><a href="../extra/tooltip.html">Tooltip, Popover & Modal</a></li>
+<li class="nav-header">Form related modules</li>
+<li><a href="../form/input.html">Inputs</a></li>
 <li class="nav-header">Html related modules</li>
-<li><a href="../alert/index.html">Alerts</a></li>
-<li class="active"><a href="index.html">Breadcrumb</a></li>
-<li><a href="../button/index.html">Buttons</a></li>
-<li><a href="../button_group/index.html">Button groups</a></li>
-<li><a href="../button_dropdown/index.html">Buttons dropdown</a></li>
-<li><a href="../dropdown/index.html">Dropdowns</a></li>
-<li><a href="../icon/index.html">Icons & Images</a></li>
-<li><a href="../badge/index.html">Labels & Badges</a></li>
-<li><a href="../modal/index.html">Modal</a></li>
-<li><a href="../navs/index.html">Nav Tabs & Nav Pills</a></li>
-<li><a href="../list/index.html">Nav Lists</a></li>
-<li><a href="../progress/index.html">Progress</a></li></ul>					</nav>
+<li><a href="alert.html">Alerts</a></li>
+<li class="active"><a href="breadcrumb.html">Breadcrumb</a></li>
+<li><a href="button.html">Buttons</a></li>
+<li><a href="button_group.html">Button groups</a></li>
+<li><a href="button_dropdown.html">Buttons dropdown</a></li>
+<li><a href="dropdown.html">Dropdowns</a></li>
+<li><a href="icon.html">Icons & Images</a></li>
+<li><a href="badge.html">Labels & Badges</a></li>
+<li><a href="modal.html">Modal</a></li>
+<li><a href="navs.html">Nav Tabs & Nav Pills</a></li>
+<li><a href="list.html">Nav Lists</a></li>
+<li><a href="progress.html">Progress</a></li></ul>					</nav>
 				</div>
 				
 				<div id="content">
@@ -74,31 +80,31 @@ $bc->item('#', 'all');
 $bc->item('breadcrumb');
 echo $bc;
 </pre>
-	<ul class="breadcrumb"><li><a href="#">home</a></li>
+	<ul class="breadcrumb"><li><a href="breadcrumb.html#">home</a></li>
 <li><span class="divider">/</span></li>
-<li><a href="#">all</a></li>
+<li><a href="breadcrumb.html#">all</a></li>
 <li><span class="divider">/</span></li>
 <li class="active"><span>breadcrumb</span></li></ul></div>
 
 <div>
 	<strong>You can manually setup a different <code>divider</code> for your items. Html is allowed here:</strong>
 	<pre> $bc = Html::breadcrumb('>')</pre>
-	<ul class="breadcrumb"><li><a href="#">home</a></li>
+	<ul class="breadcrumb"><li><a href="breadcrumb.html#">home</a></li>
 <li><span class="divider">></span></li>
-<li><a href="#">all</a></li>
+<li><a href="breadcrumb.html#">all</a></li>
 <li><span class="divider">></span></li>
 <li class="active"><span>breadcrumb</span></li></ul></div>
 
 <div>
-	<p>Each item is an object, wich accepts 4 parameters: <code>url</code> , <code>title</code> , <code>attributes</code>  (string or array) and <code>secure link</code> </p>
+	<p>Each item is an object, wich accepts 4 parameters: <code>url</code> , <code>title</code> , <code>attributes</code> and <code>secure link</code></p>
 	<strong>Third parameter string generates an icon markup, array accepts <code>icon</code> and <code>active</code> keys: </strong>
 <pre>
-$bc->item('#', 'home', 'home', true)
+$bc->item('#', 'home', array('icon' => 'home'), true)
 $bc->item('#', 'all', array('icon' => 'inbox'))
 </pre>
-	<ul class="breadcrumb"><li><a href="#"><i class="icon icon-home"></i> home</a></li>
+	<ul class="breadcrumb"><li><a href="breadcrumb.html#"><i class="icon icon-home"></i> home</a></li>
 <li><span class="divider">/</span></li>
-<li><a href="#"><i class="icon icon-inbox"></i> all</a></li>
+<li><a href="breadcrumb.html#"><i class="icon icon-inbox"></i> all</a></li>
 <li><span class="divider">/</span></li>
 <li class="active"><span>breadcrumb</span></li></ul></div>
 
@@ -108,14 +114,12 @@ $bc->item('#', 'all', array('icon' => 'inbox'))
 $bc->item('#', 'home', 'home')->tooltip('back to home')
 $bc->item('#', 'all', 'inbox')->popover('title', 'content', array('placement' => 'top'));
 </pre>
-	<ul class="breadcrumb"><li rel="tooltip" title="back to home"><a href="#"><i class="icon icon-home"></i> home</a></li>
+	<ul class="breadcrumb"><li rel="tooltip" title="back to home"><a href="breadcrumb.html#"><i class="icon icon-home"></i> home</a></li>
 <li><span class="divider">/</span></li>
-<li data-placement="top" data-title="title" data-content="content" rel="popover"><a href="#"><i class="icon icon-inbox"></i> all</a></li>
+<li data-placement="top" data-title="title" data-content="content" rel="popover"><a href="breadcrumb.html#"><i class="icon icon-inbox"></i> all</a></li>
 <li><span class="divider">/</span></li>
 <li class="active"><span>breadcrumb</span></li></ul></div>
 
 				</div>
 	</body>
 </html>
-
-<!-- Localized -->
