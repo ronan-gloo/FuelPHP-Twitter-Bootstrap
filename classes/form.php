@@ -12,4 +12,8 @@ class Form extends \Fuel\Core\Form {
 	{
 		return static::$instance->locked($text, $attrs);
 	}
+	public static function help($text = null, $attrs = array())
+	{
+		return static::$instance->help($text, $attrs);
+	}
 }

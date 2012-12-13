@@ -37,7 +37,6 @@ class Form_Instance extends \Fuel\Core\Form_Instance {
 		return Form_Input::forge($attributes)->make($this, $field, $value);
 	}
 	
-	
 	/**
 	 * Force type and css for search inputs.
 	 * 
@@ -61,6 +60,10 @@ class Form_Instance extends \Fuel\Core\Form_Instance {
 		return Form_Locked::forge($attrs)->make($text);
 	}
 
+	public function help($text = null, $attrs = array())
+	{
+		return Form_Help::forge($attrs)->make($text);
+	}
 
 		
 }

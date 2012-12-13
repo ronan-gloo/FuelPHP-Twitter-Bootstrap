@@ -32,6 +32,7 @@ Autoloader::add_classes(array(
 	'Bootstrap\\Form_Instance'	=> __DIR__.'/classes/form/instance.php',
 	'Bootstrap\\Form_Input'			=> __DIR__.'/classes/form/input.php',
 	'Bootstrap\\Form_Locked'		=> __DIR__.'/classes/form/locked.php',
+	'Bootstrap\\Form_Help'			=> __DIR__.'/classes/form/help.php',
 	
 	// Html Modules
 	'Bootstrap\\Html'						=> __DIR__.'/classes/html.php',

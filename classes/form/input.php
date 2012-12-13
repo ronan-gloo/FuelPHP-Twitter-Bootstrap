@@ -2,6 +2,8 @@
 
 namespace Bootstrap;
 
+use \InvalidArgumentException;
+
 class Form_Input extends BootstrapModuleSurround implements Deactivable {
 	
 	protected $data	= array('field' => '', 'value' => '');
@@ -22,8 +24,6 @@ class Form_Input extends BootstrapModuleSurround implements Deactivable {
 	}
 		
 	/**
-	 * disabled function.
-	 * 
 	 * @access public
 	 * @param bool $bool (default: true)
 	 * @return void
@@ -65,6 +65,10 @@ class Form_Input extends BootstrapModuleSurround implements Deactivable {
 				
 				case 'search':
 				$this->css('search-query');
+				break;
+				
+				case 'state':
+				method_exists($this, $attr) and $this->$attr(true);
 				break;
 			}
 		}
