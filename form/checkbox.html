@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Twitter Bootstrap FuelPHP Package</title>
+			<link type="text/css" rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" />
+	<link type="text/css" rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap.js"></script>
+		<style>
+			html, body, .btn-group > .btn, .btn-group > .dropdown-menu {
+				font-size: 12px;
+			}
+			#sidebar {
+				position: fixed;
+				top:0;
+				left:0;
+				bottom: 0;
+				width: 200px;
+				overflow-y: scroll;
+				margin: 0;
+				z-index: 2;
+			}
+			#content {
+				margin-left: 260px;
+				margin-right: 20px;
+			}
+			pre {
+				font-size: .8em;
+			}
+			#content > div {
+				margin: 2em 0;
+			}
+		</style>
+		<script type="text/javascript">
+		$(function(){
+			$('[rel="tooltip"]').tooltip();
+			$('[rel="popover"]').popover().click(function(e){
+				e.preventDefault();
+			});
+		})
+		</script>
+
+	</head>
+	<body>
+				<div id="sidebar" class="well">
+					<nav>
+						<ul class="nav nav-list"><li class="nav-header">General</li>
+<li><a href="../index.html">Infos and dowload</a></li>
+<li><a href="../attribute.html">Attributes</a></li>
+<li><a href="../template.html">Templates</a></li>
+<li class="nav-header">Attachables</li>
+<li><a href="../extra/tooltip.html">Tooltip, Popover & Modal</a></li>
+<li class="nav-header">Form related modules</li>
+<li><a href="input.html">Inputs</a></li>
+<li class="active"><a href="checkbox.html">Checkboxes & Radios</a></li>
+<li><a href="extra.html">Extras</a></li>
+<li class="nav-header">Html related modules</li>
+<li><a href="../html/alert.html">Alerts</a></li>
+<li><a href="../html/breadcrumb.html">Breadcrumb</a></li>
+<li><a href="../html/button.html">Buttons</a></li>
+<li><a href="../html/button_group.html">Button groups</a></li>
+<li><a href="../html/button_dropdown.html">Buttons dropdown</a></li>
+<li><a href="../html/dropdown.html">Dropdowns</a></li>
+<li><a href="../html/icon.html">Icons & Images</a></li>
+<li><a href="../html/badge.html">Labels & Badges</a></li>
+<li><a href="../html/modal.html">Modal</a></li>
+<li><a href="../html/navs.html">Nav Tabs & Nav Pills</a></li>
+<li><a href="../html/list.html">Nav Lists</a></li>
+<li><a href="../html/progress.html">Progress</a></li></ul>					</nav>
+				</div>
+				
+				<div id="content">
+						<h4>Form Checkboxes & Radios</h4>
+	<p>Radio and Checkbox modules allow you to simply wrap them into a label, and provide some extra methods</p>
+
+<div>
+	<strong>Wrap a checkbox into a <code>label</code>.<br />The <code>label()</code>method accepts html attributes as second arg. If the input attrs contains an <code>id</code> key, the <code>for</code> label attribute will be set</strong>:
+<pre>
+Form::checkbox('name', '', null, array('label' => 'My fist checkbox'))
+// or
+Form::checkbox('name', '', null, array('id' => 'first'))->label("Checkbox")
+</pre>
+	<div class="controls">
+		<label class=" checkbox " for="first"><input id="first" name="check" value="" type="checkbox" />
+Checkbox 1</label>		<label class=" checkbox " for="second"><input id="second" name="check" value="" type="checkbox" />
+Checkbox 2</label>		<label class=" checkbox " for="third"><input id="third" name="check" value="" type="checkbox" />
+Checkbox 3</label>	</div>
+</div>
+
+<div>
+	<strong>Provide the <code>inline</code> key or method to display multiples radios / checkboxes. The inline method /arg act as <code>label</code></strong>:
+<pre>
+Form::radio('name', true, array('inline' => 'First radio'))
+Form::radio('name')->inline('Second radio')
+</pre>
+	<div class="controls">
+		<label class="inline radio "><input name="name" value="" checked="checked" type="radio" id="form_name" />
+First radio</label>		<label class=" inline radio "><input name="name" value="" type="radio" id="form_name" />
+Second radio</label>	</div>
+</div>
+
+<div>
+	<strong>The <code>checked()</code> method</strong>:
+<pre>
+Form::radio('name')->label('Radio 2')->checked();
+</pre>
+	<div class="controls">
+		<label class=" radio "><input name="name1" value="" type="radio" id="form_name1" />
+Radio 1</label>		<label class=" radio "><input name="name1" value="" checked="checked" type="radio" id="form_name1" />
+Radio 2</label>	</div>
+</div>
+
+<div>
+	<strong>The <code>disabled</code> state accepts boolean. The <code>muted</code> css class is added by default</strong>:
+<pre>
+Form::checkbox('name', '', true)->label('Checkbox 2')->disabled();
+</pre>
+	<div class="controls">
+		<label class=" checkbox "><input name="name2" value="" type="checkbox" id="form_name2" />
+Checkbox 1</label>		<label class=" checkbox muted"><input disabled="disabled" class="muted" name="name2" value="" checked="checked" type="checkbox" id="form_name2" />
+Checkbox 2</label>	</div>
+</div>
+
+				</div>
+	</body>
+</html>
