@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Twitter Bootstrap FuelPHP Package</title>
+			<link type="text/css" rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" />
+	<link type="text/css" rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap.js"></script>
+		<style>
+			html, body, .btn-group > .btn, .btn-group > .dropdown-menu {
+				font-size: 12px;
+			}
+			#sidebar {
+				position: fixed;
+				top:0;
+				left:0;
+				bottom: 0;
+				width: 200px;
+				overflow-y: scroll;
+				margin: 0;
+				z-index: 2;
+			}
+			#content {
+				margin-left: 260px;
+				margin-right: 20px;
+			}
+			pre {
+				font-size: .8em;
+			}
+			#content > div {
+				margin: 2em 0;
+			}
+		</style>
+		<script type="text/javascript">
+		$(function(){
+			$('[rel="tooltip"]').tooltip();
+			$('[rel="popover"]').popover().click(function(e){
+				e.preventDefault();
+			});
+		})
+		</script>
+
+	</head>
+	<body>
+				<div id="sidebar" class="well">
+					<nav>
+						<ul class="nav nav-list"><li class="nav-header">General</li>
+<li><a href="../index.html">Infos and dowload</a></li>
+<li><a href="../attribute.html">Attributes</a></li>
+<li><a href="../template.html">Templates</a></li>
+<li class="nav-header">Attachables</li>
+<li><a href="../extra/tooltip.html">Tooltip, Popover & Modal</a></li>
+<li class="nav-header">Form related modules</li>
+<li><a href="input.html">Inputs</a></li>
+<li class="active"><a href="extra.html">Extras</a></li>
+<li class="nav-header">Html related modules</li>
+<li><a href="../html/alert.html">Alerts</a></li>
+<li><a href="../html/breadcrumb.html">Breadcrumb</a></li>
+<li><a href="../html/button.html">Buttons</a></li>
+<li><a href="../html/button_group.html">Button groups</a></li>
+<li><a href="../html/button_dropdown.html">Buttons dropdown</a></li>
+<li><a href="../html/dropdown.html">Dropdowns</a></li>
+<li><a href="../html/icon.html">Icons & Images</a></li>
+<li><a href="../html/badge.html">Labels & Badges</a></li>
+<li><a href="../html/modal.html">Modal</a></li>
+<li><a href="../html/navs.html">Nav Tabs & Nav Pills</a></li>
+<li><a href="../html/list.html">Nav Lists</a></li>
+<li><a href="../html/progress.html">Progress</a></li></ul>					</nav>
+				</div>
+				
+				<div id="content">
+					<div>
+	<h4>Form Help</h4>
+	<strong>Display form help <code>inline</code> (default) or <code>block</code></strong>:
+<pre>
+Form::help('...')
+Form::help('...', array('type' => 'block'))
+</pre>
+	<div class="controls">
+		<input name="name" value="" type="text" id="form_name" />		<span class="help-inline">Inline help</span>	</div>
+	<div class="controls">
+		<input name="name" value="" type="text" id="form_name" />		<span class="help-block">Block level help</span>	</div>
+</div>				</div>
+	</body>
+</html>

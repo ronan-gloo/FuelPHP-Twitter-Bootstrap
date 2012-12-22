@@ -15,7 +15,6 @@ interface Nestable {
 	public function nest($instance = array());
 }
 
-
 /**
  * Prevent some module to be attached (ie; attach popover on popover...etc).
  */

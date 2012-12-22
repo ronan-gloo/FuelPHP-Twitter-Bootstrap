@@ -16,4 +16,12 @@ class Form extends \Fuel\Core\Form {
 	{
 		return static::$instance->help($text, $attrs);
 	}
+	public static function checkbox($name, $value = null, $checked = null, array $attrs = array())
+	{
+		return static::$instance->checkbox($name, $value, $checked, $attrs);
+	}
+	public static function radio($name, $value = null, $checked = null, array $attrs = array())
+	{
+		return static::$instance->radio($name, $value, $checked, $attrs);
+	}
 }

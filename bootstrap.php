@@ -33,6 +33,8 @@ Autoloader::add_classes(array(
 	'Bootstrap\\Form_Input'			=> __DIR__.'/classes/form/input.php',
 	'Bootstrap\\Form_Locked'		=> __DIR__.'/classes/form/locked.php',
 	'Bootstrap\\Form_Help'			=> __DIR__.'/classes/form/help.php',
+	'Bootstrap\\Form_Checkbox'	=> __DIR__.'/classes/form/checkbox.php',
+	'Bootstrap\\Form_Radio'			=> __DIR__.'/classes/form/radio.php',
 	
 	// Html Modules
 	'Bootstrap\\Html'						=> __DIR__.'/classes/html.php',
@@ -61,6 +63,5 @@ Autoloader::add_classes(array(
 	'Bootstrap\\Html_Table'			=> __DIR__.'/classes/html/table.php',
 	'Bootstrap\\Html_Tooltip'		=> __DIR__.'/classes/html/tooltip.php',
 ));
-
 
 /* End of file bootstrap.php */
