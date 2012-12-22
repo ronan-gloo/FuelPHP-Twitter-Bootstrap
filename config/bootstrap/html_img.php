@@ -6,6 +6,6 @@ return array(
 	'attributes' => array(
 		'type' => array('rounded', 'circle', 'polaroid')
 	),
-	'atribute' => 'type',
+	'attribute' => 'type',
 	
 );
