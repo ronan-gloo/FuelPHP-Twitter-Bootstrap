@@ -79,9 +79,24 @@ Form::help('...')
 Form::help('...', array('type' => 'block'))
 </pre>
 	<div class="controls">
-		<input name="name" value="" type="text" id="form_name" />		<span class="help-inline">Inline help</span>	</div>
+		<input name="name" value="" type="text" id="form_name" />		<span class="help-inline">Inline help</span>		<span class="help-block">Block level help</span>	</div>
+</div>
+<hr />
+<div>
+	<h4>Form Typeahead <small> see <a href="http://twitter.github.com/bootstrap/javascript.html#typeahead">documentation</a></small></h4>
+	<strong>Generates a Typeahead input form. All classic input attributes are accepted. Extra attributes are <code>source</code>, <code>items</code> and <code>minLength</code></strong>:
+	<pre>Form::typeahead('contries', '', array('source' => array(...))</pre>
 	<div class="controls">
-		<input name="name" value="" type="text" id="form_name" />		<span class="help-block">Block level help</span>	</div>
+				<div class="input-prepend"><span class="add-on"><i class="icon icon-globe"></i></span><input data-source="[&quot;France&quot;,&quot;Spain&quot;,&quot;USA&quot;,&quot;Italia&quot;,&quot;Belgium&quot;,&quot;Germany&quot;,&quot;Brazil&quot;,&quot;India&quot;,&quot;China&quot;,&quot;Japan&quot;,&quot;Australia&quot;,&quot;Greece&quot;]" data-items="2" data-minLength="2" data-provide="typeahead" autocomplete="off" name="contries" value="" type="text" id="form_contries" /></div>	</div>
+	<strong>Alternatively, you can use the <code>data()</code> method</strong>:
+	<pre>Form::typeahead('contries', '')->data($source, $items, $minLength);</pre>
+
+	<strong>If you use <a target="_blank" href="https://github.com/twitter/bootstrap/pull/2007">the multiple typeahead</a>, then invoque the <code>multiple()</code> method, or the multiple key</strong>:
+<pre>
+Form::typeahead('contries', '', array('multiple' => true))
+//or 
+Form::typeahead('contries', '')->multiple();
+</pre>
 </div>				</div>
 	</body>
 </html>
