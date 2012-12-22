@@ -54,24 +54,7 @@ class Form_Input extends BootstrapModuleSurround implements Deactivable {
 	{
 		list($prepend, $append) = $this->surround();
 		
-		// parse input attributes
-		foreach ($this->attrs as $key => $attr)
-		{
-			switch ($key)
-			{
-				case 'size':
-				$this->css('input-'.$attr);
-				break;
-				
-				case 'search':
-				$this->css('search-query');
-				break;
-				
-				case 'state':
-				method_exists($this, $attr) and $this->$attr(true);
-				break;
-			}
-		}
+		$this->parse_attrs();
 		
 		$this->merge()->clean();
 		
@@ -95,6 +78,32 @@ class Form_Input extends BootstrapModuleSurround implements Deactivable {
 		empty($this->attrs['data-trigger']) and $this->attrs['data-trigger'] = 'focus';
 
 		return $this;
+	}
+	
+	
+	/**
+	 * @access protected
+	 * @return void
+	 */
+	protected function parse_attrs()
+	{
+		foreach ($this->attrs as $key => $attr)
+		{
+			switch ($key)
+			{
+				case 'size':
+				$this->css('input-'.$attr);
+				break;
+				
+				case 'search':
+				$this->css('search-query');
+				break;
+				
+				case 'state':
+				method_exists($this, $attr) and $this->$attr(true);
+				break;
+			}
+		}
 	}
 	
 	

@@ -35,6 +35,7 @@ Autoloader::add_classes(array(
 	'Bootstrap\\Form_Help'			=> __DIR__.'/classes/form/help.php',
 	'Bootstrap\\Form_Checkbox'	=> __DIR__.'/classes/form/checkbox.php',
 	'Bootstrap\\Form_Radio'			=> __DIR__.'/classes/form/radio.php',
+	'Bootstrap\\Form_Typeahead'	=> __DIR__.'/classes/form/typeahead.php',
 	
 	// Html Modules
 	'Bootstrap\\Html'						=> __DIR__.'/classes/html.php',

@@ -101,4 +101,16 @@ class Form_Instance extends \Fuel\Core\Form_Instance {
 	{
 		return Form_Radio::forge($attributes)->make($this, $field, $value, $checked);
 	}
+
+	/**
+	 * @access public
+	 * @param mixed $field
+	 * @param mixed $value (default: null)
+	 * @param array $attributes (default: array())
+	 * @return void
+	 */
+	public function typeahead($field, $value = null, $attributes = array())
+	{
+		return Form_Typeahead::forge($attributes)->make($this, $field, $value);
+	}
 }

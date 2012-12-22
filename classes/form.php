@@ -24,4 +24,9 @@ class Form extends \Fuel\Core\Form {
 	{
 		return static::$instance->radio($name, $value, $checked, $attrs);
 	}
+	public static function typeahead($name, $value = null, $attrs = array())
+	{
+		return static::$instance->typeahead($name, $value, $attrs);
+	}
+
 }
