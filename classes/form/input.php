@@ -13,10 +13,8 @@ class Form_Input extends BootstrapModuleSurround implements Deactivable {
 	 * @param Closure $callback
 	 * @return void
 	 */
-	public function make($instance, $field, $value = '')
+	public function make($field, $value = '')
 	{
-		$this->instance = $instance;
-		
 		$this->data['field'] = $field;
 		$this->data['value'] = $value;
 		
@@ -60,7 +58,8 @@ class Form_Input extends BootstrapModuleSurround implements Deactivable {
 		
 		$input = $this->instance->core_input($this->data['field'], $this->data['value'], $this->attrs);
 		
-		$this->html = ($prepend or $append) ? html_tag('div', $this->cattrs, $prepend.$input.$append) : $input;
+		$this->html  = $this->instance->control_open();
+		$this->html .= ($prepend or $append) ? html_tag('div', $this->cattrs, $prepend.$input.$append) : $input;
 		
 		return parent::render();
 	}	

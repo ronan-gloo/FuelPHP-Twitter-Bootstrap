@@ -20,6 +20,7 @@ Autoloader::add_classes(array(
 	'Bootstrap\\BootstrapModuleBtn'				=> __DIR__.'/classes/module/button.php',
 	'Bootstrap\\BootstrapModuleIcon'			=> __DIR__.'/classes/module/icon.php',
 	'Bootstrap\\BootstrapModuleSurround'	=> __DIR__.'/classes/module/surround.php',
+	'Bootstrap\\BootstrapModuleForm'			=> __DIR__.'/classes/module/form.php',
 	
 	// Package Interfaces
 	'Bootstrap\\Activable' 		=> __DIR__.'/classes/interfaces.php',
@@ -31,6 +32,7 @@ Autoloader::add_classes(array(
 	'Bootstrap\\Form'						=> __DIR__.'/classes/form.php',
 	'Bootstrap\\Form_Instance'	=> __DIR__.'/classes/form/instance.php',
 	'Bootstrap\\Form_Input'			=> __DIR__.'/classes/form/input.php',
+	'Bootstrap\\Form_Label'			=> __DIR__.'/classes/form/label.php',
 	'Bootstrap\\Form_Locked'		=> __DIR__.'/classes/form/locked.php',
 	'Bootstrap\\Form_Help'			=> __DIR__.'/classes/form/help.php',
 	'Bootstrap\\Form_Checkbox'	=> __DIR__.'/classes/form/checkbox.php',

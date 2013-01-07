@@ -2,9 +2,8 @@
 
 namespace Bootstrap;
 
-class Form_Checkbox extends BootstrapModule implements Deactivable {
+class Form_Checkbox extends BootstrapModuleForm implements Deactivable {
 	
-	protected $instance	= null;
 	protected $data			= array();
 	protected $entity		= 'checkbox';
 	protected $name			= 'form_checkbox';
@@ -17,10 +16,8 @@ class Form_Checkbox extends BootstrapModule implements Deactivable {
 	 * @param mixed $checked
 	 * @return void
 	 */
-	public function make($instance, $field, $value, $checked)
+	public function make($field, $value, $checked)
 	{
-		$this->instance = $instance;
-		
 		$this->data['field'] 		= $field;
 		$this->data['value'] 		= $value;
 		$this->data['checked'] 	= $checked;
@@ -144,6 +141,9 @@ class Form_Checkbox extends BootstrapModule implements Deactivable {
 		{
 			$this->html = $this->_input();
 		}
+		
+		$this->html = $this->instance->control_open().$this->html;
+		
 		return parent::render();
 	}
 	
@@ -155,7 +155,7 @@ class Form_Checkbox extends BootstrapModule implements Deactivable {
 	{
 		$this->merge()->clean();
 		
-		return $this->instance->{'core_'.$this->entity}(
+		return Form::instance()->{'core_'.$this->entity}(
 			$this->data['field'],
 			$this->data['value'],
 			$this->data['checked'],

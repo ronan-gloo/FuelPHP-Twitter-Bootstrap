@@ -2,7 +2,7 @@
 
 namespace Bootstrap;
 
-class Form_Help extends BootstrapModule  {
+class Form_Help extends BootstrapModuleForm  {
 	
 	protected $data	= array('text' => '');
 	

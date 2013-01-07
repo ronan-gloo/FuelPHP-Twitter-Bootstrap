@@ -4,7 +4,6 @@ namespace Bootstrap;
 
 use \InvalidArgumentException, \LogicException;
 
-
 /**
  * Generates a pppover element.
  * 

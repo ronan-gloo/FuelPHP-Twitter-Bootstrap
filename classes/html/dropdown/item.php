@@ -15,7 +15,6 @@ class Html_Dropdown_Item extends Html_Item implements Nestable {
 		if (! $instance instanceof Html_Dropdown) $instance = Html_Dropdown::forge($instance);
 		
 		// add sub-menu class
-		
 		$this->_merge($this->attrs, array('dropdown-submenu'));
 		
 		$this->append_html = $instance;

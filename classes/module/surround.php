@@ -8,7 +8,7 @@ namespace Bootstrap;
  * 
  * @extends BootstrapModule
  */
-class BootstrapModuleSurround extends BootstrapModule {
+class BootstrapModuleSurround extends BootstrapModuleForm {
 	
 	protected $cattrs 	= array();
 	protected $append		= array();
