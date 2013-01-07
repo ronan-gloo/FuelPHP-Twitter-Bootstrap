@@ -9,7 +9,7 @@ abstract class BootstrapModuleIcon extends BootstrapModule {
 	 * @param mixed &$text
 	 * @return void
 	 */
-	public function set_icon(&$text)
+	protected function set_icon(&$text)
 	{
 		if (isset($this->attrs['icon']))
 		{

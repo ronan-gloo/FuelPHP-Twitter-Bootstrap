@@ -96,6 +96,20 @@ class Form_Instance extends \Fuel\Core\Form_Instance {
 		return $output;
 	}
 	
+	
+	/**
+	 * @access public
+	 * @static
+	 * @param mixed $field
+	 * @param mixed $value (default: null)
+	 * @param array $attrs (default: array())
+	 * @return void
+	 */
+	public function button($field, $value = null, array $attributes = array())
+	{
+		return Form_Button::forge($attributes)->make($this, $field, $value);
+	}
+
 	/**
 	 * input function.
 	 * 
@@ -106,6 +120,36 @@ class Form_Instance extends \Fuel\Core\Form_Instance {
 	public function input($field, $value = null, array $attributes = array())
 	{
 		return Form_Input::forge($attributes)->instance($this)->make($field, $value);
+	}
+	
+	/**
+	 * Generates a form button, with submit type forced
+	 * @access public
+	 * @static
+	 * @param string $field (default: 'submit')
+	 * @param string $value (default: 'Submit')
+	 * @param array $attrs (default: array())
+	 * @return void
+	 */
+	public function submit($field = 'submit', $value = 'Submit', array $attributes = array())
+	{
+		$attributes['type'] = 'submit';
+		return Form_Button::forge($attributes)->make($this, $field, $value);
+	}
+
+	/**
+	 * Generates a form button, with reset type forced
+	 * @access public
+	 * @static
+	 * @param string $field (default: 'submit')
+	 * @param string $value (default: 'Submit')
+	 * @param array $attrs (default: array())
+	 * @return void
+	 */
+	public function reset($field = 'submit', $value = 'Submit', array $attributes = array())
+	{
+		$attributes['type'] = 'reset';
+		return Form_Button::forge($attributes)->make($this, $field, $value);
 	}
 	
 	/**

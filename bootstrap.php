@@ -30,6 +30,7 @@ Autoloader::add_classes(array(
 	
 	// Form Modules
 	'Bootstrap\\Form'						=> __DIR__.'/classes/form.php',
+	'Bootstrap\\Form_Button'		=> __DIR__.'/classes/form/button.php',
 	'Bootstrap\\Form_Instance'	=> __DIR__.'/classes/form/instance.php',
 	'Bootstrap\\Form_Input'			=> __DIR__.'/classes/form/input.php',
 	'Bootstrap\\Form_Label'			=> __DIR__.'/classes/form/label.php',

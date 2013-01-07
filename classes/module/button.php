@@ -11,7 +11,7 @@ abstract class BootstrapModuleBtn extends BootstrapModuleIcon implements Activab
 	 * @param mixed &$value
 	 * @return void
 	 */
-	public function set_button()
+	protected function set_button()
 	{
 		// juste a string: it should be the color
 		is_string($this->attrs) and $this->attrs = array('status' => $this->attrs);
