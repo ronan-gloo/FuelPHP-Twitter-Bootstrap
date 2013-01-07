@@ -52,9 +52,9 @@
 <li class="nav-header">Attachables</li>
 <li><a href="../extra/tooltip.html">Tooltip, Popover & Modal</a></li>
 <li class="nav-header">Form related modules</li>
-<li><a href="button.html">Buttons & Submits</a></li>
+<li class="active"><a href="button.html">Buttons & Submits</a></li>
 <li><a href="checkbox.html">Checkboxes & Radios</a></li>
-<li class="active"><a href="control.html">Control groups</a></li>
+<li><a href="control.html">Control groups</a></li>
 <li><a href="extra.html">Extras</a></li>
 <li><a href="input.html">Inputs</a></li>
 <li class="nav-header">Html related modules</li>
@@ -73,40 +73,25 @@
 				</div>
 				
 				<div id="content">
-					<h3>Form Controls</h3>
-<p>Control groups are working with <code>.form-horizontal</code> form types.<br />
-Wrapping controls inside group automatically adds <code>.control-label</code> to labels, and wrap suported controls into <code>.controls</code> element.</p>
-<div>
-<pre>
-Form::group_open()
-	Form::label('First control label')
-	Form::input('control')
-	Form::help('help text')
-Form::group_close()
-</pre>
-	<form class="form form-horizontal">
-		<div class="control-group">			<label class="control-label" for="form_">First control label</label>			<div class="controls"><input name="control" value="" type="text" id="form_control" />			<span class="help-inline">help text</span>		</div></div>		<div class="control-group">			<label class="control-label" for="form_">Second control label</label>			<div class="controls"><input name="control" value="" type="text" id="form_control" />		</div></div>	</form>
-</div>
-
+					<h3>Form Button, Reset and Submit</h3>
+<div class="alert"><strong></strong>
+Buttons, Resets and Submits share the same configuration file: <strong>form_button.php</strong></div><p>Form buttons attributes works as html buttons attributes. To learn how yo set them, please <strong>read the Html Buttons documentation page.</strong></p>
+<p>For convenience, submits are <code>&lt;button&gt;</code> with <code>type="submit"</code>.<p>
 
 <div>
-	<strong>The <code>group_open()</code> method accepts array of html attributes as args, or the <code>validation status</code> as string:</strong>
-	<pre>Form::group_open('warning')</pre>
-	<form class="form form-horizontal">
-		<div class="control-group warning">			<label class="control-label" for="form_">warning status</label>			<div class="controls"><input name="control" value="" type="text" id="form_control" />		</div></div>		<div class="control-group error">			<label class="control-label" for="form_">error status</label>			<div class="controls"><input name="control" value="" type="text" id="form_control" />		</div></div>		<div class="control-group info">			<label class="control-label" for="form_">info status</label>			<div class="controls"><input name="control" value="" type="text" id="form_control" />		</div></div>		<div class="control-group success">			<label class="control-label" for="form_">success status</label>			<div class="controls"><input name="control" value="" type="text" id="form_control" />		</div></div>	</form>
+	<pre>Form::reset('reset', 'Reset', array('icon' => 'refresh'))</pre>
+	<form>
+		<p><input placeholder="type something" name="name" value="" type="text" id="form_name" /><br />
+		<button type="reset" class="btn" name="reset"><i class="icon icon-refresh"></i> Reset</button>	</form>
 </div>
-<hr />
+
 <div>
-	<h4>Supported controls</h4>
-	<ul>
-		<li>Inputs</li>
-		<li>Radios / Checkboxes</li>
-		<li>Textarea</li>
-		<li>Selects</li>
-	</ul>
-</div>
+	<pre>Form::submit('submit', 'Submit', array('status' => 'inverse', 'icon' => 'user'))</pre>
+	<button type="submit" class="btn btn-inverse" name="submit"><i class="icon-white icon icon-user"></i> Submit</button></div>
 
-
-				</div>
+<div>
+	<strong>The <code>disabled()</code> method add css and <code>disabled="disabled"</code>html attribute:</strong>
+	<pre>Form::button('field')->disabled()</pre>
+	<button disabled="disabled" class="btn disabled" name="Disabled button">Disabled button</button></div>				</div>
 	</body>
 </html>
