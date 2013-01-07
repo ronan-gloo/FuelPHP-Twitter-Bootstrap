@@ -5,8 +5,10 @@
 		<title>Twitter Bootstrap FuelPHP Package</title>
 			<link type="text/css" rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" />
 	<link type="text/css" rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" />
+	<link type="text/css" rel="stylesheet" href="http://google-code-prettify.googlecode.com/svn/trunk/styles/sunburst.css" />
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 	<script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap.js"></script>
+	<script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.js"></script>
 		<style>
 			html, body, .btn-group > .btn, .btn-group > .dropdown-menu {
 				font-size: 12px;
@@ -31,9 +33,16 @@
 			#content > div {
 				margin: 2em 0;
 			}
+			pre.prettyprint, code.prettyprint {
+				background-color: #333;
+				border-radius: 5px;
+				font-size: 11px;
+				margin: 1em 0;
+			}
 		</style>
 		<script type="text/javascript">
 		$(function(){
+			$('pre').attr('class', 'prettyprint') && prettyPrint();
 			$('[rel="tooltip"]').tooltip();
 			$('[rel="popover"]').popover().click(function(e){
 				e.preventDefault();
@@ -78,6 +87,36 @@
 	<p class="lead">Simple and flexible package to interact with Bootstrap from Twitter</p>
 	<div>
 		<a target="_blank" class="btn btn-primary btn-large" href="http://github.com/ronan-gloo/FuelPHP-Twitter-Bootstrap">Download package</a>	</div>
-</div>				</div>
+</div>
+
+<h4>Speed up template coding</h4>
+<p>This package tries to be simple and intuitive as possible, to save you to write endless html code...<p>
+<form class="well form form-horizontal">
+	<div style="margin:0px" class="control-group info">	<label class="control-label" for="form_">Username</label>	<div class="controls"><div class="input-prepend"><span class="add-on"><i class="icon icon-user"></i></span><input name="username" value="" type="text" id="form_username" /></div>	</div></div></form>
+<strong>The php code:</strong>
+<pre class="prettyprint">
+Form::group_open('info')
+	Form::label("Username")
+	Form::input('username')->prepend('icon-user')
+Form::group_close()
+</pre>
+
+<strong>The html code:</strong>
+<pre>
+&lt;div class=&quot;control-group info&quot;&gt;
+	&lt;label class=&quot;control-label&quot; for=&quot;form_&quot;&gt;Username&lt;/label&gt;
+	&lt;div class=&quot;controls&quot;&gt;
+		&lt;div class=&quot;input-prepend&quot;&gt;
+			&lt;span class=&quot;add-on&quot;&gt;
+				&lt;i class=&quot;icon icon-user&quot;&gt;&lt;/i&gt;
+			&lt;/span&gt;
+			&lt;input name=&quot;username&quot; value=&quot;&quot; type=&quot;text&quot; id=&quot;form_username&quot;&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+
+				</div>
 	</body>
 </html>

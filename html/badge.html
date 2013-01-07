@@ -5,8 +5,10 @@
 		<title>Twitter Bootstrap FuelPHP Package</title>
 			<link type="text/css" rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" />
 	<link type="text/css" rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" />
+	<link type="text/css" rel="stylesheet" href="http://google-code-prettify.googlecode.com/svn/trunk/styles/sunburst.css" />
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 	<script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap.js"></script>
+	<script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.js"></script>
 		<style>
 			html, body, .btn-group > .btn, .btn-group > .dropdown-menu {
 				font-size: 12px;
@@ -31,9 +33,16 @@
 			#content > div {
 				margin: 2em 0;
 			}
+			pre.prettyprint, code.prettyprint {
+				background-color: #333;
+				border-radius: 5px;
+				font-size: 11px;
+				margin: 1em 0;
+			}
 		</style>
 		<script type="text/javascript">
 		$(function(){
+			$('pre').attr('class', 'prettyprint') && prettyPrint();
 			$('[rel="tooltip"]').tooltip();
 			$('[rel="popover"]').popover().click(function(e){
 				e.preventDefault();
