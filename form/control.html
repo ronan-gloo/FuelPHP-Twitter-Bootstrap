@@ -54,8 +54,8 @@
 <li class="nav-header">Form related modules</li>
 <li><a href="input.html">Inputs</a></li>
 <li><a href="checkbox.html">Checkboxes & Radios</a></li>
-<li class="active"><a href="extra.html">Extras</a></li>
-<li><a href="control.html">Control groups</a></li>
+<li><a href="extra.html">Extras</a></li>
+<li class="active"><a href="control.html">Control groups</a></li>
 <li class="nav-header">Html related modules</li>
 <li><a href="../html/alert.html">Alerts</a></li>
 <li><a href="../html/breadcrumb.html">Breadcrumb</a></li>
@@ -72,31 +72,40 @@
 				</div>
 				
 				<div id="content">
-					<div>
-	<h4>Form Help</h4>
-	<strong>Display form help <code>inline</code> (default) or <code>block</code></strong>:
+					<h3>Form Controls</h3>
+<p>Control groups are working with <code>.form-horizontal</code> form types.<br />
+Wrapping controls inside group automatically adds <code>.control-label</code> to labels, and wrap suported controls into <code>.controls</code> element.</p>
+<div>
 <pre>
-Form::help('...')
-Form::help('...', array('type' => 'block'))
+Form::group_open()
+	Form::label('First control label')
+	Form::input('control')
+	Form::help('help text')
+Form::group_close()
 </pre>
-	<div class="controls">
-		<input name="name" value="" type="text" id="form_name" />		<span class="help-inline">Inline help</span>		<span class="help-block">Block level help</span>	</div>
+	<form class="form form-horizontal">
+		<div class="control-group">			<label class="control-label" for="form_">First control label</label>			<div class="controls"><input name="control" value="" type="text" id="form_control" />			<span class="help-inline">help text</span>		</div></div>		<div class="control-group">			<label class="control-label" for="form_">Second control label</label>			<div class="controls"><input name="control" value="" type="text" id="form_control" />		</div></div>	</form>
 </div>
-<hr />
+
 
 <div>
-	<h4>Form Typeahead <small> see <a href="http://twitter.github.com/bootstrap/javascript.html#typeahead">documentation</a></small></h4>
-	<strong>Generates a Typeahead input form. All classic input attributes are accepted. Extra attributes are <code>source</code>, <code>items</code> and <code>minLength</code></strong>:
-	<pre>Form::typeahead('contries', '', array('source' => array(...))</pre>
-				<div class="control-group">			<div class="controls"><div class="input-prepend"><span class="add-on"><i class="icon icon-globe"></i></span><input data-source="[&quot;France&quot;,&quot;Spain&quot;,&quot;USA&quot;,&quot;Italia&quot;,&quot;Belgium&quot;,&quot;Germany&quot;,&quot;Brazil&quot;,&quot;India&quot;,&quot;China&quot;,&quot;Japan&quot;,&quot;Australia&quot;,&quot;Greece&quot;]" data-items="2" data-minLength="2" data-provide="typeahead" autocomplete="off" name="contries" value="" type="text" id="form_contries" /></div>		</div></div>	<strong>Alternatively, you can use the <code>data()</code> method</strong>:
-	<pre>Form::typeahead('contries', '')->data($source, $items, $minLength);</pre>
+	<strong>The <code>group_open()</code> method accepts array of html attributes as args, or the <code>validation status</code> as string:</strong>
+	<pre>Form::group_open('warning')</pre>
+	<form class="form form-horizontal">
+		<div class="control-group warning">			<label class="control-label" for="form_">warning status</label>			<div class="controls"><input name="control" value="" type="text" id="form_control" />		</div></div>		<div class="control-group error">			<label class="control-label" for="form_">error status</label>			<div class="controls"><input name="control" value="" type="text" id="form_control" />		</div></div>		<div class="control-group info">			<label class="control-label" for="form_">info status</label>			<div class="controls"><input name="control" value="" type="text" id="form_control" />		</div></div>		<div class="control-group success">			<label class="control-label" for="form_">success status</label>			<div class="controls"><input name="control" value="" type="text" id="form_control" />		</div></div>	</form>
+</div>
+<hr />
+<div>
+	<h4>Supported controls</h4>
+	<ul>
+		<li>Inputs</li>
+		<li>Radios / Checkboxes</li>
+		<li>Textarea</li>
+		<li>Selects</li>
+	</ul>
+</div>
 
-	<strong>If you use <a target="_blank" href="https://github.com/twitter/bootstrap/pull/2007">the multiple typeahead</a>, then invoque the <code>multiple()</code> method, or the multiple key</strong>:
-<pre>
-Form::typeahead('contries', '', array('multiple' => true))
-//or 
-Form::typeahead('contries', '')->multiple();
-</pre>
-</div>				</div>
+
+				</div>
 	</body>
 </html>
