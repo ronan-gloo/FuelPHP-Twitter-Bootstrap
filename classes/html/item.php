@@ -2,7 +2,9 @@
 
 namespace Bootstrap;
 
-use \InvalidArgumentException;
+use
+	\InvalidArgumentException
+;
 
 /**
  * Share item element (breadcrumb, dropdowns, tabs).
@@ -40,13 +42,26 @@ class Html_Item extends BootstrapModuleIcon implements Activable, Deactivable, L
 	public function render()
 	{		
 		$this->set_template()->set_icon($this->data['text']);
-		
 		$this->parse_attributes();
 		
 		extract($this->data);
 		
 		// setup content
-		$content = $text ? \Html::anchor($href, $text, $this->anchor_attrs, $secure) : html_tag('span', $this->attrs, $href);
+		if ($text)
+		{
+			if (strpos($href, 'mailto:') === 0)
+			{
+				$content = \Html::mail_to(substr($href, 7), $text, $secure, $this->anchor_attrs);
+			}
+			else
+			{
+				$content = \Html::anchor($href, $text, $this->anchor_attrs, $secure);
+			}
+		}
+		else
+		{
+			$content = html_tag('span', $this->attrs, $href);
+		}
 		
 		$this->html('li', $content);
 
