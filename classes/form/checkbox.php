@@ -66,7 +66,7 @@ class Form_Checkbox extends BootstrapModuleForm implements Deactivable {
 	 */
 	public function disabled($bool = true)
 	{
-		$muted = Config::get('bootstrap.utilities.fade');
+		$muted = Config::get('bootstrap.utilities.muted');
 		switch ($bool)
 		{
 			case 1:
