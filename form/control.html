@@ -30,6 +30,9 @@
 			pre {
 				font-size: .8em;
 			}
+			strong {
+				font-weight: normal;
+			}
 			#content > div {
 				margin: 2em 0;
 			}
@@ -61,11 +64,11 @@
 <li class="nav-header">Attachables</li>
 <li><a href="../extra/tooltip.html">Tooltip, Popover & Modal</a></li>
 <li class="nav-header">Form related modules</li>
+<li class="active"><a href="control.html">Openers</a></li>
+<li><a href="input.html">Inputs</a></li>
 <li><a href="button.html">Buttons & Submits</a></li>
 <li><a href="checkbox.html">Checkboxes & Radios</a></li>
-<li class="active"><a href="control.html">Control groups</a></li>
 <li><a href="extra.html">Extras</a></li>
-<li><a href="input.html">Inputs</a></li>
 <li class="nav-header">Html related modules</li>
 <li><a href="../html/alert.html">Alerts</a></li>
 <li><a href="../html/breadcrumb.html">Breadcrumb</a></li>
@@ -82,10 +85,27 @@
 				</div>
 				
 				<div id="content">
-					<h3>Form Controls</h3>
+					<div>
+	<h3>Form Open</h3>
+	<p>The <code>type</code> attribute allow you to specify the form layouts, which can be <code>search</code>, <code>inline</code> or <code>horizontal</code></p>
+	<pre>Form::open(array("type" => "horizontal"))</pre>
+</div>
+
+<div>
+	<h3>Form Actions</h3>
+	<p>The <code>form-actions</code> is generated when calling action_open() method. html attributes are supported as parameter</p>
+	<pre>
+Form::action_open(array('id' => 'submit-action'))
+	Form::reset()
+	Form::submit()
+Form::group_close()
+</pre>
+	<div id="submit-action" class="form-actions">	<button type="reset" class="btn" name="reset">Reset</button>	<button type="submit" class="btn" name="submit">Submit</button>	</div>
+
+<div>
+<h3>Form Controls</h3>
 <p>Control groups are working with <code>.form-horizontal</code> form types.<br />
 Wrapping controls inside group automatically adds <code>.control-label</code> to labels, and wrap suported controls into <code>.controls</code> element.</p>
-<div>
 <pre>
 Form::group_open()
 	Form::label('First control label')
