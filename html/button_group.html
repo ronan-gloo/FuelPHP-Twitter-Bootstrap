@@ -10,8 +10,10 @@
 	<script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap.js"></script>
 	<script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.js"></script>
 		<style>
+			body {
+				font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial;
+			}
 			html, body, .btn-group > .btn, .btn-group > .dropdown-menu {
-				font-size: 12px;
 			}
 			#sidebar {
 				position: fixed;
@@ -157,9 +159,9 @@ Html::button_group(array(
 	<strong>Feel free to use instance method <code>btn()</code> to set group buttons and attach things:</strong>
 <pre>
 $group = Html::button_group(array('status' => 'info'));
-$group->btn('#', 'button')->tooltip('heeey');
-$group->btn('#', 'button')->popover('Ho', 'hover');
-$group->btn('#', 'button')->disabled();
+$group->item('#', 'button')->tooltip('heeey');
+$group->item('#', 'button')->popover('Ho', 'hover');
+$group->item('#', 'button')->disabled();
 </pre>
 <div class="btn-group"><a rel="tooltip" title="heeey" class="btn btn-info" href="button_group.html#">button</a>
 <a data-title="Ho" data-content="hover" rel="popover" class="btn btn-info" href="button_group.html#">button</a>
@@ -169,7 +171,7 @@ $group->btn('#', 'button')->disabled();
 <div>
 	<strong>Massive buttons assignement can be done with <code>btns()</code> method:</strong>
 <pre>
-Html::button_group('radio')->btns(array('#', 'One'), array('#', 'Two')...);
+Html::button_group('radio')->items(array('#', 'One'), array('#', 'Two')...);
 </pre>
 <div data-toggle="buttons-radio" class="btn-group"><a class="btn" href="button_group.html#">One</a>
 <a class="btn" href="button_group.html#">Two</a>

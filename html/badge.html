@@ -10,8 +10,10 @@
 	<script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap.js"></script>
 	<script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.js"></script>
 		<style>
+			body {
+				font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial;
+			}
 			html, body, .btn-group > .btn, .btn-group > .dropdown-menu {
-				font-size: 12px;
 			}
 			#sidebar {
 				position: fixed;
@@ -93,8 +95,8 @@
 <div>
 	<strong>Creating a Default Label or Badge</strong>
 <pre>
-	Html::label("I'm a label")
-	Html::badge(500)
+Html::label("I'm a label")
+Html::badge(500)
 </pre>
 	<span class="label label-default">I'm a label</span>	<span class="badge badge-default">500</span></div>
 

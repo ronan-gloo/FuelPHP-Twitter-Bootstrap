@@ -10,8 +10,10 @@
 	<script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap.js"></script>
 	<script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.js"></script>
 		<style>
+			body {
+				font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial;
+			}
 			html, body, .btn-group > .btn, .btn-group > .dropdown-menu {
-				font-size: 12px;
 			}
 			#sidebar {
 				position: fixed;
@@ -90,7 +92,7 @@
 Under <code>templates</code> key, create a new one with your attributes, then call it with the key <code>from</code>:</p>
 <code>attrs['from'] => 'template key'</code>
 <hr />
-<h3>Paths to config files</h3>
+<h4>Paths to config files</h4>
 <table class="table">
 	<thead>
 		<tr>
@@ -111,7 +113,7 @@ Under <code>templates</code> key, create a new one with your attributes, then ca
 	</tbody>
 </table>
 
-<h3>Simple Example with a button:</h3>
+<h4>Simple Example with a button:</h4>
 <pre>
 // in config 'bootstrap/html_button.php':
 'templates' => array(
