@@ -12,13 +12,21 @@ class Form extends \Fuel\Core\Form {
 	{
 		return static::$instance->group_close();
 	}
-	public static function control_open()
+	public static function control_open(array $attrs = array())
 	{
 		return static::$instance->control_open();
 	}
 	public static function control_close()
 	{
 		return static::$instance->control_close();
+	}
+	public static function action_open(array $attrs = array())
+	{
+		return static::$instance->action_open();
+	}
+	public static function action_close()
+	{
+		return static::$instance->action_close();
 	}
 	public static function search($name, $value = null, array $attrs = array())
 	{

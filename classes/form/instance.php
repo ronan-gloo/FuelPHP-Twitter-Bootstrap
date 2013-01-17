@@ -57,7 +57,7 @@ class Form_Instance extends \Fuel\Core\Form_Instance {
 		if ($this->group['open'] === true)
 		{
 			$this->group['open'] = false;
-			$output .= '</div>';
+			$output .= $this->div_close();
 		}
 		return $output;
 	}
@@ -67,18 +67,18 @@ class Form_Instance extends \Fuel\Core\Form_Instance {
 	 * @access public
 	 * @return void
 	 */
-	public function control_open()
+	public function control_open(array $attrs = array())
 	{
 		$output = '';
 		
 		if ($this->group['open'] === true and $this->group['control'] === false)
 		{
-			$output = '<div class="controls">';
+			$output = $this->div_open('controls', $attrs);
 			$this->group['control'] = true;
 		}
 		return $output;
 	}
-	
+		
 	/**
 	 * @access public
 	 * @return void
@@ -89,14 +89,56 @@ class Form_Instance extends \Fuel\Core\Form_Instance {
 		
 		if ($this->group['control'] === true)
 		{
-			$output = '</div>';
+			$output = $this->div_close();
 			$this->group['control'] = false;
 		}
 		
 		return $output;
 	}
 	
+	/**
+	 * @access public
+	 * @param array $attrs (default: array())
+	 * @return void
+	 */
+	public function action_open(array $attrs = array())
+	{
+		return $this->div_open('form-actions', $attrs);
+	}
+
+	/**
+	 * @access public
+	 * @param array $attrs (default: array())
+	 * @return void
+	 */
+	public function action_close()
+	{
+		return $this->div_close();
+	}
 	
+	/**
+	 * Open div with specific class / attributes.
+	 * 
+	 * @access protected
+	 * @param mixed $class
+	 * @param array $attrs
+	 * @return void
+	 */
+	protected function div_open($class, array $attrs)
+	{
+		$attrs['class'] = empty($attrs['class']) ? $class : $attrs['class'].' '.$class;
+		return '<div '.array_to_attr($attrs).'>';
+	}
+	
+	/**
+	 * @access protected
+	 * @return void
+	 */
+	protected function div_close()
+	{
+		return '</div>';
+	}
+
 	/**
 	 * @access public
 	 * @static
