@@ -14,7 +14,7 @@ class Form extends \Fuel\Core\Form {
 	}
 	public static function control_open(array $attrs = array())
 	{
-		return static::$instance->control_open();
+		return static::$instance->control_open($attrs);
 	}
 	public static function control_close()
 	{
@@ -22,7 +22,7 @@ class Form extends \Fuel\Core\Form {
 	}
 	public static function action_open(array $attrs = array())
 	{
-		return static::$instance->action_open();
+		return static::$instance->action_open($attrs);
 	}
 	public static function action_close()
 	{

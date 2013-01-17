@@ -2,6 +2,9 @@
 
 namespace Bootstrap;
 
+use
+	\Config;
+
 class Form_Instance extends \Fuel\Core\Form_Instance {
 	
 	public $group = array('open' => false, 'control' => false);
@@ -27,6 +30,58 @@ class Form_Instance extends \Fuel\Core\Form_Instance {
 	} 
 	
 	/**
+	 * @access protected
+	 * @param mixed $class
+	 * @param mixed $attrs
+	 * @return void
+	 */
+	protected function set_css_class($class, $attrs)
+	{
+		$attrs['class'] = empty($attrs['class']) ? $class : $attrs['class'].' '.$class;
+		return $attrs;
+	}
+	
+	/**
+	 * Open div with specific class / attributes.
+	 * 
+	 * @access protected
+	 * @param mixed $class
+	 * @param array $attrs
+	 * @return void
+	 */
+	protected function div_open($class, array $attrs)
+	{
+		return '<div '.array_to_attr($this->set_css_class($class, $attrs)).'>';
+	}
+	
+	/**
+	 * @access protected
+	 * @return void
+	 */
+	protected function div_close()
+	{
+		return '</div>';
+	}
+	
+	/**
+	 * Set form type if provided.
+	 * 
+	 * @access public
+	 * @param array $attrs (default: array())
+	 * @param array $hidden (default: array())
+	 * @return void
+	 */
+	public function open($attrs = array(), array $hidden = array())
+	{
+		if (isset($attrs['type']))
+		{
+			$attrs = $this->set_css_class('form-'.$attrs['type'], $attrs);
+			unset($attrs['type']);
+		}
+		return parent::open($attrs, $hidden);
+	}
+	
+	/**
 	 * @access public
 	 * @return void
 	 */
@@ -34,7 +89,7 @@ class Form_Instance extends \Fuel\Core\Form_Instance {
 	{
 		is_string($attrs) and $attrs = array('status' => $attrs);
 		
-		$attrs['class'] = empty($attrs['class']) ? 'control-group' : $attrs['class'].' control-group';
+		$attrs = $this->set_css_class('control-group', $attrs);
 				
 		if (array_key_exists('status', $attrs))
 		{
@@ -61,7 +116,6 @@ class Form_Instance extends \Fuel\Core\Form_Instance {
 		}
 		return $output;
 	}
-	
 	
 	/**
 	 * @access public
@@ -116,29 +170,6 @@ class Form_Instance extends \Fuel\Core\Form_Instance {
 		return $this->div_close();
 	}
 	
-	/**
-	 * Open div with specific class / attributes.
-	 * 
-	 * @access protected
-	 * @param mixed $class
-	 * @param array $attrs
-	 * @return void
-	 */
-	protected function div_open($class, array $attrs)
-	{
-		$attrs['class'] = empty($attrs['class']) ? $class : $attrs['class'].' '.$class;
-		return '<div '.array_to_attr($attrs).'>';
-	}
-	
-	/**
-	 * @access protected
-	 * @return void
-	 */
-	protected function div_close()
-	{
-		return '</div>';
-	}
-
 	/**
 	 * @access public
 	 * @static
