@@ -3,6 +3,7 @@
 namespace Bootstrap;
 
 use
+	\Config,
 	\InvalidArgumentException
 ;
 
@@ -83,7 +84,7 @@ class Html_Item extends BootstrapModuleIcon implements Activable, Deactivable, L
 			{
 				case 'active':	
 				case 'disabled':
-				$val === true and $this->css($key);
+				$val === true and $this->css(Config::get('bootstrap.utilities.'.$key));
 				break;
 				case 'data-toggle':
 				$this->anchor_attrs = array($key => $val);

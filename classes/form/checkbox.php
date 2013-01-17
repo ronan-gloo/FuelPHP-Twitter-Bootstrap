@@ -2,6 +2,8 @@
 
 namespace Bootstrap;
 
+use \Config;
+
 class Form_Checkbox extends BootstrapModuleForm implements Deactivable {
 	
 	protected $data			= array();
@@ -64,18 +66,19 @@ class Form_Checkbox extends BootstrapModuleForm implements Deactivable {
 	 */
 	public function disabled($bool = true)
 	{
+		$muted = Config::get('bootstrap.utilities.fade');
 		switch ($bool)
 		{
 			case 1:
 			$this->attrs["disabled"] = 'disabled';
-			$this->config('automute') and $this->css('muted');
+			$this->config('automute') and $this->css($muted);
 			break;
 			
 			case 0:
 			if (isset($this->attrs["disabled"])) unset($this->attrs["disabled"]);
-			if ($this->config('automute') and in_array('muted', $this->css))
+			if ($this->config('automute') and in_array($muted, $this->css))
 			{
-				unset($this->css[array_search('muted', $this->css)]);
+				unset($this->css[array_search($muted, $this->css)]);
 			}
 			break;
 		}
@@ -110,7 +113,7 @@ class Form_Checkbox extends BootstrapModuleForm implements Deactivable {
 				break;
 				
 				case 'inline':
-				$css[] = 'inline';
+				$css[] = $key;
 				$this->label($val);
 				break;
 				

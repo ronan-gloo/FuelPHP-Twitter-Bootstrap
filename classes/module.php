@@ -154,11 +154,12 @@ abstract class BootstrapModule {
 
 		if (! $config = Config::get($path))
 		{
+			Config::load('bootstrap/bootstrap', 'bootstrap');
 			Config::load($this->configpath, true);
 			
 			$config = Config::get($path);
 		}
-				
+
 		return $config;
 	}
 	
@@ -350,6 +351,28 @@ abstract class BootstrapModule {
 		$this->append_html = $item;
 		
 		return $this;
+	}
+	
+	/**
+	 * Add hide class to the attrs.
+	 * 
+	 * @access public
+	 * @return void
+	 */
+	public function hide()
+	{
+		return $this->css(Config::get('bootstrap.utilities.hidden'));
+	}
+	
+	/**
+	 * fades.
+	 * 
+	 * @access public
+	 * @return void
+	 */
+	public function fade($opt = '')
+	{
+		return $this->css(Config::get('bootstrap.utilities.fade'));
 	}
 	
 	/**

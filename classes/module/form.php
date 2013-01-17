@@ -9,5 +9,5 @@ abstract class BootstrapModuleForm extends BootstrapModule {
 		$this->instance = $instance;
 		
 		return $this;
-	}
+	}	
 }

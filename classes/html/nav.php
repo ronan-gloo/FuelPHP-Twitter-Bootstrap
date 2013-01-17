@@ -7,7 +7,7 @@ namespace Bootstrap;
  * 
  * @extends BootstrapModule
  */
-abstract class Html_Nav extends BootstrapModule {
+abstract class Html_Nav extends BootstrapModule implements ContainsItems {
 	
 	protected $use_item = 'Html_Item';
 	
@@ -40,6 +40,22 @@ abstract class Html_Nav extends BootstrapModule {
 		$this->items[] = $item;
 		
 		return $item;
+	}
+	
+	
+	/**
+	 * Set multiple items at same time.
+	 * 
+	 * @access public
+	 * @return void
+	 */
+	public function items()
+	{
+		foreach (func_get_args() as $args)
+		{
+			call_user_func_array(array($this, 'item'), $args);
+		}
+		return $this;
 	}
 	
 	/**

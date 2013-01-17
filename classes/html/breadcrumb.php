@@ -6,7 +6,7 @@ namespace Bootstrap;
 /**
  * Build Bootstrap breacrumb component.
  */
-class Html_Breadcrumb extends BootstrapModule {
+class Html_Breadcrumb extends BootstrapModule implements ContainsItems {
 	
 	/**
 	 * Breadcrumb items
@@ -51,6 +51,21 @@ class Html_Breadcrumb extends BootstrapModule {
 		return $item;
 	}
 	
+	/**
+	 * Set multiple items at same time.
+	 * 
+	 * @access public
+	 * @return void
+	 */
+	public function items()
+	{
+		foreach (func_get_args() as $args)
+		{
+			call_user_func_array(array($this, 'item'), $args);
+		}
+		return $this;
+	}
+
 	/**
 	 * Render Breadcrumb Html.
 	 * 

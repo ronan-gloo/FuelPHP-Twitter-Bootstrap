@@ -2,7 +2,7 @@
 
 namespace Bootstrap;
 
-class Html_Button_Group extends BootstrapModule {
+class Html_Button_Group extends BootstrapModule implements ContainsItems {
 	
 	protected $items = array();
 	
@@ -14,7 +14,7 @@ class Html_Button_Group extends BootstrapModule {
 	 */
 	public function make($buttons = array())
 	{
-		call_user_func_array(array($this, 'btns'), $buttons);
+		call_user_func_array(array($this, 'items'), $buttons);
 		
 		return $this;
 	}
@@ -29,7 +29,7 @@ class Html_Button_Group extends BootstrapModule {
 	 * @param bool $secure (default: false)
 	 * @return void
 	 */
-	public function btn($anchor = '', $text = '', $attrs = array(), $secure = false)
+	public function item($anchor = '', $text = '', $attrs = array(), $secure = false)
 	{
 		if (! $anchor instanceof Html_Button)
 		{
@@ -50,11 +50,11 @@ class Html_Button_Group extends BootstrapModule {
 	 * @param bool $secure (default: false)
 	 * @return void
 	 */
-	public function btns()
+	public function items()
 	{
 		foreach (func_get_args() as $args)
 		{
-			call_user_func_array(array($this, 'btn'), $args);
+			call_user_func_array(array($this, 'item'), $args);
 		}
 		return $this;
 	}

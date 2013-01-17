@@ -2,6 +2,8 @@
 
 namespace Bootstrap;
 
+use \Config;
+
 abstract class BootstrapModuleBtn extends BootstrapModuleIcon implements Activable, Deactivable {
 	
 	/**
@@ -28,7 +30,7 @@ abstract class BootstrapModuleBtn extends BootstrapModuleIcon implements Activab
 				break;
 
 				case 'state':
-				$this->css($attr);
+				$this->css(Config::get('bootstrap.utilities.'.$attr));
 				$attr === 'disabled' and $this->attrs['disabled'] = 'disabled';
 				break;
 

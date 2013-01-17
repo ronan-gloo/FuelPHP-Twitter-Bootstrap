@@ -19,7 +19,12 @@ interface Nestable {
  * Prevent some module to be attached (ie; attach popover on popover...etc).
  */
 interface Unattachable {
-	function detach($attached);
+	public function detach($attached);
+}
+
+interface ContainsItems {
+	public function item($anchor, $title = '', $attrs = array(), $secure = false);
+	public function items();
 }
 
 /**

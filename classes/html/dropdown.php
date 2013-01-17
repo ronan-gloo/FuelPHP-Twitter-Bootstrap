@@ -45,6 +45,21 @@ class Html_Dropdown extends BootstrapModule {
 	}
 	
 	/**
+	 * Set multiple items at same time.
+	 * 
+	 * @access public
+	 * @return void
+	 */
+	public function items()
+	{
+		foreach (func_get_args() as $args)
+		{
+			call_user_func_array(array($this, 'item'), $args);
+		}
+		return $this;
+	}
+
+	/**
 	 * set a divider.
 	 * 
 	 * @access public

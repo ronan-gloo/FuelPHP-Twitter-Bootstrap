@@ -2,6 +2,7 @@
 
 namespace Bootstrap;
 
+use \Config;
 
 /**
  * @extends BootstrapModule
@@ -47,15 +48,15 @@ class Html_Progress extends BootstrapModule implements Activable {
 	{
 		$this->css('progress');
 		
-		foreach ($this->attrs as $name => $attr)
+		foreach ($this->attrs as $key => $attr)
 		{
-			switch ($name)
+			switch ($key)
 			{
 				case 'striped':
-				$attr === true and $this->css('progress-'.$name);
+				$attr === true and $this->css('progress-'.$key);
 				break;
 				case 'active':
-				$attr === true and $this->css($name);
+				$attr === true and $this->css(Config::get('bootstrap.utilities.'.$key));
 				break;
 				case 'status':
 				$this->css('progress-'.$attr);
