@@ -37,7 +37,7 @@ class Html_Table extends BootstrapModule implements Unattachable {
 		$this->expose($properties);
 		
 		// try to check for properties, and init them by default
-		if (! ($this->items->count() && $this->properties->count()))
+		if (! ($this->items->count() && count($this->properties)))
 		{
 			$this->expose(array_keys((array)$this->items->current()));
 		}
@@ -68,7 +68,7 @@ class Html_Table extends BootstrapModule implements Unattachable {
 				
 			$properties = array_combine(array_values($properties), $values);
 		}
-		$this->properties = new ArrayIterator($properties);
+		$this->properties = $properties;
 		return $this;
 	}
 	
@@ -164,7 +164,26 @@ class Html_Table extends BootstrapModule implements Unattachable {
 	}
 	
 	/**
-	 * Add a new row.
+	 * Prepend a new row.
+	 * 
+	 * @access public
+	 * @param mixed $key
+	 * @param mixed $name
+	 * @param Closure $callback
+	 * @return void
+	 */
+	public function prepend($key, $name, Closure $callback)
+	{
+		if (! array_key_exists($key, $this->properties))
+		{
+			$this->properties = array($key => $name) + $this->properties;
+			$this->set($key, $name, $callback);
+		}		
+		return $this;
+	}
+
+	/**
+	 * Append a new row.
 	 * 
 	 * @access public
 	 * @param mixed $key
@@ -174,10 +193,62 @@ class Html_Table extends BootstrapModule implements Unattachable {
 	 */
 	public function append($key, $name, Closure $callback)
 	{
-		if (! $this->properties->offsetExists($key))
+		if (! array_key_exists($key, $this->properties))
 		{
+			$this->properties[$key] = $name;
 			$this->set($key, $name, $callback);
 		}		
+		return $this;
+	}
+	
+	/**
+	 * Add key column before $key.
+	 * 
+	 * @access public
+	 * @param mixed $key
+	 * @param mixed $nkey
+	 * @param mixed $name
+	 * @param Closure $callback
+	 * @return void
+	 */
+	public function before($key, $nkey, $name, Closure $callback)
+	{
+		return $this->insert($key, $nkey, $name, $callback, __FUNCTION__);
+	}
+	
+	/**
+	 * Add key column after $key.
+	 * 
+	 * @access public
+	 * @param mixed $key
+	 * @param mixed $nkey
+	 * @param mixed $name
+	 * @param Closure $callback
+	 * @return void
+	 */
+	public function after($key, $nkey, $name, Closure $callback)
+	{
+		return $this->insert($key, $nkey, $name, $callback, __FUNCTION__);
+	}
+	
+	/**
+	 * Insert before or after.
+	 * 
+	 * @access protected
+	 * @param mixed $key
+	 * @param mixed $nkey
+	 * @param mixed $name
+	 * @param mixed $callback
+	 * @param mixed $method
+	 * @return void
+	 */
+	protected function insert($key, $nkey, $name, $callback, $method)
+	{
+		Arr::{"insert_{$method}_key"}($this->properties, $name, $key);
+		$this->properties = Arr::replace_key($this->properties, array(0 => $nkey));
+		
+		$this->set($nkey, $name, $callback);
+		
 		return $this;
 	}
 	
@@ -190,9 +261,8 @@ class Html_Table extends BootstrapModule implements Unattachable {
 	 * @param Closure $callback
 	 * @return void
 	 */
-	public function set($key, $name, Closure $callback)
+	protected function set($key, $name, Closure $callback)
 	{
-		$this->properties[$key] = $name;
 		$this->callbacks["cells"]->offsetSet($key, $callback);
 
 		$this->set_item_property($key, $name);
@@ -342,17 +412,12 @@ class Html_Table extends BootstrapModule implements Unattachable {
 				: $row;
 			
 			// loop throught the row, and build cols
-			foreach ((array)$row as $name => $value)
+			foreach ($this->properties as $name => $val)
 			{
+				$value 	= $row[$name];
 				$cout		= "";
 				$cattrs = array();
-				
-				// property is exposed ?
-				if (! $this->properties->offsetExists($name))
-				{
-					continue;
-				}
-				
+	
 				// look at cell callbacks
 				$cout = $ccallbacks->offsetExists($name)
 					? $this->callback($value, $row, $cattrs, $ccallbacks->offsetGet($name))
