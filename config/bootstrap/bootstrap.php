@@ -11,6 +11,6 @@ return array(
 		'fadein' 	 => 'fade in',
 		'fadeout'  => 'fade out',
 	),
-	"prettyprint" => true,
+	"prettyprint" => false,
 	"strict"			=> true,
 );
