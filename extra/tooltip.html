@@ -59,31 +59,7 @@
 	<body>
 				<div id="sidebar" class="well">
 					<nav>
-						<ul class="nav nav-list"><li class="nav-header">General</li>
-<li><a href="../index.html">Infos and dowload</a></li>
-<li><a href="../attribute.html">Attributes</a></li>
-<li><a href="../template.html">Templates</a></li>
-<li class="nav-header">Attachables</li>
-<li class="active"><a href="tooltip.html">Tooltip, Popover & Modal</a></li>
-<li class="nav-header">Form related modules</li>
-<li><a href="../form/control.html">Openers</a></li>
-<li><a href="../form/input.html">Inputs</a></li>
-<li><a href="../form/button.html">Buttons & Submits</a></li>
-<li><a href="../form/checkbox.html">Checkboxes & Radios</a></li>
-<li><a href="../form/extra.html">Extras</a></li>
-<li class="nav-header">Html related modules</li>
-<li><a href="../html/alert.html">Alerts</a></li>
-<li><a href="../html/breadcrumb.html">Breadcrumb</a></li>
-<li><a href="../html/button.html">Buttons</a></li>
-<li><a href="../html/button_group.html">Button groups</a></li>
-<li><a href="../html/button_dropdown.html">Buttons dropdown</a></li>
-<li><a href="../html/dropdown.html">Dropdowns</a></li>
-<li><a href="../html/icon.html">Icons & Images</a></li>
-<li><a href="../html/badge.html">Labels & Badges</a></li>
-<li><a href="../html/modal.html">Modal</a></li>
-<li><a href="../html/navs.html">Nav Tabs & Nav Pills</a></li>
-<li><a href="../html/list.html">Nav Lists</a></li>
-<li><a href="../html/progress.html">Progress</a></li></ul>					</nav>
+						<ul class="nav nav-list"><li class="nav-header">General</li><li><a href="../index.html">Infos and dowload</a></li><li><a href="../attribute.html">Attributes</a></li><li><a href="../template.html">Templates</a></li><li class="nav-header">Attachables</li><li class="active"><a href="tooltip.html">Tooltip, Popover & Modal</a></li><li class="nav-header">Form related modules</li><li><a href="../form/control.html">Openers</a></li><li><a href="../form/input.html">Inputs</a></li><li><a href="../form/button.html">Buttons & Submits</a></li><li><a href="../form/checkbox.html">Checkboxes & Radios</a></li><li><a href="../form/extra.html">Extras</a></li><li class="nav-header">Html related modules</li><li><a href="../html/alert.html">Alerts</a></li><li><a href="../html/breadcrumb.html">Breadcrumb</a></li><li><a href="../html/button.html">Buttons</a></li><li><a href="../html/button_group.html">Button groups</a></li><li><a href="../html/button_dropdown.html">Buttons dropdown</a></li><li><a href="../html/dropdown.html">Dropdowns</a></li><li><a href="../html/icon.html">Icons & Images</a></li><li><a href="../html/badge.html">Labels & Badges</a></li><li><a href="../html/modal.html">Modal</a></li><li><a href="../html/navs.html">Nav Tabs & Nav Pills</a></li><li><a href="../html/list.html">Nav Lists</a></li><li><a href="../html/progress.html">Progress</a></li><li><a href="../html/table.html">Table</a></li></ul>					</nav>
 				</div>
 				
 				<div id="content">
@@ -138,8 +114,7 @@ Html::label('Hover me')->popover('title', 'content', 'hover')
 		Modal
 		<small>See <a href="../html/modal.html">the modal reference</a></small>
 	</h3>
-	<div class="alert"><strong></strong>
-Only elements that support <code>href</code> attributes can attach modals elements</div>	<p>Modal is also a standalone module.
+	<div class="alert"><strong></strong>Only elements that support <code>href</code> attributes can attach modals elements</div>	<p>Modal is also a standalone module.
 		When attaching a modal to a module, the modal will be rendered just after the module in your html page.<br />
 		If a local <code>href</code> is set, the modal id attribute will inherit of.<br />
 		If no local href is set, the modal <code>id</code> attribute and <code>href</code> will be created to rely modal with the element.<br />
@@ -152,5 +127,556 @@ Html::button('#modal', 'Open modal')->modal($modal)
 </pre>
 	<a data-toggle="modal" class="btn" href="tooltip.html#modal">Open modal</a><div id="modal" class="modal fade"><div class="modal-header"><h3>modal</h3></div><div class="modal-body">I'm an attached modal</div><div class="modal-footer"><a data-dismiss="modal" class="btn" href="tooltip.html#">close</a></div></div></div>
 				</div>
-	</body>
-</html>
+	
+<!-- JavaScript -->
+<script type="text/javascript">
+	var PQP_DETAILS = true;
+	var PQP_HEIGHT = "tall";
+
+	addEvent(window, 'load', loadCSS);
+
+	function changeTab(tab) {
+		var pQp = document.getElementById('pQp');
+		hideAllTabs();
+		addClassName(pQp, tab, true);
+	}
+
+	function hideAllTabs() {
+		var pQp = document.getElementById('pQp');
+		removeClassName(pQp, 'console');
+		removeClassName(pQp, 'speed');
+		removeClassName(pQp, 'queries');
+		removeClassName(pQp, 'memory');
+		removeClassName(pQp, 'files');
+		removeClassName(pQp, 'config');
+		removeClassName(pQp, 'session');
+		removeClassName(pQp, 'get');
+		removeClassName(pQp, 'post');
+	}
+
+	function toggleDetails(){
+		var container = document.getElementById('pqp-container');
+
+		if(PQP_DETAILS){
+			addClassName(container, 'hideDetails', true);
+			PQP_DETAILS = false;
+		}
+		else{
+			removeClassName(container, 'hideDetails');
+			PQP_DETAILS = true;
+		}
+	}
+	function toggleHeight(){
+		var container = document.getElementById('pqp-container');
+
+		if(PQP_HEIGHT == "short"){
+			addClassName(container, 'tallDetails', true);
+			PQP_HEIGHT = "tall";
+		}
+		else{
+			removeClassName(container, 'tallDetails');
+			PQP_HEIGHT = "short";
+		}
+	}
+	function toggleBottom(){
+		var container = document.getElementById('pqp-container');
+		if (container.style.position == "inherit")
+		{
+			container.style.position="";
+		}
+		else
+		{
+			container.style.position="inherit";
+		}
+	}
+
+	function loadCSS() {
+		var sheet = document.createElement("style");
+		sheet.setAttribute("type", "text/css");
+		sheet.innerHTML = '.pQp{width:100%;z-index:9999;text-align:center;position:fixed;bottom:0;}* html .pQp{position:absolute;}.pQp *{margin:0 ;padding:0;border:none;background:#222;}#pQp{margin:0 auto;width:85%;min-width:960px;background-color:#222;border:12px solid #000;border-bottom:none;font-family:"Lucida Grande",Tahoma,Arial,sans-serif;-webkit-border-top-left-radius:15px;-webkit-border-top-right-radius:15px;-moz-border-radius-topleft:15px;-moz-border-radius-topright:15px;border-top-left-radius:15px;border-top-right-radius:15px;}#pQp tbody {background:transparent;}#pQp .pqp-box h3{font-weight:normal;line-height:200px;padding:0 15px;color:#fff;}.pQp,.pQp td{color:#444}#pqp-metrics{background:#000;width:100%}#pqp-console,#pqp-speed,#pqp-queries,#pqp-memory,#pqp-files,#pqp-config,#pqp-session,#pqp-get,#pqp-post{background-color:#000;border-top:1px solid #ccc;height:200px;overflow:auto}.pQp .green{color:#588e13!important}.pQp .blue{color:#3769a0!important}.pQp .purple{color:#953fa1!important}.pQp .orange{color:#d28c00!important}.pQp .red{color:#b72f09!important}.pQp .yellow{color:#CDCF3A!important}.pQp .cyan{color:#3EC4D3!important}.pQp .pink{color:#FF7CAD!important}.pQp .flesh{color:#FFA46E!important}#pQp,#pqp-console,#pqp-speed,#pqp-queries,#pqp-memory,#pqp-files,#pqp-config,#pqp-session,#pqp-get,#pqp-post{display:none}.pQp .console,.pQp .speed,.pQp .queries,.pQp .memory,.pQp .files,.pQp .config,.pQp .session,.pQp .get,.pQp .post{display:block!important}.pQp .console #pqp-console,.pQp .speed #pqp-speed,.pQp .queries #pqp-queries,.pQp .memory #pqp-memory,.pQp .files #pqp-files,.pQp .config #pqp-config,.pQp .session #pqp-session,.pQp .get #pqp-get,.pQp .post #pqp-post{display:block}.console td.green,.speed td.blue,.queries td.purple,.memory td.orange,.files td.red,.config td.yellow,.session td.cyan,.get td.pink,.post td.flesh{background:#222!important;border-bottom:6px solid #fff!important;cursor:default!important}.tallDetails #pQp .pqp-box{height:500px}.tallDetails #pQp .pqp-box h3{line-height:500px}.hideDetails #pQp .pqp-box{display:none!important}.hideDetails #pqp-footer{border-top:1px dotted #444}.hideDetails #pQp #pqp-metrics td{height:50px;background:#000!important;border-bottom:none!important;cursor:default!important}#pQp var{font-size:18px;margin:0 0 2px 0}#pQp h4{font-size:10px}.hideDetails .heightToggle{visibility:hidden}#pqp-metrics td{height:80px;width:11%;text-align:center;cursor:pointer;border:1px solid #000;border-bottom:6px solid #444;-webkit-border-top-left-radius:15px;-moz-border-radius-topleft:15px;-webkit-border-top-right-radius:15px;-moz-border-radius-topright:15px;border-top-left-radius:15px;border-top-right-radius:15px;}#pqp-metrics td:hover{background:#222;border-bottom:6px solid #777}#pqp-metrics .green{border-left:none}#pqp-metrics .red{border-right:none}#pqp-metrics h4{text-shadow:#000 1px 1px 1px}.pqp-side var{text-shadow:#444 1px 1px 1px;background-color:transparent;}.pQp var{font-size:23px;font-weight:bold;font-style:normal;margin:0 0 3px 0;display:block; margin-top: 16px !important;}.pQp h4{font-size:12px;color:#fff;margin:0 0 4px 0}.pQp .main{width:80%; float: left;}.pQp .main table{width:100%;}*+html .pQp .main{width:78%}* html .pQp .main{width:77%}.pQp .main td{padding:7px 15px;text-align:left;border-left:1px solid #333;border-right:1px solid #333;border-bottom:1px dotted #323232;color:#FFF;}.pQp .main td,.pQp .main pre{font-family:Monaco,"Consolas","Lucida Console","Courier New",monospace;font-size:11px; background: #222;}.pQp .main td.alt{background:#111}.pQp .main tr.alt td{background:#2e2e2e;border-top:1px dotted #4e4e4e}.pQp .main tr.alt td.alt{background:#333}.pQp .main td b{float:right;font-weight:normal;color:#e6f387}.pQp .main td:hover{background:#2e2e2e}.pQp .pqp-side{float:left;width:20%;background:#000;color:#fff;-webkit-border-bottom-left-radius:30px;-moz-border-radius-bottomleft:30px;border-bottom-left-radius:30px;text-align:center}.pQp .pqp-side td{padding:10px 0 5px 0;background-color: #000; text-align: center !important}.pQp .pqp-side var{color:#fff;font-size:15px}.pQp .pqp-side h4{font-weight:normal;color:#f4fcca;font-size:11px;background-color:transparent;}#pqp-console .pqp-side td{padding:12px 0; text-align: center !important}#pqp-console .pqp-side td.alt1{background:#588e13;width:51%}#pqp-console .pqp-side td.alt2{background-color:#b72f09}#pqp-console .pqp-side td.alt3{background:#d28c00;-webkit-border-bottom-left-radius:30px;-moz-border-radius-bottomleft:30px;border-bottom-left-radius:30px}#pqp-console .pqp-side td.alt4{background-color:#3769a0;border-bottom:1px solid #274b74}#pqp-console .main table{width:100%}#pqp-console td div{width:100%;overflow:hidden;background-color:transparent;}#pqp-console td.type{font-family:"Lucida Grande",Tahoma,Arial,sans-serif;text-align:center;text-transform:uppercase;font-size:9px;padding-top:9px;color:#f4fcca;vertical-align:top;width:40px}.pQp .log-log td.type{background:#47740d!important}.pQp .log-error td.type{background:#9b2700!important}.pQp .log-memory td.type{background:#d28c00!important}.pQp .log-speed td.type{background:#2b5481!important}.pQp .log-log pre{color:#999;background-color:transparent;}.pQp .log-log td:hover pre{color:#fff}.pQp .log-memory em,.pQp .log-speed em{float:left;font-style:normal;display:block;color:#fff;background-color:transparent;}.pQp .log-memory pre,.pQp .log-speed pre{float:right;white-space:normal;display:block;color:#fffd70;background-color:transparent;}#pqp-speed .pqp-side td {padding:12px 0;border-left:1px solid #1e3c5c;border-bottom:1px solid #1e3c5c;border-right:1px solid #1e3c5c;}#pqp-speed .pqp-side td.alt{background-color:#2b5481;border-bottom:none;border-left:none;-webkit-border-bottom-left-radius:30px;-moz-border-radius-bottomleft:30px;border-bottom-left-radius:30px}#pqp-queries .pqp-side td{border-bottom:1px solid #662a6e;border-left:1px solid #662a6e;border-right:1px solid #662a6e}#pqp-queries .pqp-side td.alt{background-color:#7b3384;border-bottom:none;border-left:none;-webkit-border-bottom-left-radius:30px;-moz-border-radius-bottomleft:30px;border-bottom-left-radius:30px}#pqp-queries .main b{float:none;background-color:transparent;}#pqp-queries .main em{display:block;padding:2px 0 0 0;font-style:normal;color:#aaa;background-color:transparent;}#pqp-memory .pqp-side td {padding:12px 0;background-color:#c48200;border-bottom:1px solid #865900;border-left:1px solid #865900;border-right:1px solid #865900}#pqp-memory .pqp-side td.alt{background-color:#ac7200;border-bottom:bone;border-left:none;-webkit-border-bottom-left-radius:30px;-moz-border-radius-bottomleft:30px;border-bottom-left-radius:30px}#pqp-files .pqp-side td{border-bottom:1px solid #7c1f00;border-left:1px solid #7c1f00;border-right:1px solid #7c1f00}#pqp-files .pqp-side td.alt{background-color:#9b2700;border-bottom:none;border-left:none;-webkit-border-bottom-left-radius:30px;-moz-border-radius-bottomleft:30px;border-bottom-left-radius:30px}#pqp-config .pqp-side td{border-bottom:1px solid #CDCF3A;border-left:1px solid #CDCF3A;border-right:1px solid #CDCF3A}#pqp-config .pqp-side td.alt{background-color:#CDCF3A;border-bottom:none;border-left:none;-webkit-border-bottom-left-radius:30px;-moz-border-radius-bottomleft:30px;border-bottom-left-radius:30px}#pqp-session .pqp-side td{border-bottom:1px solid #3EC4D3;border-left:1px solid #3EC4D3;border-right:1px solid #3EC4D3}#pqp-session .pqp-side td.alt{background-color:#3EC4D3;border-bottom:none;border-left:none;-webkit-border-bottom-left-radius:30px;-moz-border-radius-bottomleft:30px;border-bottom-left-radius:30px}#pqp-get .pqp-side td{border-bottom:1px solid #FF7CAD;border-left:1px solid #FF7CAD;border-right:1px solid #FF7CAD}#pqp-get .pqp-side td.alt{background-color:#FF7CAD;border-bottom:none;border-left:none;-webkit-border-bottom-left-radius:30px;-moz-border-radius-bottomleft:30px;border-bottom-left-radius:30px}#pqp-post .pqp-side td{border-bottom:1px solid #FFA46E;border-left:1px solid #FFA46E;border-right:1px solid #FFA46E}#pqp-post .pqp-side td.alt{background-color:#FFA46E;border-bottom:none;border-left:none;-webkit-border-bottom-left-radius:30px;-moz-border-radius-bottomleft:30px;border-bottom-left-radius:30px}#pqp-footer{width:100%;background:#000;font-size:11px;border-top:1px solid #ccc}#pqp-footer td{padding:0!important;border:none!important}#pqp-footer strong{color:#fff}#pqp-footer a{color:#999;padding:5px 10px;text-decoration:none}#pqp-footer .credit{width:20%;text-align:left}#pqp-footer .credit a{line-height: 30px}#pqp-footer .pqp-actions{width:80%;text-align:right}#pqp-footer .pqp-actions a{float:right;width:auto}#pqp-footer a:hover,#pqp-footer a:hover strong,#pqp-footer a:hover b{background:#fff;color:black!important;text-decoration:none}#pqp-footer a:active,#pqp-footer a:active strong,#pqp-footer a:active b{background:#ecf488;color:green!important}#openProfiler { position: fixed; bottom: 0; right: 20px; }#openProfiler a { height:32px;text-align:center;width:100px;background-color:#222;border:2px solid #000;border-bottom:none;font-size:12px;font-family:"Lucida Grande",Tahoma,Arial,sans-serif;-webkit-border-top-left-radius:4px;-webkit-border-top-right-radius:4px;-moz-border-radius-topleft:4px;-moz-border-radius-topright:4px;;border-top-right-radius:4px;color:#999;line-height: 32px;display:block;}#openProfiler a:hover{color:white;text-decoration:none}';
+		document.getElementsByTagName("head")[0].appendChild(sheet);
+	}
+
+
+	//http://www.bigbold.com/snippets/posts/show/2630
+	function addClassName(objElement, strClass, blnMayAlreadyExist){
+	   if ( objElement.className ){
+	      var arrList = objElement.className.split(' ');
+	      if ( blnMayAlreadyExist ){
+	         var strClassUpper = strClass.toUpperCase();
+	         for ( var i = 0; i < arrList.length; i++ ){
+	            if ( arrList[i].toUpperCase() == strClassUpper ){
+	               arrList.splice(i, 1);
+	               i--;
+	             }
+	           }
+	      }
+	      arrList[arrList.length] = strClass;
+	      objElement.className = arrList.join(' ');
+	   }
+	   else{
+	      objElement.className = strClass;
+	      }
+	}
+
+	//http://www.bigbold.com/snippets/posts/show/2630
+	function removeClassName(objElement, strClass){
+	   if ( objElement.className ){
+	      var arrList = objElement.className.split(' ');
+	      var strClassUpper = strClass.toUpperCase();
+	      for ( var i = 0; i < arrList.length; i++ ){
+	         if ( arrList[i].toUpperCase() == strClassUpper ){
+	            arrList.splice(i, 1);
+	            i--;
+	         }
+	      }
+	      objElement.className = arrList.join(' ');
+	   }
+	}
+
+	//http://ejohn.org/projects/flexible-javascript-events/
+	function addEvent( obj, type, fn ) {
+	  if ( obj.attachEvent ) {
+	    obj["e"+type+fn] = fn;
+	    obj[type+fn] = function() { obj["e"+type+fn]( window.event ) };
+	    obj.attachEvent( "on"+type, obj[type+fn] );
+	  }
+	  else{
+	    obj.addEventListener( type, fn, false );
+	  }
+	}
+
+	function openProfiler()
+	{
+		document.getElementById("pqp-container").style.display = "block";
+		document.getElementById("openProfiler").style.display = "none";
+	}
+
+	function closeProfiler()
+	{
+		document.getElementById("pqp-container").style.display = "none";
+		document.getElementById("openProfiler").style.display = "block";
+	}
+
+	function preventDefault(e) {
+	  e = e || window.event;
+	  if (e.preventDefault)
+	    e.preventDefault();
+	  e.returnValue = false;
+	}
+
+	window.onload = function(){
+		document.getElementById('pqp-console').onmousewheel = function(e){
+		  document.getElementById('pqp-console').scrollTop -= e.wheelDeltaY;
+		  preventDefault(e);
+		}
+		document.getElementById('pqp-speed').onmousewheel = function(e){
+		  document.getElementById('pqp-speed').scrollTop -= e.wheelDeltaY;
+		  preventDefault(e);
+		}
+		document.getElementById('pqp-queries').onmousewheel = function(e){
+		  document.getElementById('pqp-queries').scrollTop -= e.wheelDeltaY;
+		  preventDefault(e);
+		}
+		document.getElementById('pqp-memory').onmousewheel = function(e){
+		  document.getElementById('pqp-memory').scrollTop -= e.wheelDeltaY;
+		  preventDefault(e);
+		}
+		document.getElementById('pqp-files').onmousewheel = function(e){
+		  document.getElementById('pqp-files').scrollTop -= e.wheelDeltaY;
+		  preventDefault(e);
+		}
+		document.getElementById('pqp-config').onmousewheel = function(e){
+		  document.getElementById('pqp-config').scrollTop -= e.wheelDeltaY;
+		  preventDefault(e);
+		}
+		document.getElementById('pqp-session').onmousewheel = function(e){
+		  document.getElementById('pqp-session').scrollTop -= e.wheelDeltaY;
+		  preventDefault(e);
+		}
+		document.getElementById('pqp-get').onmousewheel = function(e){
+		  document.getElementById('pqp-get').scrollTop -= e.wheelDeltaY;
+		  preventDefault(e);
+		}
+		document.getElementById('pqp-post').onmousewheel = function(e){
+		  document.getElementById('pqp-post').scrollTop -= e.wheelDeltaY;
+		  preventDefault(e);
+		}
+		toggleBottom();
+	}
+</script><div style="clear:both;"></div><div id="pqp-container" class="pQp tallDetails" style="display:none;position:inherit;"><div id="pQp" class="console">
+<table id="pqp-metrics" cellspacing="0">
+<tr>
+	<td class="green" onclick="changeTab('console');">
+		<var>7</var>
+		<h4>Console</h4>
+	</td>
+	<td class="blue" onclick="changeTab('speed');">
+		<var>16.211 ms</var>
+		<h4>Load Time</h4>
+	</td>
+	<td class="purple" onclick="changeTab('queries');">
+		<var>0 Queries</var>
+		<h4>Database</h4>
+	</td>
+	<td class="orange" onclick="changeTab('memory');">
+		<var>1.16 MB</var>
+		<h4>Memory Used</h4>
+	</td>
+	<td class="red" onclick="changeTab('files');">
+		<var>64 Files</var>
+		<h4>Included</h4>
+	</td>
+	<td class="yellow" onclick="changeTab('config');">
+		<var>226 Config</var>
+		<h4>items loaded</h4>
+	</td>
+	<td class="cyan" onclick="changeTab('session');">
+		<var>0 Session</var>
+		<h4>vars loaded</h4>
+	</td>
+	<td class="pink" onclick="changeTab('get');">
+		<var>0 GET</var>
+		<h4>vars loaded</h4>
+	</td>
+	<td class="flesh" onclick="changeTab('post');">
+		<var>0 POST</var>
+		<h4>vars loaded</h4>
+	</td>
+</tr>
+</table><div id="pqp-console" class="pqp-box"><table class="pqp-side" cellspacing="0">
+		<tr>
+			<td class="alt1"><var>0</var><h4>Logs</h4></td>
+			<td class="alt2"><var>0</var> <h4>Errors</h4></td>
+		</tr>
+		<tr>
+			<td class="alt3"><var>0</var> <h4>Memory</h4></td>
+			<td class="alt4"><var>7</var> <h4>Speed</h4></td>
+		</tr>
+		</table>
+		<div class="main"><table cellspacing="0"><tr class="log-speed">
+				<td class="type">speed</td>
+				<td class=""><div><pre>1.120 ms</pre> <em>Fuel\Core\Fuel::init Start</em></div></td></tr><tr class="log-speed">
+				<td class="type">speed</td>
+				<td class="alt"><div><pre>4.160 ms</pre> <em>Fuel\Core\Fuel::init End</em></div></td></tr><tr class="log-speed">
+				<td class="type">speed</td>
+				<td class=""><div><pre>4.268 ms</pre> <em>Fuel\Core\Uri::__construct Start</em></div></td></tr><tr class="log-speed">
+				<td class="type">speed</td>
+				<td class="alt"><div><pre>4.330 ms</pre> <em>Fuel\Core\Uri::__construct End</em></div></td></tr><tr class="log-speed">
+				<td class="type">speed</td>
+				<td class=""><div><pre>4.685 ms</pre> <em>Fuel\Core\Request::execute Start</em></div></td></tr><tr class="log-speed">
+				<td class="type">speed</td>
+				<td class="alt"><div><pre>6.722 ms</pre> <em>Fuel\Core\Request::execute End</em></div></td></tr><tr class="log-speed">
+				<td class="type">speed</td>
+				<td class=""><div><pre>15.116 ms</pre> <em>End of Fuel Execution</em></div></td></tr></table></div></div><div id="pqp-speed" class="pqp-box"><table class="pqp-side" cellspacing="0">
+		  <tr><td><var>16.211 ms</var><h4>Load Time</h4></td></tr>
+		  <tr><td class="alt"><var>30 s</var> <h4>Max Execution Time</h4></td></tr>
+		 </table>
+		<div class="main"><table cellspacing="0"><tr class="log-speed">
+				<td class=""><div><pre>1.120 ms</pre> <em>Fuel\Core\Fuel::init Start</em></div></td></tr><tr class="log-speed">
+				<td class="alt"><div><pre>4.160 ms</pre> <em>Fuel\Core\Fuel::init End</em></div></td></tr><tr class="log-speed">
+				<td class=""><div><pre>4.268 ms</pre> <em>Fuel\Core\Uri::__construct Start</em></div></td></tr><tr class="log-speed">
+				<td class="alt"><div><pre>4.330 ms</pre> <em>Fuel\Core\Uri::__construct End</em></div></td></tr><tr class="log-speed">
+				<td class=""><div><pre>4.685 ms</pre> <em>Fuel\Core\Request::execute Start</em></div></td></tr><tr class="log-speed">
+				<td class="alt"><div><pre>6.722 ms</pre> <em>Fuel\Core\Request::execute End</em></div></td></tr><tr class="log-speed">
+				<td class=""><div><pre>15.116 ms</pre> <em>End of Fuel Execution</em></div></td></tr></table></div></div><div id="pqp-queries" class="pqp-box"><h3>This panel has no log items.</h3></div><div id="pqp-memory" class="pqp-box"><h3>This panel has no log items.</h3></div><div id="pqp-files" class="pqp-box"><table class="pqp-side" cellspacing="0">
+		  	<tr><td><var>4</var><h4>Finder Paths</h4></td></tr>
+		  	<tr><td><var>64</var><h4>Total Files</h4></td></tr>
+			<tr><td><var>264.15 kB</var> <h4>Total Size</h4></td></tr>
+			<tr><td class="alt"><var>20.59 kB</var> <h4>Largest</h4></td></tr>
+		 </table>
+		<div class="main"><table cellspacing="0"><tr><td><strong style="font-size:120%;">Finder paths:</strong></td></tr><tr><td class="">/Volumes/mac/web/www/scripts/app/</td></tr><tr><td class="alt">/Volumes/mac/web/www/frameworks/fuelphp/packages/orm/</td></tr><tr><td class="">/Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/</td></tr><tr><td class="alt">/Volumes/mac/web/www/frameworks/fuelphp/core/</td></tr><tr><td><strong style="font-size:120%;">Loaded files:</strong></td></tr><tr><td class=""><b>1.60 kB</b> /Volumes/mac/web/www/scripts/public/index.php</td></tr><tr><td class="alt"><b>704 bytes</b> /Volumes/mac/web/www/scripts/app/bootstrap.php</td></tr><tr><td class=""><b>8.04 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/autoloader.php</td></tr><tr><td class="alt"><b>11.55 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/bootstrap.php</td></tr><tr><td class=""><b>9.78 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/base.php</td></tr><tr><td class="alt"><b>10.11 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/fuel.php</td></tr><tr><td class=""><b>5.46 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/config.php</td></tr><tr><td class="alt"><b>814 bytes</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/config/php.php</td></tr><tr><td class=""><b>4.27 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/config/file.php</td></tr><tr><td class="alt"><b>176 bytes</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/config/interface.php</td></tr><tr><td class=""><b>9.25 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/finder.php</td></tr><tr><td class="alt"><b>20.59 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/arr.php</td></tr><tr><td class=""><b>6.06 kB</b> /Volumes/mac/web/www/scripts/app/config/config.php</td></tr><tr><td class="alt"><b>1.62 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/profiler.php</td></tr><tr><td class=""><b>2.46 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/vendor/phpquickprofiler/console.php</td></tr><tr><td class="alt"><b>6.54 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/vendor/phpquickprofiler/phpquickprofiler.php</td></tr><tr><td class=""><b>10.54 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/input.php</td></tr><tr><td class="alt"><b>8.85 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/security.php</td></tr><tr><td class=""><b>2.15 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/event.php</td></tr><tr><td class="alt"><b>4.82 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/event/instance.php</td></tr><tr><td class=""><b>3.27 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/package.php</td></tr><tr><td class="alt"><b>3.17 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/module.php</td></tr><tr><td class=""><b>195 bytes</b> /Volumes/mac/web/www/scripts/app/config/routes.php</td></tr><tr><td class="alt"><b>6.54 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/router.php</td></tr><tr><td class=""><b>4.29 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/route.php</td></tr><tr><td class="alt"><b>12.45 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/request.php</td></tr><tr><td class=""><b>5.24 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/uri.php</td></tr><tr><td class="alt"><b>10.41 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/inflector.php</td></tr><tr><td class=""><b>2.77 kB</b> /Volumes/mac/web/www/scripts/app/classes/controller/bootstrap.php</td></tr><tr><td class="alt"><b>1.38 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/controller.php</td></tr><tr><td class=""><b>12.33 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/view.php</td></tr><tr><td class="alt"><b>5.98 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/asset.php</td></tr><tr><td class=""><b>2.46 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/config/asset.php</td></tr><tr><td class="alt"><b>12.54 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/asset/instance.php</td></tr><tr><td class=""><b>3.44 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/bootstrap.php</td></tr><tr><td class="alt"><b>1.45 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/orm/bootstrap.php</td></tr><tr><td class=""><b>2.56 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/classes/html.php</td></tr><tr><td class="alt"><b>6.57 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/html.php</td></tr><tr><td class=""><b>1.40 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/classes/html/nav/list.php</td></tr><tr><td class="alt"><b>1.23 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/classes/html/nav.php</td></tr><tr><td class=""><b>9.27 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/classes/module.php</td></tr><tr><td class="alt"><b>614 bytes</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/classes/interfaces.php</td></tr><tr><td class=""><b>306 bytes</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/config/bootstrap/bootstrap.php</td></tr><tr><td class="alt"><b>82 bytes</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/config/bootstrap/html_nav_list.php</td></tr><tr><td class=""><b>458 bytes</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/classes/html/nav/item.php</td></tr><tr><td class="alt"><b>2.18 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/classes/html/item.php</td></tr><tr><td class=""><b>635 bytes</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/classes/module/icon.php</td></tr><tr><td class="alt"><b>207 bytes</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/config/bootstrap/html_item.php</td></tr><tr><td class=""><b>6.09 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/response.php</td></tr><tr><td class="alt"><b>1.22 kB</b> /Volumes/mac/web/www/scripts/app/views/bootstrap.php</td></tr><tr><td class=""><b>2.93 kB</b> /Volumes/mac/web/www/scripts/app/views/bootstrap/extra/tooltip.php</td></tr><tr><td class="alt"><b>773 bytes</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/classes/html/button.php</td></tr><tr><td class=""><b>1.72 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/classes/module/button.php</td></tr><tr><td class="alt"><b>603 bytes</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/config/bootstrap/html_button.php</td></tr><tr><td class=""><b>1.05 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/classes/html/tooltip.php</td></tr><tr><td class="alt"><b>337 bytes</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/config/bootstrap/html_tooltip.php</td></tr><tr><td class=""><b>723 bytes</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/classes/html/label.php</td></tr><tr><td class="alt"><b>177 bytes</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/config/bootstrap/html_label.php</td></tr><tr><td class=""><b>3.57 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/classes/html/popover.php</td></tr><tr><td class="alt"><b>357 bytes</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/config/bootstrap/html_popover.php</td></tr><tr><td class=""><b>1.03 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/classes/html/alert.php</td></tr><tr><td class="alt"><b>212 bytes</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/config/bootstrap/html_alert.php</td></tr><tr><td class=""><b>4.42 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/classes/html/modal.php</td></tr><tr><td class="alt"><b>309 bytes</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/config/bootstrap/html_modal.php</td></tr></table></div></div><div id="pqp-config" class="pqp-box"><table class="pqp-side" cellspacing="0">
+			<tr><td class="alt"><var>226</var> <h4>Configuration items</h4></td></tr>
+		 </table>
+		<div class="main"><table cellspacing="0"><tr><td class=""><b>http://scripts.e-glou.com/</b>base_url</td></tr><tr><td class="alt"><b></b>url_suffix</td></tr><tr><td class=""><b>index.php</b>index_file</td></tr><tr><td class="alt"><b>true</b>profiling</td></tr><tr><td class=""><b>true</b>caching</td></tr><tr><td class="alt"><b>/Volumes/mac/web/www/scripts/app/cache/</b>cache_dir</td></tr><tr><td class=""><b>3600</b>cache_lifetime</td></tr><tr><td class="alt"><b>null</b>ob_callback</td></tr><tr><td class="">errors</td></tr><tr><td class="alt">&rsaquo;&nbsp;continue_on</td></tr><tr><td class=""><b>8</b>&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class="alt"><b>2</b>&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class=""><b>8192</b>&rsaquo;&nbsp;&rsaquo;&nbsp;2</td></tr><tr><td class="alt"><b>2048</b>&rsaquo;&nbsp;&rsaquo;&nbsp;3</td></tr><tr><td class=""><b>10</b>&rsaquo;&nbsp;throttle</td></tr><tr><td class="alt"><b>true</b>&rsaquo;&nbsp;notices</td></tr><tr><td class=""><b>en</b>language</td></tr><tr><td class="alt"><b>en</b>language_fallback</td></tr><tr><td class=""><b>en_US</b>locale</td></tr><tr><td class="alt"><b>UTF-8</b>encoding</td></tr><tr><td class=""><b>0</b>server_gmt_offset</td></tr><tr><td class="alt"><b>UTC</b>default_timezone</td></tr><tr><td class=""><b>3</b>log_threshold</td></tr><tr><td class="alt"><b>/Volumes/mac/web/www/scripts/app/logs/</b>log_path</td></tr><tr><td class=""><b>Y-m-d H:i:s</b>log_date_format</td></tr><tr><td class="alt">security</td></tr><tr><td class=""><b>false</b>&rsaquo;&nbsp;csrf_autoload</td></tr><tr><td class="alt"><b>fuel_csrf_token</b>&rsaquo;&nbsp;csrf_token_key</td></tr><tr><td class=""><b>0</b>&rsaquo;&nbsp;csrf_expiration</td></tr><tr><td class="alt">&rsaquo;&nbsp;uri_filter</td></tr><tr><td class=""><b>htmlentities</b>&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class="alt">&rsaquo;&nbsp;input_filter</td></tr><tr><td class="">&rsaquo;&nbsp;output_filter</td></tr><tr><td class="alt"><b>Security::htmlentities</b>&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class=""><b>false</b>&rsaquo;&nbsp;auto_filter_output</td></tr><tr><td class="alt">&rsaquo;&nbsp;whitelisted_classes</td></tr><tr><td class=""><b>Fuel\Core\Response</b>&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class="alt"><b>Fuel\Core\View</b>&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class=""><b>Fuel\Core\ViewModel</b>&rsaquo;&nbsp;&rsaquo;&nbsp;2</td></tr><tr><td class="alt"><b>Closure</b>&rsaquo;&nbsp;&rsaquo;&nbsp;3</td></tr><tr><td class="">cookie</td></tr><tr><td class="alt"><b>0</b>&rsaquo;&nbsp;expiration</td></tr><tr><td class=""><b>/</b>&rsaquo;&nbsp;path</td></tr><tr><td class="alt"><b>null</b>&rsaquo;&nbsp;domain</td></tr><tr><td class=""><b>false</b>&rsaquo;&nbsp;secure</td></tr><tr><td class="alt"><b>false</b>&rsaquo;&nbsp;http_only</td></tr><tr><td class="">module_paths</td></tr><tr><td class="alt"><b>/Volumes/mac/web/www/scripts/app/modules/</b>&rsaquo;&nbsp;0</td></tr><tr><td class="">always_load</td></tr><tr><td class="alt">&rsaquo;&nbsp;packages</td></tr><tr><td class="">&rsaquo;&nbsp;modules</td></tr><tr><td class="alt"><b>admin</b>&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class="">&rsaquo;&nbsp;classes</td></tr><tr><td class="alt">&rsaquo;&nbsp;config</td></tr><tr><td class="">&rsaquo;&nbsp;language</td></tr><tr><td class="alt">event</td></tr><tr><td class="">routes</td></tr><tr><td class="alt"><b>welcome/index</b>&rsaquo;&nbsp;_root_</td></tr><tr><td class=""><b>welcome/404</b>&rsaquo;&nbsp;_404_</td></tr><tr><td class="alt">&rsaquo;&nbsp;hello(/:name)?</td></tr><tr><td class=""><b>welcome/hello</b>&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class="alt"><b>hello</b>&rsaquo;&nbsp;&rsaquo;&nbsp;name</td></tr><tr><td class="">asset</td></tr><tr><td class="alt">&rsaquo;&nbsp;paths</td></tr><tr><td class=""><b>assets/</b>&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class="alt"><b>img/</b>&rsaquo;&nbsp;img_dir</td></tr><tr><td class=""><b>js/</b>&rsaquo;&nbsp;js_dir</td></tr><tr><td class="alt"><b>css/</b>&rsaquo;&nbsp;css_dir</td></tr><tr><td class="">&rsaquo;&nbsp;folders</td></tr><tr><td class="alt">&rsaquo;&nbsp;&rsaquo;&nbsp;css</td></tr><tr><td class="">&rsaquo;&nbsp;&rsaquo;&nbsp;js</td></tr><tr><td class="alt">&rsaquo;&nbsp;&rsaquo;&nbsp;img</td></tr><tr><td class=""><b>http://scripts.e-glou.com/</b>&rsaquo;&nbsp;url</td></tr><tr><td class="alt"><b>true</b>&rsaquo;&nbsp;add_mtime</td></tr><tr><td class=""><b>1</b>&rsaquo;&nbsp;indent_level</td></tr><tr><td class="alt"><b>	</b>&rsaquo;&nbsp;indent_with</td></tr><tr><td class=""><b>true</b>&rsaquo;&nbsp;auto_render</td></tr><tr><td class="alt"><b>false</b>&rsaquo;&nbsp;fail_silently</td></tr><tr><td class="">bootstrap</td></tr><tr><td class="alt">&rsaquo;&nbsp;utilities</td></tr><tr><td class=""><b>active</b>&rsaquo;&nbsp;&rsaquo;&nbsp;active</td></tr><tr><td class="alt"><b>disabled</b>&rsaquo;&nbsp;&rsaquo;&nbsp;disabled</td></tr><tr><td class=""><b>hide</b>&rsaquo;&nbsp;&rsaquo;&nbsp;hidden</td></tr><tr><td class="alt"><b>muted</b>&rsaquo;&nbsp;&rsaquo;&nbsp;muted</td></tr><tr><td class=""><b>fade</b>&rsaquo;&nbsp;&rsaquo;&nbsp;fade</td></tr><tr><td class="alt"><b>fade in</b>&rsaquo;&nbsp;&rsaquo;&nbsp;fadein</td></tr><tr><td class=""><b>fade out</b>&rsaquo;&nbsp;&rsaquo;&nbsp;fadeout</td></tr><tr><td class="alt"><b>false</b>&rsaquo;&nbsp;prettyprint</td></tr><tr><td class=""><b>true</b>&rsaquo;&nbsp;strict</td></tr><tr><td class="alt">bootstrap/html_nav_list</td></tr><tr><td class="">&rsaquo;&nbsp;attributes</td></tr><tr><td class="alt">&rsaquo;&nbsp;&rsaquo;&nbsp;type</td></tr><tr><td class=""><b>list</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class="alt">bootstrap/html_item</td></tr><tr><td class="">&rsaquo;&nbsp;attributes</td></tr><tr><td class="alt"><b>null</b>&rsaquo;&nbsp;&rsaquo;&nbsp;icon</td></tr><tr><td class="">&rsaquo;&nbsp;&rsaquo;&nbsp;icon-pos</td></tr><tr><td class="alt"><b>left</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class=""><b>right</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class="alt">&rsaquo;&nbsp;&rsaquo;&nbsp;active</td></tr><tr><td class=""><b>true</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class="alt"><b>false</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class="">&rsaquo;&nbsp;&rsaquo;&nbsp;disabled</td></tr><tr><td class="alt"><b>true</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class=""><b>false</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class="alt"><b>icon</b>&rsaquo;&nbsp;attribute</td></tr><tr><td class="">bootstrap/html_button</td></tr><tr><td class="alt">&rsaquo;&nbsp;attributes</td></tr><tr><td class=""><b>null</b>&rsaquo;&nbsp;&rsaquo;&nbsp;icon</td></tr><tr><td class="alt">&rsaquo;&nbsp;&rsaquo;&nbsp;icon-pos</td></tr><tr><td class=""><b>left</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class="alt"><b>right</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class="">&rsaquo;&nbsp;&rsaquo;&nbsp;status</td></tr><tr><td class="alt"><b>primary</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class=""><b>inverse</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class="alt"><b>default</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;2</td></tr><tr><td class=""><b>warning</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;3</td></tr><tr><td class="alt"><b>danger</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;4</td></tr><tr><td class=""><b>info</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;5</td></tr><tr><td class="alt"><b>success</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;6</td></tr><tr><td class="">&rsaquo;&nbsp;&rsaquo;&nbsp;size</td></tr><tr><td class="alt"><b>small</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class=""><b>mini</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class="alt"><b>large</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;2</td></tr><tr><td class="">&rsaquo;&nbsp;&rsaquo;&nbsp;state</td></tr><tr><td class="alt"><b>disabled</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class=""><b>active</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class="alt"><b></b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;2</td></tr><tr><td class="">&rsaquo;&nbsp;&rsaquo;&nbsp;block</td></tr><tr><td class="alt"><b>true</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class=""><b>false</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class="alt"><b>null</b>&rsaquo;&nbsp;&rsaquo;&nbsp;loading</td></tr><tr><td class="">&rsaquo;&nbsp;&rsaquo;&nbsp;toggle</td></tr><tr><td class="alt"><b>true</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class=""><b>false</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class="alt"><b>status</b>&rsaquo;&nbsp;attribute</td></tr><tr><td class="">&rsaquo;&nbsp;templates</td></tr><tr><td class="alt">&rsaquo;&nbsp;&rsaquo;&nbsp;example</td></tr><tr><td class=""><b>primary</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;status</td></tr><tr><td class="alt"><b>thumbs-up</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;icon</td></tr><tr><td class=""><b>large</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;size</td></tr><tr><td class="alt"><b>Some Title</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;title</td></tr><tr><td class=""><b>button-submit</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;class</td></tr><tr><td class="alt">bootstrap/html_tooltip</td></tr><tr><td class="">&rsaquo;&nbsp;attributes</td></tr><tr><td class="alt">&rsaquo;&nbsp;&rsaquo;&nbsp;animation</td></tr><tr><td class=""><b>true</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class="alt"><b>false</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class="">&rsaquo;&nbsp;&rsaquo;&nbsp;html</td></tr><tr><td class="alt"><b>true</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class=""><b>false</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class="alt">&rsaquo;&nbsp;&rsaquo;&nbsp;placement</td></tr><tr><td class=""><b>top</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class="alt"><b>bottom</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class=""><b>right</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;2</td></tr><tr><td class="alt"><b>left</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;3</td></tr><tr><td class=""><b>null</b>&rsaquo;&nbsp;&rsaquo;&nbsp;selector</td></tr><tr><td class="alt">&rsaquo;&nbsp;&rsaquo;&nbsp;trigger</td></tr><tr><td class=""><b>click</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class="alt"><b>hover</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class=""><b>focus</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;2</td></tr><tr><td class="alt"><b>manual</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;3</td></tr><tr><td class=""><b>null</b>&rsaquo;&nbsp;&rsaquo;&nbsp;title</td></tr><tr><td class="alt"><b>null</b>&rsaquo;&nbsp;&rsaquo;&nbsp;delay</td></tr><tr><td class=""><b>placement</b>&rsaquo;&nbsp;attribute</td></tr><tr><td class="alt">bootstrap/html_label</td></tr><tr><td class="">&rsaquo;&nbsp;attributes</td></tr><tr><td class="alt">&rsaquo;&nbsp;&rsaquo;&nbsp;status</td></tr><tr><td class=""><b>primary</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class="alt"><b>inverse</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class=""><b>default</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;2</td></tr><tr><td class="alt"><b>warning</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;3</td></tr><tr><td class=""><b>important</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;4</td></tr><tr><td class="alt"><b>info</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;5</td></tr><tr><td class=""><b>success</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;6</td></tr><tr><td class="alt"><b>status</b>&rsaquo;&nbsp;attribute</td></tr><tr><td class="">bootstrap/html_popover</td></tr><tr><td class="alt">&rsaquo;&nbsp;attributes</td></tr><tr><td class="">&rsaquo;&nbsp;&rsaquo;&nbsp;animation</td></tr><tr><td class="alt"><b>true</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class=""><b>false</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class="alt">&rsaquo;&nbsp;&rsaquo;&nbsp;html</td></tr><tr><td class=""><b>true</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class="alt"><b>false</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class="">&rsaquo;&nbsp;&rsaquo;&nbsp;placement</td></tr><tr><td class="alt"><b>top</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class=""><b>bottom</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class="alt"><b>right</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;2</td></tr><tr><td class=""><b>left</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;3</td></tr><tr><td class="alt"><b>null</b>&rsaquo;&nbsp;&rsaquo;&nbsp;selector</td></tr><tr><td class="">&rsaquo;&nbsp;&rsaquo;&nbsp;trigger</td></tr><tr><td class="alt"><b>click</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class=""><b>hover</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class="alt"><b>focus</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;2</td></tr><tr><td class=""><b>manual</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;3</td></tr><tr><td class="alt"><b>null</b>&rsaquo;&nbsp;&rsaquo;&nbsp;title</td></tr><tr><td class=""><b>null</b>&rsaquo;&nbsp;&rsaquo;&nbsp;content</td></tr><tr><td class="alt"><b>null</b>&rsaquo;&nbsp;&rsaquo;&nbsp;delay</td></tr><tr><td class=""><b>trigger</b>&rsaquo;&nbsp;attribute</td></tr><tr><td class="alt">bootstrap/html_alert</td></tr><tr><td class="">&rsaquo;&nbsp;attributes</td></tr><tr><td class="alt">&rsaquo;&nbsp;&rsaquo;&nbsp;status</td></tr><tr><td class=""><b>error</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class="alt"><b>success</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class=""><b>info</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;2</td></tr><tr><td class="alt">&rsaquo;&nbsp;&rsaquo;&nbsp;type</td></tr><tr><td class=""><b>block</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class="alt"><b>inline</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class="">&rsaquo;&nbsp;&rsaquo;&nbsp;close</td></tr><tr><td class="alt"><b>true</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class=""><b>false</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class="alt"><b>fade</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;2</td></tr><tr><td class=""><b>status</b>&rsaquo;&nbsp;attribute</td></tr><tr><td class="alt">bootstrap/html_modal</td></tr><tr><td class="">&rsaquo;&nbsp;attributes</td></tr><tr><td class="alt">&rsaquo;&nbsp;&rsaquo;&nbsp;hide</td></tr><tr><td class=""><b>true</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class="alt"><b>false</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class="">&rsaquo;&nbsp;&rsaquo;&nbsp;fade</td></tr><tr><td class="alt"><b>true</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class=""><b>false</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class="alt">&rsaquo;&nbsp;&rsaquo;&nbsp;close</td></tr><tr><td class=""><b>true</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class="alt"><b>false</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class=""><b>fade</b>&rsaquo;&nbsp;attribute</td></tr><tr><td class="alt"><b>&times;</b>&rsaquo;&nbsp;close</td></tr></table></div></div><div id="pqp-session" class="pqp-box"><h3>This panel has no session variables.</h3></div><div id="pqp-get" class="pqp-box"><h3>This panel has no GET variables.</h3></div><div id="pqp-post" class="pqp-box"><h3>This panel has no POST variables.</h3></div>	<table id="pqp-footer" cellspacing="0">
+		<tr>
+			<td class="credit">
+				<a href="https://github.com/particletree" target="_blank">
+				Based on
+				<strong>PHP</strong>
+				<b class="green">Q</b><b class="blue">u</b><b class="purple">i</b><b class="orange">c</b><b class="red">k</b>
+				Profiler</a></td>
+			<td class="pqp-actions">
+				<a class="closeProfiler" href="tooltip.html#" onclick="closeProfiler();return false" title="Close Code Profiler">Close</a>
+				<a class="heightToggle" href="tooltip.html#" onclick="toggleHeight();return false" title="Toggle Height">Height</a>
+				<a class="bottomToggle" href="tooltip.html#" onclick="toggleBottom();return false" title="Toggle Bottom">Bottom</a>
+			</td>
+		</tr>
+	</table></div></div><div id="openProfiler"><a href="tooltip.html#" onclick="openProfiler();return false" title="Open Code Profiler">Code Profiler</a></div><!-- JavaScript -->
+<script type="text/javascript">
+	var PQP_DETAILS = true;
+	var PQP_HEIGHT = "tall";
+
+	addEvent(window, 'load', loadCSS);
+
+	function changeTab(tab) {
+		var pQp = document.getElementById('pQp');
+		hideAllTabs();
+		addClassName(pQp, tab, true);
+	}
+
+	function hideAllTabs() {
+		var pQp = document.getElementById('pQp');
+		removeClassName(pQp, 'console');
+		removeClassName(pQp, 'speed');
+		removeClassName(pQp, 'queries');
+		removeClassName(pQp, 'memory');
+		removeClassName(pQp, 'files');
+		removeClassName(pQp, 'config');
+		removeClassName(pQp, 'session');
+		removeClassName(pQp, 'get');
+		removeClassName(pQp, 'post');
+	}
+
+	function toggleDetails(){
+		var container = document.getElementById('pqp-container');
+
+		if(PQP_DETAILS){
+			addClassName(container, 'hideDetails', true);
+			PQP_DETAILS = false;
+		}
+		else{
+			removeClassName(container, 'hideDetails');
+			PQP_DETAILS = true;
+		}
+	}
+	function toggleHeight(){
+		var container = document.getElementById('pqp-container');
+
+		if(PQP_HEIGHT == "short"){
+			addClassName(container, 'tallDetails', true);
+			PQP_HEIGHT = "tall";
+		}
+		else{
+			removeClassName(container, 'tallDetails');
+			PQP_HEIGHT = "short";
+		}
+	}
+	function toggleBottom(){
+		var container = document.getElementById('pqp-container');
+		if (container.style.position == "inherit")
+		{
+			container.style.position="";
+		}
+		else
+		{
+			container.style.position="inherit";
+		}
+	}
+
+	function loadCSS() {
+		var sheet = document.createElement("style");
+		sheet.setAttribute("type", "text/css");
+		sheet.innerHTML = '.pQp{width:100%;z-index:9999;text-align:center;position:fixed;bottom:0;}* html .pQp{position:absolute;}.pQp *{margin:0 ;padding:0;border:none;background:#222;}#pQp{margin:0 auto;width:85%;min-width:960px;background-color:#222;border:12px solid #000;border-bottom:none;font-family:"Lucida Grande",Tahoma,Arial,sans-serif;-webkit-border-top-left-radius:15px;-webkit-border-top-right-radius:15px;-moz-border-radius-topleft:15px;-moz-border-radius-topright:15px;border-top-left-radius:15px;border-top-right-radius:15px;}#pQp tbody {background:transparent;}#pQp .pqp-box h3{font-weight:normal;line-height:200px;padding:0 15px;color:#fff;}.pQp,.pQp td{color:#444}#pqp-metrics{background:#000;width:100%}#pqp-console,#pqp-speed,#pqp-queries,#pqp-memory,#pqp-files,#pqp-config,#pqp-session,#pqp-get,#pqp-post{background-color:#000;border-top:1px solid #ccc;height:200px;overflow:auto}.pQp .green{color:#588e13!important}.pQp .blue{color:#3769a0!important}.pQp .purple{color:#953fa1!important}.pQp .orange{color:#d28c00!important}.pQp .red{color:#b72f09!important}.pQp .yellow{color:#CDCF3A!important}.pQp .cyan{color:#3EC4D3!important}.pQp .pink{color:#FF7CAD!important}.pQp .flesh{color:#FFA46E!important}#pQp,#pqp-console,#pqp-speed,#pqp-queries,#pqp-memory,#pqp-files,#pqp-config,#pqp-session,#pqp-get,#pqp-post{display:none}.pQp .console,.pQp .speed,.pQp .queries,.pQp .memory,.pQp .files,.pQp .config,.pQp .session,.pQp .get,.pQp .post{display:block!important}.pQp .console #pqp-console,.pQp .speed #pqp-speed,.pQp .queries #pqp-queries,.pQp .memory #pqp-memory,.pQp .files #pqp-files,.pQp .config #pqp-config,.pQp .session #pqp-session,.pQp .get #pqp-get,.pQp .post #pqp-post{display:block}.console td.green,.speed td.blue,.queries td.purple,.memory td.orange,.files td.red,.config td.yellow,.session td.cyan,.get td.pink,.post td.flesh{background:#222!important;border-bottom:6px solid #fff!important;cursor:default!important}.tallDetails #pQp .pqp-box{height:500px}.tallDetails #pQp .pqp-box h3{line-height:500px}.hideDetails #pQp .pqp-box{display:none!important}.hideDetails #pqp-footer{border-top:1px dotted #444}.hideDetails #pQp #pqp-metrics td{height:50px;background:#000!important;border-bottom:none!important;cursor:default!important}#pQp var{font-size:18px;margin:0 0 2px 0}#pQp h4{font-size:10px}.hideDetails .heightToggle{visibility:hidden}#pqp-metrics td{height:80px;width:11%;text-align:center;cursor:pointer;border:1px solid #000;border-bottom:6px solid #444;-webkit-border-top-left-radius:15px;-moz-border-radius-topleft:15px;-webkit-border-top-right-radius:15px;-moz-border-radius-topright:15px;border-top-left-radius:15px;border-top-right-radius:15px;}#pqp-metrics td:hover{background:#222;border-bottom:6px solid #777}#pqp-metrics .green{border-left:none}#pqp-metrics .red{border-right:none}#pqp-metrics h4{text-shadow:#000 1px 1px 1px}.pqp-side var{text-shadow:#444 1px 1px 1px;background-color:transparent;}.pQp var{font-size:23px;font-weight:bold;font-style:normal;margin:0 0 3px 0;display:block; margin-top: 16px !important;}.pQp h4{font-size:12px;color:#fff;margin:0 0 4px 0}.pQp .main{width:80%; float: left;}.pQp .main table{width:100%;}*+html .pQp .main{width:78%}* html .pQp .main{width:77%}.pQp .main td{padding:7px 15px;text-align:left;border-left:1px solid #333;border-right:1px solid #333;border-bottom:1px dotted #323232;color:#FFF;}.pQp .main td,.pQp .main pre{font-family:Monaco,"Consolas","Lucida Console","Courier New",monospace;font-size:11px; background: #222;}.pQp .main td.alt{background:#111}.pQp .main tr.alt td{background:#2e2e2e;border-top:1px dotted #4e4e4e}.pQp .main tr.alt td.alt{background:#333}.pQp .main td b{float:right;font-weight:normal;color:#e6f387}.pQp .main td:hover{background:#2e2e2e}.pQp .pqp-side{float:left;width:20%;background:#000;color:#fff;-webkit-border-bottom-left-radius:30px;-moz-border-radius-bottomleft:30px;border-bottom-left-radius:30px;text-align:center}.pQp .pqp-side td{padding:10px 0 5px 0;background-color: #000; text-align: center !important}.pQp .pqp-side var{color:#fff;font-size:15px}.pQp .pqp-side h4{font-weight:normal;color:#f4fcca;font-size:11px;background-color:transparent;}#pqp-console .pqp-side td{padding:12px 0; text-align: center !important}#pqp-console .pqp-side td.alt1{background:#588e13;width:51%}#pqp-console .pqp-side td.alt2{background-color:#b72f09}#pqp-console .pqp-side td.alt3{background:#d28c00;-webkit-border-bottom-left-radius:30px;-moz-border-radius-bottomleft:30px;border-bottom-left-radius:30px}#pqp-console .pqp-side td.alt4{background-color:#3769a0;border-bottom:1px solid #274b74}#pqp-console .main table{width:100%}#pqp-console td div{width:100%;overflow:hidden;background-color:transparent;}#pqp-console td.type{font-family:"Lucida Grande",Tahoma,Arial,sans-serif;text-align:center;text-transform:uppercase;font-size:9px;padding-top:9px;color:#f4fcca;vertical-align:top;width:40px}.pQp .log-log td.type{background:#47740d!important}.pQp .log-error td.type{background:#9b2700!important}.pQp .log-memory td.type{background:#d28c00!important}.pQp .log-speed td.type{background:#2b5481!important}.pQp .log-log pre{color:#999;background-color:transparent;}.pQp .log-log td:hover pre{color:#fff}.pQp .log-memory em,.pQp .log-speed em{float:left;font-style:normal;display:block;color:#fff;background-color:transparent;}.pQp .log-memory pre,.pQp .log-speed pre{float:right;white-space:normal;display:block;color:#fffd70;background-color:transparent;}#pqp-speed .pqp-side td {padding:12px 0;border-left:1px solid #1e3c5c;border-bottom:1px solid #1e3c5c;border-right:1px solid #1e3c5c;}#pqp-speed .pqp-side td.alt{background-color:#2b5481;border-bottom:none;border-left:none;-webkit-border-bottom-left-radius:30px;-moz-border-radius-bottomleft:30px;border-bottom-left-radius:30px}#pqp-queries .pqp-side td{border-bottom:1px solid #662a6e;border-left:1px solid #662a6e;border-right:1px solid #662a6e}#pqp-queries .pqp-side td.alt{background-color:#7b3384;border-bottom:none;border-left:none;-webkit-border-bottom-left-radius:30px;-moz-border-radius-bottomleft:30px;border-bottom-left-radius:30px}#pqp-queries .main b{float:none;background-color:transparent;}#pqp-queries .main em{display:block;padding:2px 0 0 0;font-style:normal;color:#aaa;background-color:transparent;}#pqp-memory .pqp-side td {padding:12px 0;background-color:#c48200;border-bottom:1px solid #865900;border-left:1px solid #865900;border-right:1px solid #865900}#pqp-memory .pqp-side td.alt{background-color:#ac7200;border-bottom:bone;border-left:none;-webkit-border-bottom-left-radius:30px;-moz-border-radius-bottomleft:30px;border-bottom-left-radius:30px}#pqp-files .pqp-side td{border-bottom:1px solid #7c1f00;border-left:1px solid #7c1f00;border-right:1px solid #7c1f00}#pqp-files .pqp-side td.alt{background-color:#9b2700;border-bottom:none;border-left:none;-webkit-border-bottom-left-radius:30px;-moz-border-radius-bottomleft:30px;border-bottom-left-radius:30px}#pqp-config .pqp-side td{border-bottom:1px solid #CDCF3A;border-left:1px solid #CDCF3A;border-right:1px solid #CDCF3A}#pqp-config .pqp-side td.alt{background-color:#CDCF3A;border-bottom:none;border-left:none;-webkit-border-bottom-left-radius:30px;-moz-border-radius-bottomleft:30px;border-bottom-left-radius:30px}#pqp-session .pqp-side td{border-bottom:1px solid #3EC4D3;border-left:1px solid #3EC4D3;border-right:1px solid #3EC4D3}#pqp-session .pqp-side td.alt{background-color:#3EC4D3;border-bottom:none;border-left:none;-webkit-border-bottom-left-radius:30px;-moz-border-radius-bottomleft:30px;border-bottom-left-radius:30px}#pqp-get .pqp-side td{border-bottom:1px solid #FF7CAD;border-left:1px solid #FF7CAD;border-right:1px solid #FF7CAD}#pqp-get .pqp-side td.alt{background-color:#FF7CAD;border-bottom:none;border-left:none;-webkit-border-bottom-left-radius:30px;-moz-border-radius-bottomleft:30px;border-bottom-left-radius:30px}#pqp-post .pqp-side td{border-bottom:1px solid #FFA46E;border-left:1px solid #FFA46E;border-right:1px solid #FFA46E}#pqp-post .pqp-side td.alt{background-color:#FFA46E;border-bottom:none;border-left:none;-webkit-border-bottom-left-radius:30px;-moz-border-radius-bottomleft:30px;border-bottom-left-radius:30px}#pqp-footer{width:100%;background:#000;font-size:11px;border-top:1px solid #ccc}#pqp-footer td{padding:0!important;border:none!important}#pqp-footer strong{color:#fff}#pqp-footer a{color:#999;padding:5px 10px;text-decoration:none}#pqp-footer .credit{width:20%;text-align:left}#pqp-footer .credit a{line-height: 30px}#pqp-footer .pqp-actions{width:80%;text-align:right}#pqp-footer .pqp-actions a{float:right;width:auto}#pqp-footer a:hover,#pqp-footer a:hover strong,#pqp-footer a:hover b{background:#fff;color:black!important;text-decoration:none}#pqp-footer a:active,#pqp-footer a:active strong,#pqp-footer a:active b{background:#ecf488;color:green!important}#openProfiler { position: fixed; bottom: 0; right: 20px; }#openProfiler a { height:32px;text-align:center;width:100px;background-color:#222;border:2px solid #000;border-bottom:none;font-size:12px;font-family:"Lucida Grande",Tahoma,Arial,sans-serif;-webkit-border-top-left-radius:4px;-webkit-border-top-right-radius:4px;-moz-border-radius-topleft:4px;-moz-border-radius-topright:4px;;border-top-right-radius:4px;color:#999;line-height: 32px;display:block;}#openProfiler a:hover{color:white;text-decoration:none}';
+		document.getElementsByTagName("head")[0].appendChild(sheet);
+	}
+
+
+	//http://www.bigbold.com/snippets/posts/show/2630
+	function addClassName(objElement, strClass, blnMayAlreadyExist){
+	   if ( objElement.className ){
+	      var arrList = objElement.className.split(' ');
+	      if ( blnMayAlreadyExist ){
+	         var strClassUpper = strClass.toUpperCase();
+	         for ( var i = 0; i < arrList.length; i++ ){
+	            if ( arrList[i].toUpperCase() == strClassUpper ){
+	               arrList.splice(i, 1);
+	               i--;
+	             }
+	           }
+	      }
+	      arrList[arrList.length] = strClass;
+	      objElement.className = arrList.join(' ');
+	   }
+	   else{
+	      objElement.className = strClass;
+	      }
+	}
+
+	//http://www.bigbold.com/snippets/posts/show/2630
+	function removeClassName(objElement, strClass){
+	   if ( objElement.className ){
+	      var arrList = objElement.className.split(' ');
+	      var strClassUpper = strClass.toUpperCase();
+	      for ( var i = 0; i < arrList.length; i++ ){
+	         if ( arrList[i].toUpperCase() == strClassUpper ){
+	            arrList.splice(i, 1);
+	            i--;
+	         }
+	      }
+	      objElement.className = arrList.join(' ');
+	   }
+	}
+
+	//http://ejohn.org/projects/flexible-javascript-events/
+	function addEvent( obj, type, fn ) {
+	  if ( obj.attachEvent ) {
+	    obj["e"+type+fn] = fn;
+	    obj[type+fn] = function() { obj["e"+type+fn]( window.event ) };
+	    obj.attachEvent( "on"+type, obj[type+fn] );
+	  }
+	  else{
+	    obj.addEventListener( type, fn, false );
+	  }
+	}
+
+	function openProfiler()
+	{
+		document.getElementById("pqp-container").style.display = "block";
+		document.getElementById("openProfiler").style.display = "none";
+	}
+
+	function closeProfiler()
+	{
+		document.getElementById("pqp-container").style.display = "none";
+		document.getElementById("openProfiler").style.display = "block";
+	}
+
+	function preventDefault(e) {
+	  e = e || window.event;
+	  if (e.preventDefault)
+	    e.preventDefault();
+	  e.returnValue = false;
+	}
+
+	window.onload = function(){
+		document.getElementById('pqp-console').onmousewheel = function(e){
+		  document.getElementById('pqp-console').scrollTop -= e.wheelDeltaY;
+		  preventDefault(e);
+		}
+		document.getElementById('pqp-speed').onmousewheel = function(e){
+		  document.getElementById('pqp-speed').scrollTop -= e.wheelDeltaY;
+		  preventDefault(e);
+		}
+		document.getElementById('pqp-queries').onmousewheel = function(e){
+		  document.getElementById('pqp-queries').scrollTop -= e.wheelDeltaY;
+		  preventDefault(e);
+		}
+		document.getElementById('pqp-memory').onmousewheel = function(e){
+		  document.getElementById('pqp-memory').scrollTop -= e.wheelDeltaY;
+		  preventDefault(e);
+		}
+		document.getElementById('pqp-files').onmousewheel = function(e){
+		  document.getElementById('pqp-files').scrollTop -= e.wheelDeltaY;
+		  preventDefault(e);
+		}
+		document.getElementById('pqp-config').onmousewheel = function(e){
+		  document.getElementById('pqp-config').scrollTop -= e.wheelDeltaY;
+		  preventDefault(e);
+		}
+		document.getElementById('pqp-session').onmousewheel = function(e){
+		  document.getElementById('pqp-session').scrollTop -= e.wheelDeltaY;
+		  preventDefault(e);
+		}
+		document.getElementById('pqp-get').onmousewheel = function(e){
+		  document.getElementById('pqp-get').scrollTop -= e.wheelDeltaY;
+		  preventDefault(e);
+		}
+		document.getElementById('pqp-post').onmousewheel = function(e){
+		  document.getElementById('pqp-post').scrollTop -= e.wheelDeltaY;
+		  preventDefault(e);
+		}
+		toggleBottom();
+	}
+</script><div style="clear:both;"></div><div id="pqp-container" class="pQp tallDetails" style="display:none;position:inherit;"><div id="pQp" class="console">
+<table id="pqp-metrics" cellspacing="0">
+<tr>
+	<td class="green" onclick="changeTab('console');">
+		<var>8</var>
+		<h4>Console</h4>
+	</td>
+	<td class="blue" onclick="changeTab('speed');">
+		<var>20.834 ms</var>
+		<h4>Load Time</h4>
+	</td>
+	<td class="purple" onclick="changeTab('queries');">
+		<var>0 Queries</var>
+		<h4>Database</h4>
+	</td>
+	<td class="orange" onclick="changeTab('memory');">
+		<var>1.43 MB</var>
+		<h4>Memory Used</h4>
+	</td>
+	<td class="red" onclick="changeTab('files');">
+		<var>71 Files</var>
+		<h4>Included</h4>
+	</td>
+	<td class="yellow" onclick="changeTab('config');">
+		<var>261 Config</var>
+		<h4>items loaded</h4>
+	</td>
+	<td class="cyan" onclick="changeTab('session');">
+		<var>0 Session</var>
+		<h4>vars loaded</h4>
+	</td>
+	<td class="pink" onclick="changeTab('get');">
+		<var>0 GET</var>
+		<h4>vars loaded</h4>
+	</td>
+	<td class="flesh" onclick="changeTab('post');">
+		<var>0 POST</var>
+		<h4>vars loaded</h4>
+	</td>
+</tr>
+</table><div id="pqp-console" class="pqp-box"><table class="pqp-side" cellspacing="0">
+		<tr>
+			<td class="alt1"><var>0</var><h4>Logs</h4></td>
+			<td class="alt2"><var>0</var> <h4>Errors</h4></td>
+		</tr>
+		<tr>
+			<td class="alt3"><var>0</var> <h4>Memory</h4></td>
+			<td class="alt4"><var>8</var> <h4>Speed</h4></td>
+		</tr>
+		</table>
+		<div class="main"><table cellspacing="0"><tr class="log-speed">
+				<td class="type">speed</td>
+				<td class=""><div><pre>1.120 ms</pre> <em>Fuel\Core\Fuel::init Start</em></div></td></tr><tr class="log-speed">
+				<td class="type">speed</td>
+				<td class="alt"><div><pre>4.160 ms</pre> <em>Fuel\Core\Fuel::init End</em></div></td></tr><tr class="log-speed">
+				<td class="type">speed</td>
+				<td class=""><div><pre>4.268 ms</pre> <em>Fuel\Core\Uri::__construct Start</em></div></td></tr><tr class="log-speed">
+				<td class="type">speed</td>
+				<td class="alt"><div><pre>4.330 ms</pre> <em>Fuel\Core\Uri::__construct End</em></div></td></tr><tr class="log-speed">
+				<td class="type">speed</td>
+				<td class=""><div><pre>4.685 ms</pre> <em>Fuel\Core\Request::execute Start</em></div></td></tr><tr class="log-speed">
+				<td class="type">speed</td>
+				<td class="alt"><div><pre>6.722 ms</pre> <em>Fuel\Core\Request::execute End</em></div></td></tr><tr class="log-speed">
+				<td class="type">speed</td>
+				<td class=""><div><pre>15.116 ms</pre> <em>End of Fuel Execution</em></div></td></tr><tr class="log-speed">
+				<td class="type">speed</td>
+				<td class="alt"><div><pre>19.225 ms</pre> <em>End of Fuel Execution</em></div></td></tr></table></div></div><div id="pqp-speed" class="pqp-box"><table class="pqp-side" cellspacing="0">
+		  <tr><td><var>20.834 ms</var><h4>Load Time</h4></td></tr>
+		  <tr><td class="alt"><var>30 s</var> <h4>Max Execution Time</h4></td></tr>
+		 </table>
+		<div class="main"><table cellspacing="0"><tr class="log-speed">
+				<td class=""><div><pre>1.120 ms</pre> <em>Fuel\Core\Fuel::init Start</em></div></td></tr><tr class="log-speed">
+				<td class="alt"><div><pre>4.160 ms</pre> <em>Fuel\Core\Fuel::init End</em></div></td></tr><tr class="log-speed">
+				<td class=""><div><pre>4.268 ms</pre> <em>Fuel\Core\Uri::__construct Start</em></div></td></tr><tr class="log-speed">
+				<td class="alt"><div><pre>4.330 ms</pre> <em>Fuel\Core\Uri::__construct End</em></div></td></tr><tr class="log-speed">
+				<td class=""><div><pre>4.685 ms</pre> <em>Fuel\Core\Request::execute Start</em></div></td></tr><tr class="log-speed">
+				<td class="alt"><div><pre>6.722 ms</pre> <em>Fuel\Core\Request::execute End</em></div></td></tr><tr class="log-speed">
+				<td class=""><div><pre>15.116 ms</pre> <em>End of Fuel Execution</em></div></td></tr><tr class="log-speed">
+				<td class="alt"><div><pre>19.225 ms</pre> <em>End of Fuel Execution</em></div></td></tr></table></div></div><div id="pqp-queries" class="pqp-box"><h3>This panel has no log items.</h3></div><div id="pqp-memory" class="pqp-box"><h3>This panel has no log items.</h3></div><div id="pqp-files" class="pqp-box"><table class="pqp-side" cellspacing="0">
+		  	<tr><td><var>4</var><h4>Finder Paths</h4></td></tr>
+		  	<tr><td><var>71</var><h4>Total Files</h4></td></tr>
+			<tr><td><var>333.67 kB</var> <h4>Total Size</h4></td></tr>
+			<tr><td class="alt"><var>26.47 kB</var> <h4>Largest</h4></td></tr>
+		 </table>
+		<div class="main"><table cellspacing="0"><tr><td><strong style="font-size:120%;">Finder paths:</strong></td></tr><tr><td class="">/Volumes/mac/web/www/scripts/app/</td></tr><tr><td class="alt">/Volumes/mac/web/www/frameworks/fuelphp/packages/orm/</td></tr><tr><td class="">/Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/</td></tr><tr><td class="alt">/Volumes/mac/web/www/frameworks/fuelphp/core/</td></tr><tr><td><strong style="font-size:120%;">Loaded files:</strong></td></tr><tr><td class=""><b>1.60 kB</b> /Volumes/mac/web/www/scripts/public/index.php</td></tr><tr><td class="alt"><b>704 bytes</b> /Volumes/mac/web/www/scripts/app/bootstrap.php</td></tr><tr><td class=""><b>8.04 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/autoloader.php</td></tr><tr><td class="alt"><b>11.55 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/bootstrap.php</td></tr><tr><td class=""><b>9.78 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/base.php</td></tr><tr><td class="alt"><b>10.11 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/fuel.php</td></tr><tr><td class=""><b>5.46 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/config.php</td></tr><tr><td class="alt"><b>814 bytes</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/config/php.php</td></tr><tr><td class=""><b>4.27 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/config/file.php</td></tr><tr><td class="alt"><b>176 bytes</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/config/interface.php</td></tr><tr><td class=""><b>9.25 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/finder.php</td></tr><tr><td class="alt"><b>20.59 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/arr.php</td></tr><tr><td class=""><b>6.06 kB</b> /Volumes/mac/web/www/scripts/app/config/config.php</td></tr><tr><td class="alt"><b>1.62 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/profiler.php</td></tr><tr><td class=""><b>2.46 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/vendor/phpquickprofiler/console.php</td></tr><tr><td class="alt"><b>6.54 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/vendor/phpquickprofiler/phpquickprofiler.php</td></tr><tr><td class=""><b>10.54 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/input.php</td></tr><tr><td class="alt"><b>8.85 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/security.php</td></tr><tr><td class=""><b>2.15 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/event.php</td></tr><tr><td class="alt"><b>4.82 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/event/instance.php</td></tr><tr><td class=""><b>3.27 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/package.php</td></tr><tr><td class="alt"><b>3.17 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/module.php</td></tr><tr><td class=""><b>195 bytes</b> /Volumes/mac/web/www/scripts/app/config/routes.php</td></tr><tr><td class="alt"><b>6.54 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/router.php</td></tr><tr><td class=""><b>4.29 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/route.php</td></tr><tr><td class="alt"><b>12.45 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/request.php</td></tr><tr><td class=""><b>5.24 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/uri.php</td></tr><tr><td class="alt"><b>10.41 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/inflector.php</td></tr><tr><td class=""><b>2.77 kB</b> /Volumes/mac/web/www/scripts/app/classes/controller/bootstrap.php</td></tr><tr><td class="alt"><b>1.38 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/controller.php</td></tr><tr><td class=""><b>12.33 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/view.php</td></tr><tr><td class="alt"><b>5.98 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/asset.php</td></tr><tr><td class=""><b>2.46 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/config/asset.php</td></tr><tr><td class="alt"><b>12.54 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/asset/instance.php</td></tr><tr><td class=""><b>3.44 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/bootstrap.php</td></tr><tr><td class="alt"><b>1.45 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/orm/bootstrap.php</td></tr><tr><td class=""><b>2.56 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/classes/html.php</td></tr><tr><td class="alt"><b>6.57 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/html.php</td></tr><tr><td class=""><b>1.40 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/classes/html/nav/list.php</td></tr><tr><td class="alt"><b>1.23 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/classes/html/nav.php</td></tr><tr><td class=""><b>9.27 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/classes/module.php</td></tr><tr><td class="alt"><b>614 bytes</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/classes/interfaces.php</td></tr><tr><td class=""><b>306 bytes</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/config/bootstrap/bootstrap.php</td></tr><tr><td class="alt"><b>82 bytes</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/config/bootstrap/html_nav_list.php</td></tr><tr><td class=""><b>458 bytes</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/classes/html/nav/item.php</td></tr><tr><td class="alt"><b>2.18 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/classes/html/item.php</td></tr><tr><td class=""><b>635 bytes</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/classes/module/icon.php</td></tr><tr><td class="alt"><b>207 bytes</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/config/bootstrap/html_item.php</td></tr><tr><td class=""><b>6.09 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/response.php</td></tr><tr><td class="alt"><b>1.22 kB</b> /Volumes/mac/web/www/scripts/app/views/bootstrap.php</td></tr><tr><td class=""><b>2.93 kB</b> /Volumes/mac/web/www/scripts/app/views/bootstrap/extra/tooltip.php</td></tr><tr><td class="alt"><b>773 bytes</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/classes/html/button.php</td></tr><tr><td class=""><b>1.72 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/classes/module/button.php</td></tr><tr><td class="alt"><b>603 bytes</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/config/bootstrap/html_button.php</td></tr><tr><td class=""><b>1.05 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/classes/html/tooltip.php</td></tr><tr><td class="alt"><b>337 bytes</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/config/bootstrap/html_tooltip.php</td></tr><tr><td class=""><b>723 bytes</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/classes/html/label.php</td></tr><tr><td class="alt"><b>177 bytes</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/config/bootstrap/html_label.php</td></tr><tr><td class=""><b>3.57 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/classes/html/popover.php</td></tr><tr><td class="alt"><b>357 bytes</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/config/bootstrap/html_popover.php</td></tr><tr><td class=""><b>1.03 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/classes/html/alert.php</td></tr><tr><td class="alt"><b>212 bytes</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/config/bootstrap/html_alert.php</td></tr><tr><td class=""><b>4.42 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/classes/html/modal.php</td></tr><tr><td class="alt"><b>309 bytes</b> /Volumes/mac/web/www/frameworks/fuelphp/packages/bootstrap/config/bootstrap/html_modal.php</td></tr><tr><td class=""><b>26.47 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/vendor/phpquickprofiler/display.php</td></tr><tr><td class="alt"><b>7.40 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/session.php</td></tr><tr><td class=""><b>3.66 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/config/session.php</td></tr><tr><td class="alt"><b>3.98 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/session/cookie.php</td></tr><tr><td class=""><b>14.27 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/session/driver.php</td></tr><tr><td class="alt"><b>10.15 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/date.php</td></tr><tr><td class=""><b>3.59 kB</b> /Volumes/mac/web/www/frameworks/fuelphp/core/classes/cookie.php</td></tr></table></div></div><div id="pqp-config" class="pqp-box"><table class="pqp-side" cellspacing="0">
+			<tr><td class="alt"><var>261</var> <h4>Configuration items</h4></td></tr>
+		 </table>
+		<div class="main"><table cellspacing="0"><tr><td class=""><b>http://scripts.e-glou.com/</b>base_url</td></tr><tr><td class="alt"><b></b>url_suffix</td></tr><tr><td class=""><b>index.php</b>index_file</td></tr><tr><td class="alt"><b>true</b>profiling</td></tr><tr><td class=""><b>true</b>caching</td></tr><tr><td class="alt"><b>/Volumes/mac/web/www/scripts/app/cache/</b>cache_dir</td></tr><tr><td class=""><b>3600</b>cache_lifetime</td></tr><tr><td class="alt"><b>null</b>ob_callback</td></tr><tr><td class="">errors</td></tr><tr><td class="alt">&rsaquo;&nbsp;continue_on</td></tr><tr><td class=""><b>8</b>&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class="alt"><b>2</b>&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class=""><b>8192</b>&rsaquo;&nbsp;&rsaquo;&nbsp;2</td></tr><tr><td class="alt"><b>2048</b>&rsaquo;&nbsp;&rsaquo;&nbsp;3</td></tr><tr><td class=""><b>10</b>&rsaquo;&nbsp;throttle</td></tr><tr><td class="alt"><b>true</b>&rsaquo;&nbsp;notices</td></tr><tr><td class=""><b>en</b>language</td></tr><tr><td class="alt"><b>en</b>language_fallback</td></tr><tr><td class=""><b>en_US</b>locale</td></tr><tr><td class="alt"><b>UTF-8</b>encoding</td></tr><tr><td class=""><b>0</b>server_gmt_offset</td></tr><tr><td class="alt"><b>UTC</b>default_timezone</td></tr><tr><td class=""><b>3</b>log_threshold</td></tr><tr><td class="alt"><b>/Volumes/mac/web/www/scripts/app/logs/</b>log_path</td></tr><tr><td class=""><b>Y-m-d H:i:s</b>log_date_format</td></tr><tr><td class="alt">security</td></tr><tr><td class=""><b>false</b>&rsaquo;&nbsp;csrf_autoload</td></tr><tr><td class="alt"><b>fuel_csrf_token</b>&rsaquo;&nbsp;csrf_token_key</td></tr><tr><td class=""><b>0</b>&rsaquo;&nbsp;csrf_expiration</td></tr><tr><td class="alt">&rsaquo;&nbsp;uri_filter</td></tr><tr><td class=""><b>htmlentities</b>&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class="alt">&rsaquo;&nbsp;input_filter</td></tr><tr><td class="">&rsaquo;&nbsp;output_filter</td></tr><tr><td class="alt"><b>Security::htmlentities</b>&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class=""><b>false</b>&rsaquo;&nbsp;auto_filter_output</td></tr><tr><td class="alt">&rsaquo;&nbsp;whitelisted_classes</td></tr><tr><td class=""><b>Fuel\Core\Response</b>&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class="alt"><b>Fuel\Core\View</b>&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class=""><b>Fuel\Core\ViewModel</b>&rsaquo;&nbsp;&rsaquo;&nbsp;2</td></tr><tr><td class="alt"><b>Closure</b>&rsaquo;&nbsp;&rsaquo;&nbsp;3</td></tr><tr><td class="">cookie</td></tr><tr><td class="alt"><b>0</b>&rsaquo;&nbsp;expiration</td></tr><tr><td class=""><b>/</b>&rsaquo;&nbsp;path</td></tr><tr><td class="alt"><b>null</b>&rsaquo;&nbsp;domain</td></tr><tr><td class=""><b>false</b>&rsaquo;&nbsp;secure</td></tr><tr><td class="alt"><b>false</b>&rsaquo;&nbsp;http_only</td></tr><tr><td class="">module_paths</td></tr><tr><td class="alt"><b>/Volumes/mac/web/www/scripts/app/modules/</b>&rsaquo;&nbsp;0</td></tr><tr><td class="">always_load</td></tr><tr><td class="alt">&rsaquo;&nbsp;packages</td></tr><tr><td class="">&rsaquo;&nbsp;modules</td></tr><tr><td class="alt"><b>admin</b>&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class="">&rsaquo;&nbsp;classes</td></tr><tr><td class="alt">&rsaquo;&nbsp;config</td></tr><tr><td class="">&rsaquo;&nbsp;language</td></tr><tr><td class="alt">event</td></tr><tr><td class="">routes</td></tr><tr><td class="alt"><b>welcome/index</b>&rsaquo;&nbsp;_root_</td></tr><tr><td class=""><b>welcome/404</b>&rsaquo;&nbsp;_404_</td></tr><tr><td class="alt">&rsaquo;&nbsp;hello(/:name)?</td></tr><tr><td class=""><b>welcome/hello</b>&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class="alt"><b>hello</b>&rsaquo;&nbsp;&rsaquo;&nbsp;name</td></tr><tr><td class="">asset</td></tr><tr><td class="alt">&rsaquo;&nbsp;paths</td></tr><tr><td class=""><b>assets/</b>&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class="alt"><b>img/</b>&rsaquo;&nbsp;img_dir</td></tr><tr><td class=""><b>js/</b>&rsaquo;&nbsp;js_dir</td></tr><tr><td class="alt"><b>css/</b>&rsaquo;&nbsp;css_dir</td></tr><tr><td class="">&rsaquo;&nbsp;folders</td></tr><tr><td class="alt">&rsaquo;&nbsp;&rsaquo;&nbsp;css</td></tr><tr><td class="">&rsaquo;&nbsp;&rsaquo;&nbsp;js</td></tr><tr><td class="alt">&rsaquo;&nbsp;&rsaquo;&nbsp;img</td></tr><tr><td class=""><b>http://scripts.e-glou.com/</b>&rsaquo;&nbsp;url</td></tr><tr><td class="alt"><b>true</b>&rsaquo;&nbsp;add_mtime</td></tr><tr><td class=""><b>1</b>&rsaquo;&nbsp;indent_level</td></tr><tr><td class="alt"><b>	</b>&rsaquo;&nbsp;indent_with</td></tr><tr><td class=""><b>true</b>&rsaquo;&nbsp;auto_render</td></tr><tr><td class="alt"><b>false</b>&rsaquo;&nbsp;fail_silently</td></tr><tr><td class="">bootstrap</td></tr><tr><td class="alt">&rsaquo;&nbsp;utilities</td></tr><tr><td class=""><b>active</b>&rsaquo;&nbsp;&rsaquo;&nbsp;active</td></tr><tr><td class="alt"><b>disabled</b>&rsaquo;&nbsp;&rsaquo;&nbsp;disabled</td></tr><tr><td class=""><b>hide</b>&rsaquo;&nbsp;&rsaquo;&nbsp;hidden</td></tr><tr><td class="alt"><b>muted</b>&rsaquo;&nbsp;&rsaquo;&nbsp;muted</td></tr><tr><td class=""><b>fade</b>&rsaquo;&nbsp;&rsaquo;&nbsp;fade</td></tr><tr><td class="alt"><b>fade in</b>&rsaquo;&nbsp;&rsaquo;&nbsp;fadein</td></tr><tr><td class=""><b>fade out</b>&rsaquo;&nbsp;&rsaquo;&nbsp;fadeout</td></tr><tr><td class="alt"><b>false</b>&rsaquo;&nbsp;prettyprint</td></tr><tr><td class=""><b>true</b>&rsaquo;&nbsp;strict</td></tr><tr><td class="alt">bootstrap/html_nav_list</td></tr><tr><td class="">&rsaquo;&nbsp;attributes</td></tr><tr><td class="alt">&rsaquo;&nbsp;&rsaquo;&nbsp;type</td></tr><tr><td class=""><b>list</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class="alt">bootstrap/html_item</td></tr><tr><td class="">&rsaquo;&nbsp;attributes</td></tr><tr><td class="alt"><b>null</b>&rsaquo;&nbsp;&rsaquo;&nbsp;icon</td></tr><tr><td class="">&rsaquo;&nbsp;&rsaquo;&nbsp;icon-pos</td></tr><tr><td class="alt"><b>left</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class=""><b>right</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class="alt">&rsaquo;&nbsp;&rsaquo;&nbsp;active</td></tr><tr><td class=""><b>true</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class="alt"><b>false</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class="">&rsaquo;&nbsp;&rsaquo;&nbsp;disabled</td></tr><tr><td class="alt"><b>true</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class=""><b>false</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class="alt"><b>icon</b>&rsaquo;&nbsp;attribute</td></tr><tr><td class="">bootstrap/html_button</td></tr><tr><td class="alt">&rsaquo;&nbsp;attributes</td></tr><tr><td class=""><b>null</b>&rsaquo;&nbsp;&rsaquo;&nbsp;icon</td></tr><tr><td class="alt">&rsaquo;&nbsp;&rsaquo;&nbsp;icon-pos</td></tr><tr><td class=""><b>left</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class="alt"><b>right</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class="">&rsaquo;&nbsp;&rsaquo;&nbsp;status</td></tr><tr><td class="alt"><b>primary</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class=""><b>inverse</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class="alt"><b>default</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;2</td></tr><tr><td class=""><b>warning</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;3</td></tr><tr><td class="alt"><b>danger</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;4</td></tr><tr><td class=""><b>info</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;5</td></tr><tr><td class="alt"><b>success</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;6</td></tr><tr><td class="">&rsaquo;&nbsp;&rsaquo;&nbsp;size</td></tr><tr><td class="alt"><b>small</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class=""><b>mini</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class="alt"><b>large</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;2</td></tr><tr><td class="">&rsaquo;&nbsp;&rsaquo;&nbsp;state</td></tr><tr><td class="alt"><b>disabled</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class=""><b>active</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class="alt"><b></b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;2</td></tr><tr><td class="">&rsaquo;&nbsp;&rsaquo;&nbsp;block</td></tr><tr><td class="alt"><b>true</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class=""><b>false</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class="alt"><b>null</b>&rsaquo;&nbsp;&rsaquo;&nbsp;loading</td></tr><tr><td class="">&rsaquo;&nbsp;&rsaquo;&nbsp;toggle</td></tr><tr><td class="alt"><b>true</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class=""><b>false</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class="alt"><b>status</b>&rsaquo;&nbsp;attribute</td></tr><tr><td class="">&rsaquo;&nbsp;templates</td></tr><tr><td class="alt">&rsaquo;&nbsp;&rsaquo;&nbsp;example</td></tr><tr><td class=""><b>primary</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;status</td></tr><tr><td class="alt"><b>thumbs-up</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;icon</td></tr><tr><td class=""><b>large</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;size</td></tr><tr><td class="alt"><b>Some Title</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;title</td></tr><tr><td class=""><b>button-submit</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;class</td></tr><tr><td class="alt">bootstrap/html_tooltip</td></tr><tr><td class="">&rsaquo;&nbsp;attributes</td></tr><tr><td class="alt">&rsaquo;&nbsp;&rsaquo;&nbsp;animation</td></tr><tr><td class=""><b>true</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class="alt"><b>false</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class="">&rsaquo;&nbsp;&rsaquo;&nbsp;html</td></tr><tr><td class="alt"><b>true</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class=""><b>false</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class="alt">&rsaquo;&nbsp;&rsaquo;&nbsp;placement</td></tr><tr><td class=""><b>top</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class="alt"><b>bottom</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class=""><b>right</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;2</td></tr><tr><td class="alt"><b>left</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;3</td></tr><tr><td class=""><b>null</b>&rsaquo;&nbsp;&rsaquo;&nbsp;selector</td></tr><tr><td class="alt">&rsaquo;&nbsp;&rsaquo;&nbsp;trigger</td></tr><tr><td class=""><b>click</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class="alt"><b>hover</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class=""><b>focus</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;2</td></tr><tr><td class="alt"><b>manual</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;3</td></tr><tr><td class=""><b>null</b>&rsaquo;&nbsp;&rsaquo;&nbsp;title</td></tr><tr><td class="alt"><b>null</b>&rsaquo;&nbsp;&rsaquo;&nbsp;delay</td></tr><tr><td class=""><b>placement</b>&rsaquo;&nbsp;attribute</td></tr><tr><td class="alt">bootstrap/html_label</td></tr><tr><td class="">&rsaquo;&nbsp;attributes</td></tr><tr><td class="alt">&rsaquo;&nbsp;&rsaquo;&nbsp;status</td></tr><tr><td class=""><b>primary</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class="alt"><b>inverse</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class=""><b>default</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;2</td></tr><tr><td class="alt"><b>warning</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;3</td></tr><tr><td class=""><b>important</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;4</td></tr><tr><td class="alt"><b>info</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;5</td></tr><tr><td class=""><b>success</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;6</td></tr><tr><td class="alt"><b>status</b>&rsaquo;&nbsp;attribute</td></tr><tr><td class="">bootstrap/html_popover</td></tr><tr><td class="alt">&rsaquo;&nbsp;attributes</td></tr><tr><td class="">&rsaquo;&nbsp;&rsaquo;&nbsp;animation</td></tr><tr><td class="alt"><b>true</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class=""><b>false</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class="alt">&rsaquo;&nbsp;&rsaquo;&nbsp;html</td></tr><tr><td class=""><b>true</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class="alt"><b>false</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class="">&rsaquo;&nbsp;&rsaquo;&nbsp;placement</td></tr><tr><td class="alt"><b>top</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class=""><b>bottom</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class="alt"><b>right</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;2</td></tr><tr><td class=""><b>left</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;3</td></tr><tr><td class="alt"><b>null</b>&rsaquo;&nbsp;&rsaquo;&nbsp;selector</td></tr><tr><td class="">&rsaquo;&nbsp;&rsaquo;&nbsp;trigger</td></tr><tr><td class="alt"><b>click</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class=""><b>hover</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class="alt"><b>focus</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;2</td></tr><tr><td class=""><b>manual</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;3</td></tr><tr><td class="alt"><b>null</b>&rsaquo;&nbsp;&rsaquo;&nbsp;title</td></tr><tr><td class=""><b>null</b>&rsaquo;&nbsp;&rsaquo;&nbsp;content</td></tr><tr><td class="alt"><b>null</b>&rsaquo;&nbsp;&rsaquo;&nbsp;delay</td></tr><tr><td class=""><b>trigger</b>&rsaquo;&nbsp;attribute</td></tr><tr><td class="alt">bootstrap/html_alert</td></tr><tr><td class="">&rsaquo;&nbsp;attributes</td></tr><tr><td class="alt">&rsaquo;&nbsp;&rsaquo;&nbsp;status</td></tr><tr><td class=""><b>error</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class="alt"><b>success</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class=""><b>info</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;2</td></tr><tr><td class="alt">&rsaquo;&nbsp;&rsaquo;&nbsp;type</td></tr><tr><td class=""><b>block</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class="alt"><b>inline</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class="">&rsaquo;&nbsp;&rsaquo;&nbsp;close</td></tr><tr><td class="alt"><b>true</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class=""><b>false</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class="alt"><b>fade</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;2</td></tr><tr><td class=""><b>status</b>&rsaquo;&nbsp;attribute</td></tr><tr><td class="alt">bootstrap/html_modal</td></tr><tr><td class="">&rsaquo;&nbsp;attributes</td></tr><tr><td class="alt">&rsaquo;&nbsp;&rsaquo;&nbsp;hide</td></tr><tr><td class=""><b>true</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class="alt"><b>false</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class="">&rsaquo;&nbsp;&rsaquo;&nbsp;fade</td></tr><tr><td class="alt"><b>true</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class=""><b>false</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class="alt">&rsaquo;&nbsp;&rsaquo;&nbsp;close</td></tr><tr><td class=""><b>true</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;0</td></tr><tr><td class="alt"><b>false</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;1</td></tr><tr><td class=""><b>fade</b>&rsaquo;&nbsp;attribute</td></tr><tr><td class="alt"><b>&times;</b>&rsaquo;&nbsp;close</td></tr><tr><td class="">session</td></tr><tr><td class="alt"><b>true</b>&rsaquo;&nbsp;auto_initialize</td></tr><tr><td class=""><b>cookie</b>&rsaquo;&nbsp;driver</td></tr><tr><td class="alt"><b>false</b>&rsaquo;&nbsp;match_ip</td></tr><tr><td class=""><b>true</b>&rsaquo;&nbsp;match_ua</td></tr><tr><td class="alt"><b></b>&rsaquo;&nbsp;cookie_domain</td></tr><tr><td class=""><b>/</b>&rsaquo;&nbsp;cookie_path</td></tr><tr><td class="alt"><b>null</b>&rsaquo;&nbsp;cookie_http_only</td></tr><tr><td class=""><b>false</b>&rsaquo;&nbsp;expire_on_close</td></tr><tr><td class="alt"><b>7200</b>&rsaquo;&nbsp;expiration_time</td></tr><tr><td class=""><b>300</b>&rsaquo;&nbsp;rotation_time</td></tr><tr><td class="alt"><b>flash</b>&rsaquo;&nbsp;flash_id</td></tr><tr><td class=""><b>true</b>&rsaquo;&nbsp;flash_auto_expire</td></tr><tr><td class="alt"><b></b>&rsaquo;&nbsp;post_cookie_name</td></tr><tr><td class="">&rsaquo;&nbsp;cookie</td></tr><tr><td class="alt"><b>fuelcid</b>&rsaquo;&nbsp;&rsaquo;&nbsp;cookie_name</td></tr><tr><td class="">&rsaquo;&nbsp;file</td></tr><tr><td class="alt"><b>fuelfid</b>&rsaquo;&nbsp;&rsaquo;&nbsp;cookie_name</td></tr><tr><td class=""><b>/tmp</b>&rsaquo;&nbsp;&rsaquo;&nbsp;path</td></tr><tr><td class="alt"><b>5</b>&rsaquo;&nbsp;&rsaquo;&nbsp;gc_probability</td></tr><tr><td class="">&rsaquo;&nbsp;memcached</td></tr><tr><td class="alt"><b>fuelmid</b>&rsaquo;&nbsp;&rsaquo;&nbsp;cookie_name</td></tr><tr><td class="">&rsaquo;&nbsp;&rsaquo;&nbsp;servers</td></tr><tr><td class="alt">&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;default</td></tr><tr><td class=""><b>127.0.0.1</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;host</td></tr><tr><td class="alt"><b>11211</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;port</td></tr><tr><td class=""><b>100</b>&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;&rsaquo;&nbsp;weight</td></tr><tr><td class="alt">&rsaquo;&nbsp;db</td></tr><tr><td class=""><b>fueldid</b>&rsaquo;&nbsp;&rsaquo;&nbsp;cookie_name</td></tr><tr><td class="alt"><b>null</b>&rsaquo;&nbsp;&rsaquo;&nbsp;database</td></tr><tr><td class=""><b>sessions</b>&rsaquo;&nbsp;&rsaquo;&nbsp;table</td></tr><tr><td class="alt"><b>5</b>&rsaquo;&nbsp;&rsaquo;&nbsp;gc_probability</td></tr><tr><td class="">&rsaquo;&nbsp;redis</td></tr><tr><td class="alt"><b>fuelrid</b>&rsaquo;&nbsp;&rsaquo;&nbsp;cookie_name</td></tr><tr><td class=""><b>default</b>&rsaquo;&nbsp;&rsaquo;&nbsp;database</td></tr></table></div></div><div id="pqp-session" class="pqp-box"><h3>This panel has no session variables.</h3></div><div id="pqp-get" class="pqp-box"><h3>This panel has no GET variables.</h3></div><div id="pqp-post" class="pqp-box"><h3>This panel has no POST variables.</h3></div>	<table id="pqp-footer" cellspacing="0">
+		<tr>
+			<td class="credit">
+				<a href="https://github.com/particletree" target="_blank">
+				Based on
+				<strong>PHP</strong>
+				<b class="green">Q</b><b class="blue">u</b><b class="purple">i</b><b class="orange">c</b><b class="red">k</b>
+				Profiler</a></td>
+			<td class="pqp-actions">
+				<a class="closeProfiler" href="tooltip.html#" onclick="closeProfiler();return false" title="Close Code Profiler">Close</a>
+				<a class="heightToggle" href="tooltip.html#" onclick="toggleHeight();return false" title="Toggle Height">Height</a>
+				<a class="bottomToggle" href="tooltip.html#" onclick="toggleBottom();return false" title="Toggle Bottom">Bottom</a>
+			</td>
+		</tr>
+	</table></div></div><div id="openProfiler"><a href="tooltip.html#" onclick="openProfiler();return false" title="Open Code Profiler">Code Profiler</a></div></body></html>
