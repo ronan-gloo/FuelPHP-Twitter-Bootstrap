@@ -72,7 +72,7 @@ class Html_Button_Group extends BootstrapModule implements ContainsItems {
 		$this->parse_attributes();
 		$this->parse_items();
 		
-		$this->html('div', implode(PHP_EOL, $this->items));
+		$this->html('div', implode($this->items));
 		
 		return parent::render();
 	}

@@ -138,7 +138,7 @@ class Form_Checkbox extends BootstrapModuleForm implements Deactivable {
 			$input	= $this->_input();
 			
 			$this->attrs = $this->data['label']['attrs'];
-			$this->html('label', $input.PHP_EOL.$text);
+			$this->html('label', $input.$text);
 		}
 		else
 		{

@@ -45,7 +45,7 @@ class Html_Alert extends BootstrapModule {
 		// reorder elements
 		ksort($content);
 		
-		return $this->html('div', implode(PHP_EOL, $content));
+		return $this->html('div', implode($content));
 	}
 	
 }

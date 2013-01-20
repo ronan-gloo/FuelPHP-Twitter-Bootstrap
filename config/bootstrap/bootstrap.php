@@ -10,5 +10,7 @@ return array(
 		'fade' 	 	 => 'fade',
 		'fadein' 	 => 'fade in',
 		'fadeout'  => 'fade out',
-	)
+	),
+	"prettyprint" => true,
+	"strict"			=> true,
 );

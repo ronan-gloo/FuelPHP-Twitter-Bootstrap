@@ -88,9 +88,9 @@ class Html extends \Fuel\Core\Html {
 		return Html_Carousel::forge($attrs);
 	}	
 	
-	public static function table(array $items = array(), array $rpoperties = array(), array $atrs = array())
+	public static function table($items = array(), array $properties = array(), array $attrs = array())
 	{
-		return Html_Table::forge($items, $rpoperties, $atrs);
+		return Html_Table::forge($attrs)->make($items, $properties);
 	}	
 	
 	public static function breadcrumb($attrs = array(), $items = array())

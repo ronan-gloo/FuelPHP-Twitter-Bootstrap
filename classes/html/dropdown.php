@@ -115,7 +115,7 @@ class Html_Dropdown extends BootstrapModule {
 			}
 		}
 		
-		$this->html('ul', implode(PHP_EOL, $this->items));
+		$this->html('ul', implode($this->items));
 		
 		if ($this->data['text'])
 		{

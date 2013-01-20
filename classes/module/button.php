@@ -14,10 +14,7 @@ abstract class BootstrapModuleBtn extends BootstrapModuleIcon implements Activab
 	 * @return void
 	 */
 	protected function set_button()
-	{
-		// juste a string: it should be the color
-		is_string($this->attrs) and $this->attrs = array('status' => $this->attrs);
-		
+	{		
 		$this->css('btn');
 		
 		foreach ($this->attrs as $key => $attr)
@@ -83,7 +80,7 @@ abstract class BootstrapModuleBtn extends BootstrapModuleIcon implements Activab
 	 */
 	public function active($bool = true)
 	{
-		$this->attrs['state'] = $bool === true ? 'active' : '';
+		$this->attrs['state'] = $bool === true ? Config::get('bootstrap.utilities.active') : '';
 		
 		return $this;
 	}
@@ -95,7 +92,7 @@ abstract class BootstrapModuleBtn extends BootstrapModuleIcon implements Activab
 	 */
 	public function disabled($bool = true)
 	{
-		$this->attrs['state'] = $bool === true ? 'disabled' : '';
+		$this->attrs['state'] = $bool === true ? Config::get('bootstrap.utilities.disabled') : '';
 		
 		return $this;
 	}

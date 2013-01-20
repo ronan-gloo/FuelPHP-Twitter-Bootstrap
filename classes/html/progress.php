@@ -63,7 +63,7 @@ class Html_Progress extends BootstrapModule implements Activable {
 				break;
 			}
 		}
-		$this->html('div', implode(PHP_EOL, $this->bars));
+		$this->html('div', implode($this->bars));
 	
 		return parent::render();
 	}

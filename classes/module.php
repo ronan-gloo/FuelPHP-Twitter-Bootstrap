@@ -134,7 +134,9 @@ abstract class BootstrapModule {
 		{
 			$this->attribute = $config['attribute'];
 		}
-
+		
+		$this->strict = Config::get("bootstrap.strict");
+		
 		! is_array($attrs) and $attrs = array($this->attribute => $attrs);
 
 		$this->attrs = $attrs;
@@ -161,6 +163,23 @@ abstract class BootstrapModule {
 		}
 
 		return $config;
+	}
+	
+	
+	/**
+	 * Check if key exists, then retunrs it.
+	 * 
+	 * @access protected
+	 * @param mixed $key
+	 * @return void
+	 */
+	protected function attrs($key = null)
+	{
+		if ($key)
+		{
+			return array_key_exists($key, $this->attrs) ? $this->attrs[$key] : null;
+		}
+		return $this->attrs;
 	}
 	
 	/**
@@ -374,7 +393,7 @@ abstract class BootstrapModule {
 	{
 		return $this->css(Config::get('bootstrap.utilities.fade'));
 	}
-	
+		
 	/**
 	 * Attach popover to the current element.
 	 * 
@@ -469,6 +488,11 @@ abstract class BootstrapModule {
 	 */
 	public function render()
 	{
+		if (Config::get("bootstrap.prettyprint") === true)
+		{
+			import("htmlawed", "vendor/htmlawed");
+			return hl_tidy($this->html, "t", "div");
+		}
 		return $this->html;
 	}
 	

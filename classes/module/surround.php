@@ -82,7 +82,7 @@ class BootstrapModuleSurround extends BootstrapModuleForm {
 			
 			$data = html_tag('span', array('class' => 'add-on'), $data);
 		}
-		return implode(PHP_EOL, $array);
+		return implode($array);
 	}
 
 	

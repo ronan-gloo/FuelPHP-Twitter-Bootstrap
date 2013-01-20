@@ -78,7 +78,7 @@ class Html_Breadcrumb extends BootstrapModule implements ContainsItems {
 		
 		$items = $this->items and array_pop($items); // remove last divider
 		
-		$this->html('ul', implode(PHP_EOL, $items));
+		$this->html('ul', implode($items));
 		
 		return parent::render();
 	}
