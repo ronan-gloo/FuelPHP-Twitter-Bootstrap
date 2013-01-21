@@ -11,20 +11,22 @@ abstract class BootstrapModuleIcon extends BootstrapModule {
 	 */
 	protected function set_icon(&$text)
 	{
-		if (isset($this->attrs['icon']))
+		$namager = $this->manager;
+		
+		if ($icon = $namager->attr('icon'))
 		{
 			$css = array();
 			
-			if (array_key_exists('status', $this->attrs) and $this->attrs['status'] !== 'default')
+			if ($status = $namager->attr("status") and $status !== 'default')
 			{
 				$css['class'] = 'icon-white';
 			}
 			
-			$icon = Html::icon($this->attrs['icon'], $css);
+			$icon = Html::icon($icon, $css);
 			
-			(array_key_exists('icon-pos', $this->attrs) and $this->attrs['icon-pos'] == 'right')
-				? $text = $text.' '.$icon
-				: $text = $icon.' '.$text;
+			$text =  ($pos = $namager->attr("icon-pos") and $pos == 'right')
+				? $text.' '.$icon
+				: $icon.' '.$text;
 		}
 		
 		return $this;

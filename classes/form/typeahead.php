@@ -12,28 +12,28 @@ class Form_Typeahead extends Form_Input {
 	{
 		parent::parse_attrs();
 		
-		foreach ($this->attrs as $key => $val)
+		foreach ($this->manager->attrs() as $key => $val)
 		{
 			switch ($key)
 			{
 				case 'source':
 				$values = array_values((array)$val);
-				$this->attrs['data-source'] = htmlentities(json_encode($values));
+				$this->manager->attr('data-source', htmlentities(json_encode($values)));
 				break;
 				
 				case 'multiple':
-				$val == true and $this->attrs['data-mode'] = $key;
+				$val == true and $this->manager->attr('data-mode', $key);
 				break;
 				
 				case 'items':
 				case 'minLength':
-				$this->attrs['data-'.$key] = $val;
+				 $this->manager->attr('data-'.$key, $val);
 				break;
 			}
 		}
 		
-		$this->attrs['data-provide'] = 'typeahead';
-		$this->attrs['autocomplete'] = 'off';
+		$this->manager->attr('data-provide', 'typeahead');
+		$this->manager->attr('autocomplete', 'off');
 	}
 	
 	
@@ -46,12 +46,12 @@ class Form_Typeahead extends Form_Input {
 	 * @param mixed $minlength (default: null)
 	 * @return void
 	 */
-	public function data($data, $items = null, $minlength = null)
+	public function data($data, $items = null, $minle = null)
 	{
-		$this->attrs['source'] = $data;
+		$this->manager->attr('source', $data);
 		
-		(int)$items and $this->attrs['items'] = (int)$items;
-		(int)$minlength and $this->attrs['minLength'] = (int)$minlength;
+		$items = (int)$items and $this->manager->attr('items', $items);
+		$minle = (int)$minle and $this->manager->attr('minLength', $minle);
 		
 		return $this;
 	}
@@ -66,11 +66,11 @@ class Form_Typeahead extends Form_Input {
 		switch ($bool)
 		{
 			case 1:
-			$this->attrs['multiple'] = $bool;
+			$this->manager->attr('multiple', $bool);
 			break;
 			
 			case 0:
-			if (isset($this->attrs['multiple'])) unset($this->attrs['multiple']);
+			$this->manager->removeAttr('multiple');
 			break;
 		}
 		return $this;

@@ -67,7 +67,7 @@ class Html_Button_Group extends BootstrapModule implements ContainsItems {
 	{
 		if (! $this->items) return $this->html;
 		
-		$this->css('btn-group');
+		$this->manager->addClass('btn-group');
 		
 		$this->parse_attributes();
 		$this->parse_items();
@@ -83,16 +83,16 @@ class Html_Button_Group extends BootstrapModule implements ContainsItems {
 	 */
 	protected function parse_attributes()
 	{
-		foreach ($this->attrs as $key => $attr)
+		foreach ($this->manager->attrs() as $key => $attr)
 		{
 			switch ($key)
 			{
 				case 'toggle':
-				$this->attrs['data-toggle'] = 'buttons-'.$attr;
+				$this->manager->attr('data-toggle', 'buttons-'.$attr);
 				break;
 				
 				case 'vertical':
-				$attr === true && $this->css('btn-group-vertical');
+				$attr === true && $this->manager->addClass('btn-group-vertical');
 				break;
 			}
 		}
@@ -104,16 +104,17 @@ class Html_Button_Group extends BootstrapModule implements ContainsItems {
 	 */
 	protected function parse_items()
 	{
-		foreach($this->items as &$item)
+		foreach($this->items as $item)
 		{
 			// do not override item status...?
-			if (! empty($this->attrs['status']) and empty($item->attrs['status']))
+			if ($status = $this->manager->attr('status') and ! $item->manager->attr('status'))
 			{
-				$item->attrs['status'] = $this->attrs['status'];
+				$item->manager->attr("status", $status);
 			}
-			if (! empty($this->attrs['size']))
+			// Setup global btns size
+			if ($size = $this->manager->attr('size'))
 			{
-				$item->attrs['size'] = $this->attrs['size'];
+				$item->manager->attr("size", $size);
 			}
 		}
 	}

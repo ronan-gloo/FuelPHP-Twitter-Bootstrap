@@ -14,10 +14,28 @@ use
  */
 class Html_Item extends BootstrapModuleIcon implements Activable, Deactivable, Linkable {
 	
+	/**
+	 * (default value: 'html_item')
+	 * 
+	 * @var string
+	 * @access protected
+	 */
 	protected $name	= 'html_item';
 	
+	/**
+	 * (default value: array('href' => '', 'text' => '', 'secure' => false))
+	 * 
+	 * @var string
+	 * @access protected
+	 */
 	protected $data = array('href' => '', 'text' => '', 'secure' => false);
 	
+	/**
+	 * (default value: array())
+	 * 
+	 * @var array
+	 * @access protected
+	 */
 	protected $anchor_attrs = array();
 	
 	/**
@@ -42,7 +60,7 @@ class Html_Item extends BootstrapModuleIcon implements Activable, Deactivable, L
 	 */
 	public function render()
 	{		
-		$this->set_template()->set_icon($this->data['text']);
+		$this->set_icon($this->data['text']);
 		$this->parse_attributes();
 		
 		extract($this->data);
@@ -61,7 +79,7 @@ class Html_Item extends BootstrapModuleIcon implements Activable, Deactivable, L
 		}
 		else
 		{
-			$content = html_tag('span', $this->attrs, $href);
+			$content = html_tag('span', $this->manager->attrs(), $href);
 		}
 		
 		$this->html('li', $content);
@@ -78,21 +96,21 @@ class Html_Item extends BootstrapModuleIcon implements Activable, Deactivable, L
 	 */
 	protected function parse_attributes()
 	{
-		foreach ($this->attrs as $key => $val)
+		foreach ($this->manager->attrs() as $key => $val)
 		{
 			switch($key)
 			{
 				case 'active':	
 				case 'disabled':
-				$val === true and $this->css(Config::get('bootstrap.utilities.'.$key));
+				$val === true and $this->manager->addClass($this->config->package('class.'.$key));
 				break;
 				case 'data-toggle':
 				$this->anchor_attrs = array($key => $val);
-				unset($this->attrs[$key]);
+				$this->manager->removeAttr($key);
 				break;
 			}
 		}
-		$this->clean();
+		$this->manager->clean();
 	}
 			
 	/**
@@ -104,8 +122,7 @@ class Html_Item extends BootstrapModuleIcon implements Activable, Deactivable, L
 	 */
 	public function active($bool = true)
 	{
-		$this->attrs['active'] = $bool;
-		
+		$this->manager->attr('active', $bool);
 		return $this;
 	}
 	
@@ -118,8 +135,7 @@ class Html_Item extends BootstrapModuleIcon implements Activable, Deactivable, L
 	 */
 	public function disabled($bool = true)
 	{
-		$this->attrs['disabled'] = $bool;
-		
+		$this->manager->attr('disabled', $bool);
 		return $this;
 	}
 		

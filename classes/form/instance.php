@@ -236,11 +236,10 @@ class Form_Instance extends \Fuel\Core\Form_Instance {
 	 */
 	public function search($field, $value = null, array $attributes = array())
 	{
-		$input = $this->input($field, $value, $attributes);
-		$input->attrs['type'] 	= 'search';
-		$input->attrs['search'] = true;
+		$attributes["type"]		= "search";
+		$attributes["search"] = true;
 		
-		return $input;
+		return $this->input($field, $value, $attributes);
 	}
 	
 	/**

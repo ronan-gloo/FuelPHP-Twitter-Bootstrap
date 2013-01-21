@@ -16,14 +16,14 @@ class Form_Label extends BootstrapModuleForm {
 	{		
 		if ($this->instance->group['open'] === true)
 		{
-			$this->css('control-label');
+			$this->manager->addClass('control-label');
 		}
 		
-		$this->merge();
+		$this->manager->mergeAttrs();
 			
 		extract($this->data);
 	
-		$this->html = $this->instance->core_label($text, $id, $this->attrs);
+		$this->html = $this->instance->core_label($text, $id, $this->manager->attrs());
 		
 		return parent::render();
 	}

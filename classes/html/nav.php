@@ -65,7 +65,7 @@ abstract class Html_Nav extends BootstrapModule implements ContainsItems {
 	 */
 	public function render()
 	{
-		$this->css('nav', 'nav-'.$this->attrs['type']);
+		$this->manager->addClass('nav', 'nav-'.$this->manager->attr('type'));
 		
 		$this->html('ul', implode($this->items));
 		

@@ -13,19 +13,17 @@ class Html_Alert extends BootstrapModule {
 	 */
 	public function make($title = null, $text = null)
 	{
-		$attrs =& $this->attrs;
+		if (! $this->manager->attr("type")) $this->manager->attr('type', 'inline');
 		
-		! array_key_exists('type', $attrs) and $attrs['type'] = 'inline';
+		$this->manager->addClass('alert');
 		
-		$this->css('alert');
-		
-		foreach ($attrs as $name => $attr)
+		foreach ($this->manager->attrs() as $name => $attr)
 		{
 			switch ($name)
 			{
 				case 'close':
 				$attr and $content[0] = html_tag('a', array('class' => 'close', 'data-dismiss' => 'alert'), '&times;');
-				$attr === 'fade' and $this->css('fade in');
+				$attr === 'fade' and $this->manager->addClass('fade', 'in');
 				break;
 				
 				case 'type':
@@ -35,7 +33,7 @@ class Html_Alert extends BootstrapModule {
 				break;
 				
 				case 'status':
-				$this->css('alert-'.$attr);
+				$this->manager->addClass('alert-'.$attr);
 				break;
 			}
 		}

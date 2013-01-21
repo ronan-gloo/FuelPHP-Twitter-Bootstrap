@@ -32,8 +32,10 @@ class Html_Button_dropdown extends Html_Dropdown {
 	{
 		$filter = array_flip(array('type', 'split', 'align'));
 		
-		$this->btn_attrs	= array_diff_key($this->attrs, $filter);
-		$this->attrs			= array_intersect_key($this->attrs, $filter);
+		$attrs = $this->manager->attrs();
+		
+		$this->btn_attrs = array_diff_key($attrs, $filter);
+		$this->manager->attrs(array_intersect_key($attrs, $filter));
 	}
 	
 	/**
@@ -101,12 +103,12 @@ class Html_Button_dropdown extends Html_Dropdown {
 	{
 		$attrs = array('class' => 'btn-group');
 		
-		if (array_key_exists('type', $this->attrs))
+		if ($type = $this->manager->attr("type"))
 		{
-			$attrs['class'] .= ' drop'.$this->attrs['type'];
+			$attrs['class'] .= ' drop'.$type;
 		}
 
-		$button		= ! empty($this->attrs['split']) ? $this->btn_split() : $this->btn_classic();
+		$button		= $this->manager->attr('split') ? $this->btn_split() : $this->btn_classic();
 		$dropdown = parent::render();
 				
 		$this->html = html_tag('div', $attrs, $button.$dropdown);

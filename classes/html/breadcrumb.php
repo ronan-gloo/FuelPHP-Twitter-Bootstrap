@@ -25,7 +25,7 @@ class Html_Breadcrumb extends BootstrapModule implements ContainsItems {
 	 */
 	public function make()
 	{
-		$sep = array_key_exists('divider', $this->attrs) ? $this->attrs['divider'] : $this->config('divider');
+		$sep = $this->manager->attr('divider') ?: $this->config->module('divider');
 		$this->divider = html_tag('li', array(), html_tag('span', array('class' => 'divider'), $sep));
 
 		return $this;
@@ -74,7 +74,7 @@ class Html_Breadcrumb extends BootstrapModule implements ContainsItems {
 	 */
 	public function render()
 	{
-		$this->css('breadcrumb');
+		$this->manager->addClass('breadcrumb');
 		
 		$items = $this->items and array_pop($items); // remove last divider
 		

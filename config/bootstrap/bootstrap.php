@@ -2,7 +2,7 @@
 
 return array(
 	// Global css state / class
-	'utilities' => array(
+	'class' => array(
 		'active' 	 => 'active',
 		'disabled' => 'disabled',
 		'hidden' 	 => 'hide',

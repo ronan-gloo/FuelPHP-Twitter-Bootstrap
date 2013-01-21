@@ -134,15 +134,15 @@ class Html_Modal extends BootstrapModule implements Unattachable {
 		
 		foreach ($this->passthru as $elem) $html .= $this->{'render_'.$elem}();
 		
-		$this->css('modal');
+		$this->manager->addClass('modal');
 		
-		foreach($this->attrs as $key => $val)
+		foreach($this->manager->attrs() as $key => $val)
 		{
 			switch($key)
 			{
 				case 'fade':
 				case 'hide':
-				$val === true and $this->css($key);
+				$val === true and $this->manager->addClass($key);
 				break;
 			}
 		}
@@ -165,14 +165,14 @@ class Html_Modal extends BootstrapModule implements Unattachable {
 		
 		if (! is_null($this->header['data']))
 		{			
-			if (! empty($this->attrs['close']))
+			if ($this->manager->attr('close'))
 			{
-				$header .= html_tag('a', array('class' => 'close', 'data-dismiss' => 'modal'), $this->config('close'));
+				$header .= html_tag('a', array('class' => 'close', 'data-dismiss' => 'modal'), $this->config->module('close'));
 			}
 			
 			$header .= $this->header['data'];
 	
-			$this->_merge($this->header['attrs'], array('modal-header'));
+			$this->manager->classesToAttr($this->header['attrs'], array('modal-header'));
 			$header = html_tag('div', $this->header['attrs'], $header);
 		}
 		return $header;
@@ -191,7 +191,7 @@ class Html_Modal extends BootstrapModule implements Unattachable {
 		
 		if (! is_null($this->body['data']))
 		{
-			$this->_merge($this->body['attrs'], array('modal-body'));
+			$this->manager->classesToAttr($this->body['attrs'], array('modal-body'));
 			
 			$body = html_tag('div', $this->body['attrs'], $this->body['data']);
 		}
@@ -212,7 +212,7 @@ class Html_Modal extends BootstrapModule implements Unattachable {
 		
 		if (! is_null($this->footer['data']))
 		{
-			$this->_merge($this->footer['attrs'], array('modal-footer'));
+			$this->manager->classesToAttr($this->footer['attrs'], array('modal-footer'));
 			
 			$footer = html_tag('div', $this->footer['attrs'], $this->footer['data']);
 		}

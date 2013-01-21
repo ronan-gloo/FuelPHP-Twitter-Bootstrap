@@ -22,13 +22,13 @@ class Html_Tab_Item extends Html_Item {
 			throw new InvalidArgumentException(__METHOD__.': Only Html_Dropdown instances are accepted');
 		}
 		// setup attributes for the item's anchor
-		$this->_merge($this->anchor_attrs, array('dropdown-toggle'));
+		$this->manager->classesToAttr($this->anchor_attrs, array('dropdown-toggle'));
 		
 		$this->anchor_attrs['data-toggle'] = 'dropdown';
 
 		// add dropdown class to the item
-		$merge = isset($dropdown->attrs['type']) ? $dropdown->attrs['type'] : 'dropdown';
-		$this->_merge($this->attrs, array($merge));
+		$merge = $dropdown->manager->attr('type') ?: 'dropdown';
+		$this->manager->addClass($merge);
 		
 		// append caret to the text
 		$this->data['text'] .= ' '.html_tag('b', array('class' => 'caret'), '');

@@ -31,11 +31,11 @@ class Form_Input extends BootstrapModuleSurround implements Deactivable {
 		switch ($bool)
 		{
 			case 1:
-			$this->attrs['disabled'] = 'disabled';
+			$this->manager->attr('disabled', 'disabled');
 			break;
 			
 			case 0:
-			if (isset($this->attrs['disabled'])) unset($this->attrs['disabled']);
+			$this->manager->attr('disabled') and $this->manager->removeAttr('disabled');
 			break;
 		}
 		
@@ -54,9 +54,9 @@ class Form_Input extends BootstrapModuleSurround implements Deactivable {
 		
 		$this->parse_attrs();
 		
-		$this->merge()->clean();
+		$this->manager->mergeAttrs()->clean();
 		
-		$input = $this->instance->core_input($this->data['field'], $this->data['value'], $this->attrs);
+		$input = $this->instance->core_input($this->data['field'], $this->data['value'], $this->manager->attrs());
 		
 		$this->html  = $this->instance->control_open();
 		$this->html .= ($prepend or $append) ? html_tag('div', $this->cattrs, $prepend.$input.$append) : $input;
@@ -74,7 +74,7 @@ class Form_Input extends BootstrapModuleSurround implements Deactivable {
 	{
 		parent::popover($title, $value, $attrs);
 		
-		empty($this->attrs['data-trigger']) and $this->attrs['data-trigger'] = 'focus';
+		! $this->manager->attr('data-trigger') and $this->manager->attr('data-trigger', 'focus');
 
 		return $this;
 	}
@@ -86,16 +86,16 @@ class Form_Input extends BootstrapModuleSurround implements Deactivable {
 	 */
 	protected function parse_attrs()
 	{
-		foreach ($this->attrs as $key => $attr)
+		foreach ($this->manager->attrs() as $key => $attr)
 		{
 			switch ($key)
 			{
 				case 'size':
-				$this->css('input-'.$attr);
+				$this->manager->addClass('input-'.$attr);
 				break;
 				
 				case 'search':
-				$this->css('search-query');
+				$this->manager->addClass('search-query');
 				break;
 				
 				case 'state':

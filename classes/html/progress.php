@@ -2,8 +2,6 @@
 
 namespace Bootstrap;
 
-use \Config;
-
 /**
  * @extends BootstrapModule
  */
@@ -29,11 +27,11 @@ class Html_Progress extends BootstrapModule implements Activable {
 		// consider first arg as attrs if not numeric
 		if (is_array($value))
 		{
-			$this->attrs = $value;
+			$this->manager->attrs($value);
 			$value = null;
 		}
 				
-		! is_null($value) and $this->bar($value, $this->attrs, $content);
+		! is_null($value) and $this->bar($value, $this->manager->attrs(), $content);
 		
 		return $this;
 	}
@@ -46,20 +44,20 @@ class Html_Progress extends BootstrapModule implements Activable {
 	 */
 	public function render()
 	{
-		$this->css('progress');
+		$this->manager->addClass('progress');
 		
-		foreach ($this->attrs as $key => $attr)
+		foreach ($this->manager->attrs() as $key => $attr)
 		{
 			switch ($key)
 			{
 				case 'striped':
-				$attr === true and $this->css('progress-'.$key);
+				$attr === true and $this->manager->addClass('progress-'.$key);
 				break;
 				case 'active':
-				$attr === true and $this->css(Config::get('bootstrap.utilities.'.$key));
+				$attr === true and $this->manager->addClass($this->config->package('class.'.$key));
 				break;
 				case 'status':
-				$this->css('progress-'.$attr);
+				$this->manager->addClass('progress-'.$attr);
 				break;
 			}
 		}
@@ -104,7 +102,7 @@ class Html_Progress extends BootstrapModule implements Activable {
 	 */
 	public function active($bool = true)
 	{
-		$this->attrs['active'] = $bool;
+		$this->manager->attr("active", $bool);
 		
 		return $this;
 	}

@@ -67,7 +67,7 @@ class Html_Dropdown extends BootstrapModule {
 	 */
 	public function divider($attrs = array())
 	{
-		$this->_merge($attrs, array('divider'));
+		$this->manager->classesToAttr($attrs, array('divider'));
 		
 		$this->items[] = html_tag('li', $attrs, '');
 		
@@ -82,7 +82,7 @@ class Html_Dropdown extends BootstrapModule {
 	 */
 	public function header($text, $attrs = array())
 	{
-		$this->_merge($attrs, array('nav-header'));
+		$this->manager->classesToAttr($attrs, array('nav-header'));
 		
 		$this->items[] = html_tag('li', $attrs, $text);
 		
@@ -95,14 +95,14 @@ class Html_Dropdown extends BootstrapModule {
 	 */
 	public function render()
 	{
-		$this->css('dropdown-menu');
+		$this->manager->addClass('dropdown-menu');
 		
-		foreach ($this->attrs as $key => $attr)
+		foreach ($this->manager->attrs() as $key => $attr)
 		{
 			switch ($key)
 			{
 				case 'align':
-				$this->css('pull-'.$attr);
+				$this->manager->addClass('pull-'.$attr);
 				break;
 				
 				case 'type':
@@ -156,11 +156,9 @@ class Html_Dropdown extends BootstrapModule {
 	{
 		extract($this->data);
 
-		$html = \Html::anchor('#', $text.$this->caret(), $this->toggle_attrs());
+		$html = \Html::anchor('#', $text.$this->caret(), $this->toggle_attrs()).$this->html;
 		
-		$html .= $this->html;
-		
-		$this->_merge($wrap['attrs'], array('dropdown'));
+		$this->manager->classesToAttr($wrap['attrs'], array('dropdown'));
 		
 		$this->html = html_tag($wrap['tag'], $wrap['attrs'], $html);
 	}

@@ -22,11 +22,11 @@ class Html_Img extends BootstrapModule {
 	 */
 	public function render()
 	{
-		$css = array_key_exists('type', $this->attrs) ? 'img-'.$this->attrs['type'] : '';
+		$css = 'img-'.$this->manager->attr('type');
 
-		$this->css($css)->merge()->clean();
+		$this->manager->addClass($css)->mergeAttrs()->clean();
 		
-		$this->html = \Html::img($this->data['src'], $this->attrs);
+		$this->html = \Html::img($this->data['src'], $this->manager->attrs());
 		
 		return parent::render();
 	}

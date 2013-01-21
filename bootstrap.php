@@ -15,6 +15,10 @@ Autoloader::add_core_namespace('Bootstrap');
 
 Autoloader::add_classes(array(
 	
+	// Extra Helpers
+	'Bootstrap\\Helper_Config'		=> __DIR__.'/classes/helper/config.php',
+	'Bootstrap\\Helper_Attribute'	=> __DIR__.'/classes/helper/attribute.php',
+	
 	// Package Classes
 	'Bootstrap\\BootstrapModule'					=> __DIR__.'/classes/module.php',
 	'Bootstrap\\BootstrapModuleBtn'				=> __DIR__.'/classes/module/button.php',

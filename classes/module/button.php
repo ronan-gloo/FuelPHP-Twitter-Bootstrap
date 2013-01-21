@@ -14,33 +14,33 @@ abstract class BootstrapModuleBtn extends BootstrapModuleIcon implements Activab
 	 * @return void
 	 */
 	protected function set_button()
-	{		
-		$this->css('btn');
+	{
+		$this->manager->addClass('btn');
 		
-		foreach ($this->attrs as $key => $attr)
+		foreach ($this->manager->attrs() as $key => $attr)
 		{
 			switch ($key)
 			{
 				case 'status':
 				case 'size':
-				$this->css('btn-'.$attr);
+				$this->manager->addClass('btn-'.$attr);
 				break;
 
 				case 'state':
-				$this->css(Config::get('bootstrap.utilities.'.$attr));
-				$attr === 'disabled' and $this->attrs['disabled'] = 'disabled';
+				$this->manager->addClass($this->config->package('class.'.$attr));
+				$attr === 'disabled' and $this->manager->attr('disabled', 'disabled');
 				break;
 
 				case 'block':
-				$attr === true and $this->css('btn-block');
+				$attr === true and $this->manager->addClass('btn-block');
 				break;
 				
 				case 'loading':
-				$this->attrs['data-loading-text'] = $attr;
+				$this->manager->attr('data-loading-text', $attr);
 				break;
 				
 				case 'toggle':
-				$this->attrs['data-toggle'] = 'button';
+				$this->manager->attr('data-toggle', 'button');
 				break;
 			}
 		}
@@ -56,7 +56,7 @@ abstract class BootstrapModuleBtn extends BootstrapModuleIcon implements Activab
 	 */
 	public function loading($text = '')
 	{
-		$this->attrs['loading'] = $text;
+		$this->manager->attr('loading', $text);
 		
 		return $this;
 	}
@@ -68,7 +68,7 @@ abstract class BootstrapModuleBtn extends BootstrapModuleIcon implements Activab
 	 */
 	public function toggle($bool = true)
 	{
-		$this->attrs['toggle'] = $bool;
+		$this->manager->attr('toggle', $bool);
 		
 		return $this;
 	}
@@ -80,7 +80,7 @@ abstract class BootstrapModuleBtn extends BootstrapModuleIcon implements Activab
 	 */
 	public function active($bool = true)
 	{
-		$this->attrs['state'] = $bool === true ? Config::get('bootstrap.utilities.active') : '';
+		$this->manager->attr('state', ($bool === true ? $this->config->package('class.active') : ''));
 		
 		return $this;
 	}
@@ -92,7 +92,7 @@ abstract class BootstrapModuleBtn extends BootstrapModuleIcon implements Activab
 	 */
 	public function disabled($bool = true)
 	{
-		$this->attrs['state'] = $bool === true ? Config::get('bootstrap.utilities.disabled') : '';
+		$this->manager->attr('state', ($bool === true ? $this->config->package('class.disabled') : ''));
 		
 		return $this;
 	}

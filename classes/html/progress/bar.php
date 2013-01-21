@@ -28,13 +28,12 @@ class Html_Progress_Bar extends BootstrapModule {
 	
 	public function render()
 	{
-		$this->css('bar');
-
-		$this->attrs['style'] = 'width:'.$this->data['value'].'%';
+		$this->manager->addClass('bar');
+		$this->manager->css('width', $this->data['value'].'%');
 				
-		if (array_key_exists('status', $this->attrs))
+		if ($status = $this->manager->attr("status"))
 		{
-			$this->css('bar-'.$this->attrs['status']);
+			$this->manager->addClass('bar-'.$status);
 		}
 		
 		$this->html('div', $this->data['content']);

@@ -13,25 +13,22 @@ class Html_Icon extends BootstrapModuleIcon {
 	 */
 	public function make($icon)
 	{
+		$this->manager->addClass('icon');
+		
 		if (is_array($icon))
 		{
-			$this->attrs = $icon;
+			$this->manager->attrs($icon);
 		}
 		else
 		{
-			$this->attrs['icon'] = $icon;
+			$this->manager->attr('icon', $icon);
 		}
-				
-		$this->set_template();
-		
-		$this->css('icon');
-		
-		if (array_key_exists('status', $this->attrs))
+		if ($status = $this->manager->attr("status"))
 		{
-			$this->css('icon-'.$this->attrs['status']);
+			$this->manager->addClass('icon-'.$status);
 		}
 
-		$this->css('icon-'.$this->attrs['icon']);
+		$this->manager->addClass('icon-'.$this->manager->attr("icon"));
 		
 		return $this;
 	}

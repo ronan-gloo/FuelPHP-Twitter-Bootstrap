@@ -22,7 +22,7 @@ class Html_Nav_List extends Html_Nav implements Nestable {
 	{
 		parent::__construct($attrs);
 		
-		$this->attrs['type'] = 'list';
+		$this->manager->attr('type', 'list');
 	}
 	
 	/**
@@ -33,7 +33,7 @@ class Html_Nav_List extends Html_Nav implements Nestable {
 	 */
 	public function header($text, $attrs = array())
 	{
-		$this->_merge($attrs, array('nav-header'));
+		$this->manager->classesToAttr($attrs, array('nav-header'));
 		
 		$this->items[] = html_tag('li', $attrs, $text);
 		
@@ -49,7 +49,7 @@ class Html_Nav_List extends Html_Nav implements Nestable {
 	 */
 	public function divider($attrs = array())
 	{
-		$this->_merge($attrs, array('divider'));
+		$this->manager->classesToAttr($attrs, array('divider'));
 		
 		$this->items[] = html_tag('li', $attrs, '');
 		

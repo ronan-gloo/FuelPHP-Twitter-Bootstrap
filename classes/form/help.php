@@ -26,9 +26,9 @@ class Form_Help extends BootstrapModuleForm  {
 	 */
 	public function render()
 	{
-		! array_key_exists('type', $this->attrs) and $this->attrs['type'] = 'inline';
+		! $type = $this->manager->attr("type") and $type = $this->manager->attr('type', 'inline');
 		
-		$this->css('help-'.$this->attrs['type']);
+		$this->manager->addClass('help-'.$type);
 		
 		$this->html('span', $this->data['text']);
 		

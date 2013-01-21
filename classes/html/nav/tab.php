@@ -22,7 +22,7 @@ class Html_Nav_Tab extends Html_Nav {
 	{
 		parent::__construct($attrs);
 		
-		empty($this->attrs['type']) and $this->attrs['type'] = 'tabs';
+		! $this->manager->attr('type') and $this->manager->attr('type', 'tabs');
 	}
 	
 	/**
@@ -33,9 +33,9 @@ class Html_Nav_Tab extends Html_Nav {
 	 */
 	public function render()
 	{
-		if (! empty($this->attrs['stacked']))
+		if ($this->manager->attr('stacked'))
 		{
-			$this->css('nav-stacked');
+			$this->manager->addClass('nav-stacked');
 		}
 		
 		return parent::render();

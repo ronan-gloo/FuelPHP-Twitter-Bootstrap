@@ -2,8 +2,6 @@
 
 namespace Bootstrap;
 
-use \Config;
-
 class Form_Checkbox extends BootstrapModuleForm implements Deactivable {
 	
 	protected $data			= array();
@@ -50,9 +48,9 @@ class Form_Checkbox extends BootstrapModuleForm implements Deactivable {
 	{
 		is_bool($bool) and $this->data["checked"] = $bool;
 		
-		if ($bool === true and isset($this->attrs["disabled"]))
+		if ($bool === true and $this->manager->attr("disabled"))
 		{
-			unset($this->attrs["disabled"]);
+			$this->manager->removeAttr("disabled");
 		}
 		return $this;
 	}
@@ -66,19 +64,19 @@ class Form_Checkbox extends BootstrapModuleForm implements Deactivable {
 	 */
 	public function disabled($bool = true)
 	{
-		$muted = Config::get('bootstrap.utilities.muted');
+		$muted = $this->config->package("class.muted");
 		switch ($bool)
 		{
 			case 1:
-			$this->attrs["disabled"] = 'disabled';
-			$this->config('automute') and $this->css($muted);
+			$this->manager->attr("disabled", 'disabled');
+			$this->config->module('automute') and $this->manager->addClass($muted);
 			break;
 			
 			case 0:
-			if (isset($this->attrs["disabled"])) unset($this->attrs["disabled"]);
-			if ($this->config('automute') and in_array($muted, $this->css))
+			$this->manager->removeAttr("disabled");
+			if ($this->config->module('automute') and $this->manager->hasClass($muted))
 			{
-				unset($this->css[array_search($muted, $this->css)]);
+				$this->manager->removeClass($muted);
 			}
 			break;
 		}
@@ -104,7 +102,7 @@ class Form_Checkbox extends BootstrapModuleForm implements Deactivable {
 	public function render()
 	{
 		// parse attribute
-		foreach ($this->attrs as $key => $val)
+		foreach ($this->manager->attrs() as $key => $val)
 		{
 			switch ($key)
 			{
@@ -127,17 +125,17 @@ class Form_Checkbox extends BootstrapModuleForm implements Deactivable {
 		if (isset($this->data['label']))
 		{
 			$css[] = $this->entity;
-			$this->_merge($this->data['label']['attrs'], $css);
+			$this->manager->classesToAttr($this->data['label']['attrs'], $css);
 			
-			if (isset($this->attrs['id']))
+			if ($id = $this->manager->attr("id"))
 			{
-				$this->data['label']['attrs']['for'] = $this->attrs['id'];
+				$this->data['label']['attrs']['for'] = $id;
 			}
 			
 			$text		= $this->data['label']['text'];
 			$input	= $this->_input();
 			
-			$this->attrs = $this->data['label']['attrs'];
+			$this->manager->attrs($this->data['label']['attrs']);
 			$this->html('label', $input.$text);
 		}
 		else
@@ -156,13 +154,13 @@ class Form_Checkbox extends BootstrapModuleForm implements Deactivable {
 	 */
 	protected function _input()
 	{
-		$this->merge()->clean();
+		$this->manager->mergeAttrs()->clean();
 		
 		return Form::instance()->{'core_'.$this->entity}(
 			$this->data['field'],
 			$this->data['value'],
 			$this->data['checked'],
-			$this->attrs
+			$this->manager->attrs()
 		)->render();
 	}
 	

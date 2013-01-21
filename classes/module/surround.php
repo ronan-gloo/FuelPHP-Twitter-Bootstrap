@@ -59,13 +59,13 @@ class BootstrapModuleSurround extends BootstrapModuleForm {
 	 * @return void
 	 */
 	protected function prepend_append($type)
-	{		
+	{
 		// merge prepend / append attributes with prp / app methods
-		$array = isset($this->attrs[$type]) ? array_merge((array)$this->attrs[$type], $this->$type): $this->$type;
+		$array = ($atype = $this->manager->attr($type)) ? array_merge((array)$atype, $this->$type): $this->$type;
 		
 		if (! $array) return '';
 		
-		$this->_merge($this->cattrs, array('input-'.$type));
+		$this->manager->classesToAttr($this->cattrs, array('input-'.$type));
 		
 		foreach ($array as &$data)
 		{

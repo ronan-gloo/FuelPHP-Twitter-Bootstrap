@@ -15,11 +15,11 @@ class Form_Locked extends BootstrapModuleSurround {
 	{
 		list($prepend, $append) = $this->surround();
 		
-		$this->css('uneditable-input');
+		$this->manager->addClass('uneditable-input');
 		
-		if (isset($this->attrs['size']))
+		if ($size = $this->manager->attr("size"))
 		{
-			$this->css('input-'.$this->attrs['size']);
+			$this->manager->addClass('input-'.$size);
 		}
 		
 		$this->html('span', $this->data['text']);

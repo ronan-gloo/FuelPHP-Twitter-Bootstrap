@@ -29,16 +29,14 @@ class Html_Tooltip extends BootstrapModule implements Unattachable {
 	 */
 	public function make($title = '')
 	{
-		$this->set_template();
-		
-		foreach ($this->attrs as $key => $attr)
+		foreach ($this->manager->attrs() as $key => $attr)
 		{
-			$this->attrs['data-'.$key] = $attr;
+			$this->manager->attr('data-'.$key, $attr);
 		}
 		
-		$this->clean();
+		$this->manager->clean();
 			
-		return array_merge($this->attrs, array('rel' => 'tooltip', 'title' => $title));
+		return array_merge($this->manager->attrs(), array('rel' => 'tooltip', 'title' => $title));
 	}
 	
 	/**

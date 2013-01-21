@@ -26,14 +26,10 @@ class Html_Button extends BootstrapModuleBtn implements Linkable {
 	{
 		extract($this->data);
 		
-		$this
-			->set_template()
-			->set_button()
-			->set_icon($text)
-			->merge()
-			->clean();
+		$this->set_button()->set_icon($text);
+		$this->manager->mergeAttrs()->clean();
 
-		$this->html = \Html::anchor($href, $text, $this->attrs, $secure);
+		$this->html  = \Html::anchor($href, $text, $this->manager->attrs(), $secure);
 		$this->html .= $this->append_html;
 		
 		return parent::render();

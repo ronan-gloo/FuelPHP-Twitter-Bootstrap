@@ -62,7 +62,7 @@ class Html_Table extends BootstrapModule implements Unattachable {
 		 
 		if ($properties and ! Arr::is_assoc($properties))
 		{
-			$values = ($this->attrs("autoheader") === true)
+			$values = ($this->manager->attr("autoheader") === true)
 				? $properties
 				: array_fill(0, count($properties), "");
 				
@@ -319,16 +319,16 @@ class Html_Table extends BootstrapModule implements Unattachable {
 	 */
 	public function render($part = null)
 	{		
-		$this->css("table");
+		$this->manager->addClass("table");
 		
-		foreach ($this->attrs() as $key => $attr)
+		foreach ($this->manager->attrs() as $key => $attr)
 		{
 			switch($key)
 			{
 				case "striped":
 				case "bordered":
 				case "condensed":
-				if ($attr === true) $this->css("table-".$key);
+				$attr === true and $this->manager->addClass("table-".$key);
 				break;
 			}
 		}
@@ -398,7 +398,7 @@ class Html_Table extends BootstrapModule implements Unattachable {
 		$ccallbacks = $this->callbacks["cells"];
 		$rcallbacks = $this->callbacks["rows"];
 		
-		$alternator = ($astr = $this->attrs("alternator"))
+		$alternator = ($astr = $this->manager->attr("alternator"))
 			? call_user_func_array(array('Str', 'alternator'), explode('|', $astr))
 			: function(){ return null; };
 

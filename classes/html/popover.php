@@ -126,14 +126,14 @@ class Html_Popover extends BootstrapModule implements Unattachable {
 			$html .= html_tag('h3', $this->title['attrs'], $this->title['data']);
 			
 			// set content
-			$this->_merge($this->content['attrs'], array('popover-content'));
+			$this->manager->classesToAttr($this->content['attrs'], array('popover-content'));
 			$html .= html_tag('div', $this->content['attrs'], $this->content['data']);
 			
-			$this->css('popover');
+			$this->manager->addClass('popover');
 			
-			if (array_key_exists('placement', $this->attrs))
+			if ($placement = $this->manager->attr('placement'))
 			{
-				$this->css($this->attrs['placement']);
+				$this->manager->addClass($placement);
 			}
 			
 			$this->html('div', $html);
@@ -150,19 +150,17 @@ class Html_Popover extends BootstrapModule implements Unattachable {
 	 */
 	protected function make_attributes($title, $content)
 	{
-		$this->set_template();
+		$title and $this->manager->attr('title', $title);
+		$content and $this->manager->attr('content', $content);
 		
-		$title and $this->attrs['title'] = $title;
-		$content and $this->attrs['content'] = $content;
-		
-		foreach ($this->attrs as $key => $attr)
+		foreach ($this->manager->attrs() as $key => $attr)
 		{
-			$this->attrs['data-'.$key] = $attr;
+			$this->manager->attr('data-'.$key, $attr);
 		}
 		
-		$this->clean();
+		$this->manager->clean();
 		
-		return array_merge($this->attrs, array('rel' => 'popover'));
+		return array_merge($this->manager->attrs(), array('rel' => 'popover'));
 	}
 	
 	/**

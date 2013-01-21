@@ -24,9 +24,9 @@ class Html_Label extends BootstrapModule {
 	 */
 	public function make($text = '')
 	{
-		empty($this->attrs) and $this->attrs['status'] = 'default';
+		! $this->manager->attrs() and $this->manager->attr("status", 'default');
 		
-		$this->css($this->entity, $this->entity.'-'.$this->attrs['status']);
+		$this->manager->addClass($this->entity, $this->entity.'-'. $this->manager->attr("status"));
 		
 		$this->text = $text;
 		

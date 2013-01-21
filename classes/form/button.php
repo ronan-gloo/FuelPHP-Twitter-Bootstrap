@@ -16,14 +16,10 @@ class Form_Button extends BootstrapModuleBtn {
 	{
 		extract($this->data);
 		
-		$this
-			->set_template()
-			->set_button()
-			->set_icon($value)
-			->merge()
-			->clean();
+		$this->set_button()->set_icon($value);
+		$this->manager->mergeAttrs()->clean();
 
-		$this->html = $this->instance->core_button($field, $value, $this->attrs);
+		$this->html = $this->instance->core_button($field, $value, $this->manager->attrs());
 		
 		return parent::render();
 	}
@@ -39,11 +35,11 @@ class Form_Button extends BootstrapModuleBtn {
 		
 		if ($bool === true)
 		{
-			$this->attrs['disabled'] = 'disabled';
+			$this->manager->attr('disabled', 'disabled');
 		}
-		elseif ($bool === false and array_key_exists('disabled', $this->attrs))
+		elseif ($bool === false and $this->manager->attr("disabled"))
 		{
-			unset($this->attrs['disabled']);
+			$this->manager->removeAttr("disabled");
 		}
 		return $this;
 	}
