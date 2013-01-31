@@ -16,7 +16,6 @@ Autoloader::add_core_namespace('Bootstrap');
 Autoloader::add_classes(array(
 	
 	// Extra Helpers
-	'Bootstrap\\BootstrapNode'		=> __DIR__.'/classes/node.php',
 	'Bootstrap\\Helper_Config'		=> __DIR__.'/classes/helper/config.php',
 	'Bootstrap\\Helper_Attribute'	=> __DIR__.'/classes/helper/attribute.php',
 	

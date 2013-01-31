@@ -11,7 +11,7 @@ use
 /**
  * Provides some initializers and methods for modules.
  */
-abstract class BootstrapModule extends BootstrapNode {
+abstract class BootstrapModule {
 	
 	/**
 	 * Child's class name
