@@ -32,6 +32,7 @@ Autoloader::add_classes(array(
 	'Bootstrap\\Nestable'			=> __DIR__.'/classes/interfaces.php',
 	'Bootstrap\\Linkable'			=> __DIR__.'/classes/interfaces.php',
 	'Bootstrap\\ContainsItems'=> __DIR__.'/classes/interfaces.php',
+	'Bootstrap\\Unattachable' 		=> __DIR__.'/classes/interfaces.php',
 	
 	// Form Modules
 	'Bootstrap\\Form'						=> __DIR__.'/classes/form.php',
